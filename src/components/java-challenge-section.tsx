@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,18 +9,20 @@ import { getJavaChallenge } from "@/app/actions";
 import { type JavaChallengeOutput } from "@/ai/flows/java-challenge-flow";
 import { useToast } from "@/hooks/use-toast";
 import { Skeleton } from "./ui/skeleton";
-import { RefreshCw, Check, Code } from "lucide-react";
+import { RefreshCw, Check, Code, Eye } from "lucide-react";
 
 const JavaChallengeSection = () => {
   const [challenge, setChallenge] = useState<JavaChallengeOutput | null>(null);
   const [userAnswer, setUserAnswer] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [revealedAnswer, setRevealedAnswer] = useState<string | null>(null);
   const { toast } = useToast();
 
   const fetchChallenge = async () => {
     setIsLoading(true);
     setChallenge(null);
     setUserAnswer("");
+    setRevealedAnswer(null);
     try {
       const newChallenge = await getJavaChallenge();
       setChallenge(newChallenge);
@@ -41,7 +44,7 @@ const JavaChallengeSection = () => {
 
   const checkAnswer = () => {
     if (!challenge) return;
-    if (userAnswer.trim() === challenge.answer.trim()) {
+    if (userAnswer.trim().toLowerCase() === challenge.answer.trim().toLowerCase()) {
       toast({
         title: "Correct!",
         description: "Great job! You solved the challenge.",
@@ -54,6 +57,15 @@ const JavaChallengeSection = () => {
       });
     }
   };
+
+  const showAnswer = () => {
+    if (!challenge) return;
+    setRevealedAnswer(challenge.answer);
+    setTimeout(() => {
+      setRevealedAnswer(null);
+    }, 5000);
+  };
+
 
   const renderCodeSnippet = () => {
     if (!challenge) return null;
@@ -109,10 +121,21 @@ const JavaChallengeSection = () => {
             ) : (
                 renderCodeSnippet()
             )}
-            <div className="flex justify-end gap-4 mt-6">
+            <div className="mt-4 min-h-[2rem] text-center">
+              {revealedAnswer && (
+                <p className="text-accent font-bold animate-pulse">
+                  Correct Answer: {revealedAnswer}
+                </p>
+              )}
+            </div>
+            <div className="flex justify-end gap-4 mt-2">
               <Button variant="outline" onClick={fetchChallenge} disabled={isLoading}>
                 <RefreshCw className="mr-2" />
                 New Challenge
+              </Button>
+               <Button variant="secondary" onClick={showAnswer} disabled={!challenge || isLoading || !!revealedAnswer}>
+                <Eye className="mr-2" />
+                Show Answer
               </Button>
               <Button onClick={checkAnswer} disabled={!challenge || isLoading}>
                 <Check className="mr-2" />
