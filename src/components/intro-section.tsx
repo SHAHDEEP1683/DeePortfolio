@@ -1,7 +1,7 @@
 import { personalData } from "@/lib/data";
 import Typewriter from "./typewriter";
 import { Button } from "./ui/button";
-import { Github } from "lucide-react";
+import { Download } from "lucide-react";
 
 const IntroSection = () => {
   return (
@@ -21,13 +21,14 @@ const IntroSection = () => {
           {personalData.bio}
         </p>
         <div className="flex justify-center gap-4">
+            <Button asChild size="lg" variant="secondary">
+                <a href="/resume.pdf" download="Deep_Shah_Resume.pdf">
+                    <Download className="mr-2" />
+                    Download Resume
+                </a>
+            </Button>
             <Button asChild size="lg">
                 <a href="#contact">Contact Me</a>
-            </Button>
-            <Button asChild variant="secondary" size="lg">
-                <a href={personalData.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2" /> GitHub
-                </a>
             </Button>
         </div>
       </div>
