@@ -29,6 +29,7 @@ const Terminal = () => {
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const endOfOutputRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const executeCommand = async (command: string) => {
     let result: React.ReactNode = `Command not found: ${command}. Type 'help' for a list of commands.`;
@@ -141,7 +142,10 @@ const Terminal = () => {
   }, [])
 
   return (
-    <div className="rounded-lg bg-[#282c34] text-white shadow-lg">
+    <div 
+        className="rounded-lg bg-[#282c34] text-white shadow-lg"
+        onClick={() => inputRef.current?.focus()}
+    >
         <div className="flex items-center p-3 bg-[#21252b] rounded-t-lg">
             <div className="flex space-x-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -152,28 +156,28 @@ const Terminal = () => {
                 {'>_'} deep-shah-portfolio
             </div>
         </div>
-        <div className="p-4 font-code h-96 flex flex-col">
-            <div className="flex-grow overflow-y-auto pr-2">
-                {output.map((line, index) => (
-                <div key={index} className="mb-2">
-                    {line.command && <p className="flex items-center"><span className="text-accent mr-2">user@deepverse:~$</span> {line.command}</p>}
-                    <div>{line.result}</div>
-                </div>
-                ))}
-                <div ref={endOfOutputRef} />
+        <div className="p-4 font-code h-96 overflow-y-auto" >
+            {output.map((line, index) => (
+            <div key={index} className="mb-2">
+                {line.command && <p className="flex items-center"><span className="text-accent mr-2">user@deepverse:~$</span> {line.command}</p>}
+                <div>{line.result}</div>
             </div>
-            <form onSubmit={handleSubmit} className="flex items-center mt-2">
+            ))}
+
+            <form onSubmit={handleSubmit} className="flex items-center">
                 <span className="text-accent mr-2">user@deepverse:~$</span>
                 <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="bg-transparent border-none focus:ring-0 w-full font-code"
-                placeholder=""
-                autoFocus
+                    ref={inputRef}
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    className="bg-transparent border-none focus:ring-0 w-full font-code p-0"
+                    autoFocus
                 />
             </form>
+
+            <div ref={endOfOutputRef} />
         </div>
     </div>
   );
