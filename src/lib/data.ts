@@ -3,7 +3,7 @@ export const personalData = {
   role: "Java Backend Developer",
   titles: [
     "Java Backend Developer",
-    "Microservice Enthusiast",
+    "Microservice Learner",
     "Spring Boot Enthusiast",
     "REST API Architect"
   ],
