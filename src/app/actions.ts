@@ -6,10 +6,6 @@ import { personalData } from "@/lib/data";
 import { Resend } from "resend";
 import * as z from "zod";
 
-// You need to sign up for Resend (resend.com) and get an API key.
-// Then add it to your .env file as RESEND_API_KEY.
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const contactFormSchema = z.object({
   name: z.string(),
   email: z.string().email(),
@@ -26,6 +22,15 @@ export async function getJavaChallenge() {
 }
 
 export async function sendContactEmail(formData: z.infer<typeof contactFormSchema>) {
+    const apiKey = process.env.RESEND_API_KEY;
+
+    if (!apiKey) {
+        console.error("Resend API key is missing. Please add it to your .env file.");
+        return { success: false, error: "Email service is not configured. Please contact the administrator." };
+    }
+
+    const resend = new Resend(apiKey);
+
     try {
         const result = await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>', // This can be a generic address
