@@ -40,16 +40,23 @@ export const projects = [
 
 export const experience = [
   {
-    company: "BrightPeers Technology Solution Pvt Ltd",
-    role: "Java Backend Intern",
-    duration: "Dec 2024 – Present",
-    description: "Developed and maintained Spring Boot applications, built RESTful services, and collaborated with the team to deliver high-quality backend solutions."
+    company: "Innovatech Solutions Inc.",
+    role: "Java Spring Boot Intern",
+    duration: "Dec 2024 - May 2025",
+    description: [
+      "Developed and maintained RESTful APIs for various microservices using Spring Boot.",
+      "Collaborated with cross-functional teams in an Agile/Scrum environment, participating in daily stand-ups and sprint planning.",
+      "Wrote unit and integration tests to ensure code quality and reliability.",
+      "Assisted in troubleshooting and debugging production issues, improving application stability."
+    ]
   },
   {
     company: "BCM Corporation",
-    role: "Data Entry Operator (Part-time)",
+    role: "Data Entry Operator",
     duration: "Aug 2023 – Nov 2024",
-    description: "Managed and processed data efficiently using Microsoft Office Suite, ensuring accuracy and confidentiality."
+    description: [
+      "Utilized Microsoft Office suite for efficient business data entry, record-keeping, and report generation."
+    ]
   }
 ];
 
