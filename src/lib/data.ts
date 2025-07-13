@@ -26,16 +26,14 @@ export const skills = {
 export const projects = [
   {
     title: "Election Management System",
-    description: "A full-stack CRUD platform to manage elections, voters, and officers, ensuring a streamlined electoral process.",
-    tech: ["Java", "Spring Boot", "React", "MySQL", "MongoDB", "MDC Logging", "JasperReports"],
-    features: "Secure API endpoints, detailed reporting, and efficient data handling between relational and NoSQL databases.",
+    description: "A comprehensive system for managing elections. Features include CRUD operations for voters and officers, secure logging with MDC, and detailed reporting using JasperReports.",
+    tech: ["Java", "Spring Boot", "React", "MySQL", "MongoDB"],
     link: "https://github.com/SHAHDEEP1683/Election-Management-System"
   },
   {
     title: "Tours & Travel Management System",
-    description: "A backend system for managing tour packages, bookings, and customer information for a travel agency.",
-    tech: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
-    features: "RESTful services for package management, booking handling, and user authentication.",
+    description: "A backend system for a travel agency to manage tour packages, customer bookings, itineraries, and user accounts.",
+    tech: ["Spring Boot", "MySQL"],
     link: "https://github.com/SHAHDEEP1683/Tours-and-Travels-Management-System"
   }
 ];
