@@ -8,12 +8,10 @@ import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import TerminalSection from '@/components/terminal-section';
 import JavaChallengeSection from '@/components/java-challenge-section';
-import ScrollToTop from '@/components/scroll-to-top';
 
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
-      <ScrollToTop />
       <Header />
       <main className="container mx-auto max-w-7xl px-4">
         <IntroSection />

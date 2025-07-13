@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import {ThemeProvider} from '@/components/theme-provider';
 import { Toaster } from "@/components/ui/toaster"
+import ScrollToTop from '@/components/scroll-to-top';
 
 export const metadata: Metadata = {
   title: 'Deep Shah | Java Backend Developer',
@@ -29,6 +30,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollToTop />
           {children}
           <Toaster />
         </ThemeProvider>
