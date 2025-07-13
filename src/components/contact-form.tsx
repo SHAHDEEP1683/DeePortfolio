@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -8,7 +9,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Send } from "lucide-react";
+import { sendContactEmail } from "@/app/actions";
+import { Send, Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -18,6 +20,7 @@ const formSchema = z.object({
 
 const ContactForm = () => {
     const { toast } = useToast();
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -28,14 +31,24 @@ const ContactForm = () => {
         },
     });
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        // Here you would typically send the form data to a server
-        console.log(values);
-        toast({
-            title: "Message Sent!",
-            description: "Thanks for reaching out. I'll get back to you soon.",
-        });
-        form.reset();
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        setIsSubmitting(true);
+        const result = await sendContactEmail(values);
+        setIsSubmitting(false);
+        
+        if (result.success) {
+            toast({
+                title: "Message Sent!",
+                description: "Thanks for reaching out. I'll get back to you soon.",
+            });
+            form.reset();
+        } else {
+             toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "There was a problem sending your message. Please try again later.",
+            });
+        }
     };
 
     return (
@@ -84,9 +97,18 @@ const ContactForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                    <Send className="mr-2 h-4 w-4" />
-                    Send Message
+                <Button type="submit" className="bg-accent text-accent-foreground hover:bg-accent/90" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                        <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Sending...
+                        </>
+                    ) : (
+                        <>
+                            <Send className="mr-2 h-4 w-4" />
+                            Send Message
+                        </>
+                    )}
                 </Button>
             </form>
         </Form>
