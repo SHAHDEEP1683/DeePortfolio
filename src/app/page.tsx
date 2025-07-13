@@ -8,6 +8,7 @@ import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import GithubGraph from '@/components/github-graph';
 import TerminalSection from '@/components/terminal-section';
+import JavaChallengeSection from '@/components/java-challenge-section';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <ProjectsSection />
         <ExperienceSection />
         <EducationSection />
+        <JavaChallengeSection />
         <GithubGraph />
         <TerminalSection />
         <ContactSection />
