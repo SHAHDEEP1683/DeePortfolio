@@ -5,8 +5,7 @@ export const personalData = {
     "Java Backend Developer",
     "Microservice Enthusiast",
     "Spring Boot Enthusiast",
-    "REST API Architect",
-    "Problem Solver"
+    "REST API Architect"
   ],
   location: "Ahmedabad, India",
   email: "sd365601@gmail.com",
