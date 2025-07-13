@@ -25,7 +25,7 @@ const Footer = () => {
                     <span className="sr-only">GitHub</span>
                 </a>
                  <a
-                    href="https://www.linkedin.com" // Placeholder, update in lib/data.ts if you have a real one
+                    href={personalData.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground transition-colors hover:text-foreground"

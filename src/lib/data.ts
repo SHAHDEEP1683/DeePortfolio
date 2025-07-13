@@ -1,3 +1,4 @@
+
 export const personalData = {
   name: "DEEP SHAH",
   role: "Java Backend Developer",
@@ -10,6 +11,7 @@ export const personalData = {
   location: "Ahmedabad, India",
   email: "sd365601@gmail.com",
   github: "https://github.com/SHAHDEEP1683",
+  linkedin: "https://www.linkedin.com/in/deep-shah-576756199/",
   phone: "+91 98986 69892",
   bio: "I'm a passionate Java Backend Developer specializing in building robust and scalable applications. I thrive on solving complex problems and continuously learning new technologies.",
 };
