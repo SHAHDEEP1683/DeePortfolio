@@ -14,6 +14,15 @@ const commands: { [key: string]: string } = {
   'clear': 'Clear the terminal screen',
 };
 
+const asciiArt = `
+██████╗ ███████╗███████╗██████╗ 
+██╔══██╗██╔════╝██╔════╝██╔══██╗
+██║  ██║█████╗  █████╗  ██████╔╝
+██║  ██║██╔══╝  ██╔══╝  ██╔═══╝ 
+██████╔╝███████╗███████╗██║     
+╚═════╝ ╚══════╝╚══════╝╚═╝     
+`;
+
 const Terminal = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState<{ command: string, result: React.ReactNode }[]>([]);
@@ -46,8 +55,8 @@ const Terminal = () => {
           <p>{personalData.bio}</p>
           <br />
           <p className="font-headline text-md text-primary">Skills:</p>
-          <p><strong className="text-accent">Languages & Frameworks:</strong> {skills.languagesAndFrameworks.join(', ')}</p>
-          <p><strong className="text-accent">Tools & Technologies:</strong> {skills.toolsAndTechnologies.join(', ')}</p>
+          <p><strong className="text-accent">Core Technologies:</strong> {skills.coreTechnologies.join(', ')}</p>
+          <p><strong className="text-accent">Frameworks & Libraries:</strong> {skills.frameworksAndLibraries.join(', ')}</p>
         </div>
       );
     } else if (cmd === 'projects') {
@@ -86,7 +95,7 @@ const Terminal = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim().toLowerCase() === 'clear') {
-        setOutput([]);
+        setOutput([{ command: '', result: <pre className="text-accent">{asciiArt}</pre> }]);
     } else {
         executeCommand(input);
     }
@@ -125,35 +134,47 @@ const Terminal = () => {
   }, [output]);
   
   useEffect(() => {
-    setOutput([{
-      command: '',
-      result: <p>Welcome to my interactive terminal! Type <span className="text-accent">'help'</span> to see available commands.</p>
-    }])
+    setOutput([
+        { command: '', result: <pre className="text-accent whitespace-pre-wrap">{asciiArt}</pre> },
+        { command: '', result: <p>Welcome to Deep Terminal! Type <span className="text-accent">'help'</span> to see available commands.</p>}
+    ])
   }, [])
 
   return (
-    <div className="border rounded-lg p-4 font-code bg-card text-card-foreground shadow-lg h-96 flex flex-col">
-      <div className="flex-grow overflow-y-auto pr-2">
-        {output.map((line, index) => (
-          <div key={index} className="mb-2">
-            {line.command && <p className="flex items-center"><span className="text-accent mr-2">$</span> {line.command}</p>}
-            <div>{line.result}</div>
-          </div>
-        ))}
-        <div ref={endOfOutputRef} />
-      </div>
-      <form onSubmit={handleSubmit} className="flex items-center mt-2">
-        <span className="text-accent mr-2">$</span>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="bg-transparent border-none focus:ring-0 w-full font-code"
-          placeholder="Type a command..."
-          autoFocus
-        />
-      </form>
+    <div className="rounded-lg bg-[#282c34] text-white shadow-lg">
+        <div className="flex items-center p-3 bg-[#21252b] rounded-t-lg">
+            <div className="flex space-x-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div className="flex-1 text-center text-sm font-sans text-gray-400">
+                {'>_'} deep-shah-portfolio
+            </div>
+        </div>
+        <div className="p-4 font-code h-96 flex flex-col">
+            <div className="flex-grow overflow-y-auto pr-2">
+                {output.map((line, index) => (
+                <div key={index} className="mb-2">
+                    {line.command && <p className="flex items-center"><span className="text-accent mr-2">user@deepverse:~$</span> {line.command}</p>}
+                    <div>{line.result}</div>
+                </div>
+                ))}
+                <div ref={endOfOutputRef} />
+            </div>
+            <form onSubmit={handleSubmit} className="flex items-center mt-2">
+                <span className="text-accent mr-2">user@deepverse:~$</span>
+                <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="bg-transparent border-none focus:ring-0 w-full font-code"
+                placeholder=""
+                autoFocus
+                />
+            </form>
+        </div>
     </div>
   );
 };

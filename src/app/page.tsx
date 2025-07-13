@@ -6,7 +6,6 @@ import ExperienceSection from '@/components/experience-section';
 import EducationSection from '@/components/education-section';
 import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
-import GithubGraph from '@/components/github-graph';
 import TerminalSection from '@/components/terminal-section';
 import JavaChallengeSection from '@/components/java-challenge-section';
 
@@ -21,7 +20,6 @@ export default function Home() {
         <ExperienceSection />
         <EducationSection />
         <JavaChallengeSection />
-        <GithubGraph />
         <TerminalSection />
         <ContactSection />
       </main>
