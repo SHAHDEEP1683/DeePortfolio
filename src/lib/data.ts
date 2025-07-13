@@ -4,7 +4,7 @@ export const personalData = {
   titles: [
     "Java Backend Developer",
     "Microservice Enthusiast",
-    "Spring Boot Expert",
+    "Spring Boot Enthusiast",
     "REST API Architect",
     "Problem Solver"
   ],
