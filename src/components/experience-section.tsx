@@ -7,6 +7,7 @@ const ExperienceSection = () => {
     <section id="experience" className="py-16 md:py-24 border-t">
       <div className="text-center mb-12">
         <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+          <Briefcase className="h-10 w-10" />
           Work Journey
         </h2>
       </div>

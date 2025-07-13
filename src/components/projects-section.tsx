@@ -9,6 +9,7 @@ const ProjectsSection = () => {
     <section id="projects" className="py-16 md:py-24 border-t">
       <div className="text-center mb-12">
         <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+          <FolderGit2 className="h-10 w-10" />
           Projects
         </h2>
       </div>
