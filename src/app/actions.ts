@@ -3,7 +3,7 @@
 import { generateCodingTip, type CodingTipInput } from "@/ai/flows/coding-tip-generator";
 import { generateJavaChallenge } from "@/ai/flows/java-challenge-flow";
 import { personalData } from "@/lib/data";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import * as z from "zod";
 
 const contactFormSchema = z.object({
@@ -22,37 +22,39 @@ export async function getJavaChallenge() {
 }
 
 export async function sendContactEmail(formData: z.infer<typeof contactFormSchema>) {
-    const apiKey = process.env.RESEND_API_KEY;
+    const { GMAIL_EMAIL, GMAIL_APP_PASSWORD } = process.env;
 
-    if (!apiKey) {
-        console.error("Resend API key is missing. Please add it to your .env file.");
+    if (!GMAIL_EMAIL || !GMAIL_APP_PASSWORD) {
+        console.error("Gmail credentials are missing. Please add GMAIL_EMAIL and GMAIL_APP_PASSWORD to your .env file.");
         return { success: false, error: "Email service is not configured. Please contact the administrator." };
     }
 
-    const resend = new Resend(apiKey);
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: GMAIL_EMAIL,
+            pass: GMAIL_APP_PASSWORD,
+        },
+    });
+
+    const mailOptions = {
+        from: formData.email,
+        to: GMAIL_EMAIL,
+        subject: `New message from ${formData.name} via your portfolio`,
+        replyTo: formData.email,
+        html: `
+            <p><strong>Name:</strong> ${formData.name}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Message:</strong></p>
+            <p>${formData.message}</p>
+        `,
+    };
 
     try {
-        const result = await resend.emails.send({
-            from: 'Portfolio Contact <onboarding@resend.dev>', // This can be a generic address
-            to: personalData.email, // Your personal email address
-            subject: `New message from ${formData.name} via your portfolio`,
-            reply_to: formData.email,
-            html: `
-                <p><strong>Name:</strong> ${formData.name}</p>
-                <p><strong>Email:</strong> ${formData.email}</p>
-                <p><strong>Message:</strong></p>
-                <p>${formData.message}</p>
-            `,
-        });
-
-        if (result.error) {
-            console.error("Resend error:", result.error);
-            return { success: false, error: result.error.message };
-        }
-
+        await transporter.sendMail(mailOptions);
         return { success: true };
     } catch (error) {
         console.error("Failed to send email:", error);
-        return { success: false, error: "Failed to send email. See server logs for details." };
+        return { success: false, error: "Failed to send email. Check server logs and Gmail configuration." };
     }
 }
