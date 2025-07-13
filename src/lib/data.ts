@@ -8,8 +8,8 @@ export const personalData = {
     "Full-Stack Developer",
     "Problem Solver"
   ],
-  location: "Ahmedabad",
-  email: "shahdeep.1683@gmail.com",
+  location: "Ahmedabad, India",
+  email: "sd365601@gmail.com",
   github: "https://github.com/SHAHDEEP1683",
   phone: "+91 98986 69892",
   bio: "I'm a passionate Java Backend Developer specializing in building robust and scalable applications. I thrive on solving complex problems and continuously learning new technologies.",
