@@ -1,7 +1,7 @@
 import { personalData } from "@/lib/data";
 import Typewriter from "./typewriter";
 import { Button } from "./ui/button";
-import { Github } from "lucide-react";
+import { Github, Download } from "lucide-react";
 
 const IntroSection = () => {
   return (
@@ -22,7 +22,10 @@ const IntroSection = () => {
         </p>
         <div className="flex justify-center gap-4">
             <Button asChild size="lg" variant="secondary">
-                <a href="#contact">Contact Me</a>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Resume
+                </a>
             </Button>
             <Button asChild size="lg">
                  <a href={personalData.github} target="_blank" rel="noopener noreferrer">
