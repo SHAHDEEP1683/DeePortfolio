@@ -1,12 +1,13 @@
 import { personalData } from "@/lib/data";
-import { Mail, Smartphone, MapPin } from "lucide-react";
+import { Mail, Smartphone, MapPin, Send } from "lucide-react";
 import ContactForm from "./contact-form";
 
 const ContactSection = () => {
   return (
     <section id="contact" className="py-16 md:py-24 border-t">
       <div className="text-center mb-12">
-        <h2 className="font-headline text-4xl font-bold">
+        <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+          <Send className="h-10 w-10" />
           Get In Touch
         </h2>
       </div>

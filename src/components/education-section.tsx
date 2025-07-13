@@ -6,7 +6,8 @@ const EducationSection = () => {
   return (
     <section id="education" className="py-16 md:py-24 border-t">
       <div className="text-center mb-12">
-        <h2 className="font-headline text-4xl font-bold">
+        <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+          <GraduationCap className="h-10 w-10" />
           Education
         </h2>
       </div>

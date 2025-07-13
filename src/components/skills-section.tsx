@@ -1,6 +1,6 @@
 import { skills } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
-import { Code, Layers, Wrench, Beaker, SlidersHorizontal, Settings } from "lucide-react";
+import { Code, Layers, Wrench, Beaker, SlidersHorizontal, Cpu } from "lucide-react";
 
 const skillCategories = [
   {
@@ -34,12 +34,13 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="py-16 md:py-24 border-t">
       <div className="text-center mb-12">
-        <h2 className="font-headline text-4xl font-bold">
+        <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+          <Cpu className="h-10 w-10" />
           My Tech Stack
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {skillCategories.map((category, index) => (
           <div key={index} className="bg-card p-6 rounded-lg shadow-sm">
             <h3 className="font-headline text-xl font-semibold mb-4 flex items-center gap-3">
