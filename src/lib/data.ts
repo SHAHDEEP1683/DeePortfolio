@@ -19,7 +19,7 @@ export const skills = {
   frameworksAndLibraries: ["Hibernate / JPA", "Spring Security", "MapStruct"],
   developerTools: ["Git", "Docker", "Postman", "IntelliJ", "Maven", "SonarQube"],
   testing: ["JUnit", "Mockito"],
-  otherSkills: ["Liquibase", "OpenAPI Spec", "MDC Logging", "JasperReport", "Jaspersoft Studio"],
+  otherSkills: ["Liquibase", "OpenAPI Spec", "MDC Logging", "JasperReport"],
 };
 
 export const projects = [
