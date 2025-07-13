@@ -16,12 +16,11 @@ export const personalData = {
 };
 
 export const skills = {
-  languagesAndFrameworks: [
-    "Java", "Spring Boot", "REST API", "Spring Security", "Hibernate/JPA", "Liquibase", "OpenAPI", "MapStruct"
-  ],
-  toolsAndTechnologies: [
-    "Docker", "Swagger", "JUnit", "Mockito", "MDC Logging", "MySQL", "MongoDB", "Git/GitHub", "Postman", "IntelliJ", "SonarQube", "Jaspersoft Studio"
-  ],
+  coreTechnologies: ["Java", "Spring Boot", "SQL / RDBMS", "REST API", "Microservices"],
+  frameworksAndLibraries: ["Hibernate / JPA", "Spring Security", "MapStruct"],
+  developerTools: ["Git", "Docker", "Postman", "IntelliJ", "Maven", "SonarQube"],
+  testing: ["JUnit", "Mockito"],
+  otherSkills: ["Liquibase", "OpenAPI Spec", "MDC Logging", "JasperReport", "Jaspersoft Studio"],
 };
 
 export const projects = [
