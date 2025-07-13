@@ -1,7 +1,6 @@
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
-import { Github, CodeXml } from "lucide-react";
-import { personalData } from "@/lib/data";
+import { Send, CodeXml } from "lucide-react";
 
 const navLinks = [
   { href: "#skills", label: "Skills" },
@@ -32,8 +31,8 @@ const Header = () => {
 
         <div className="flex items-center gap-2">
             <Button asChild className="hidden sm:flex">
-                 <a href={personalData.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" /> GitHub
+                 <a href="#contact">
+                    <Send className="mr-2 h-4 w-4" /> Hire Me
                 </a>
             </Button>
             <ThemeToggle />
