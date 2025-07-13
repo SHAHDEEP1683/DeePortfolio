@@ -1,15 +1,43 @@
 import { ThemeToggle } from "./theme-toggle";
+import { Button } from "./ui/button";
+import { Download, CodeXml } from "lucide-react";
+import { personalData } from "@/lib/data";
+
+const navLinks = [
+  { href: "#skills", label: "Skills" },
+  { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
+  { href: "#education", label: "Education" },
+  { href: "#github", label: "Contributions" },
+  { href: "#contact", label: "Contact" },
+];
 
 const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-5xl items-center justify-between">
-        <div className="flex items-center">
-          <a href="#" className="font-headline text-xl font-bold">
-            DeepType
-          </a>
+      <div className="container flex h-16 max-w-7xl items-center justify-between px-4">
+        <a href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
+          <CodeXml className="h-6 w-6" />
+          DeePortfolio
+        </a>
+        
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            {navLinks.map(link => (
+                <a key={link.href} href={link.href} className="text-muted-foreground transition-colors hover:text-foreground">
+                    {link.label}
+                </a>
+            ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+            <Button asChild className="hidden sm:flex">
+                <a href="/resume.pdf" download="Deep_Shah_Resume.pdf">
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Resume
+                </a>
+            </Button>
+            <ThemeToggle />
         </div>
-        <ThemeToggle />
       </div>
     </header>
   );

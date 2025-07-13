@@ -21,8 +21,8 @@ const ContactSection = () => {
                 </div>
                 <span>{personalData.email}</span>
             </a>
-            <div className="flex items-center gap-4 group">
-                <div className="p-2 bg-secondary rounded-full group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+            <div className="flex items-center gap-4">
+                <div className="p-2 bg-secondary rounded-full">
                     <Smartphone className="h-5 w-5"/>
                 </div>
                 <span>{personalData.phone}</span>

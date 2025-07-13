@@ -7,18 +7,20 @@ import EducationSection from '@/components/education-section';
 import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import GithubGraph from '@/components/github-graph';
+import TerminalSection from '@/components/terminal-section';
 
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
       <Header />
-      <main className="container mx-auto max-w-5xl px-4">
+      <main className="container mx-auto max-w-7xl px-4">
         <IntroSection />
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
         <EducationSection />
         <GithubGraph />
+        <TerminalSection />
         <ContactSection />
       </main>
       <Footer />

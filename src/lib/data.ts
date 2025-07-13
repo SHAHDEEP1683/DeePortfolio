@@ -1,11 +1,18 @@
 export const personalData = {
   name: "DEEP SHAH",
   role: "Java Backend Developer",
+  titles: [
+    "Java Backend Developer",
+    "Microservice Enthusiast",
+    "Spring Boot Expert",
+    "Full-Stack Developer",
+    "Problem Solver"
+  ],
   location: "Ahmedabad",
   email: "shahdeep.1683@gmail.com",
   github: "https://github.com/SHAHDEEP1683",
   phone: "+91 98986 69892",
-  bio: "A passionate Java Backend Developer with experience in building robust and scalable applications using Spring Boot. Eager to learn new technologies and contribute to challenging projects.",
+  bio: "I'm a passionate Java Backend Developer specializing in building robust and scalable applications. I thrive on solving complex problems and continuously learning new technologies.",
 };
 
 export const skills = {

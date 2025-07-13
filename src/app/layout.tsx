@@ -4,7 +4,7 @@ import {ThemeProvider} from '@/components/theme-provider';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'DeepType | DEEP SHAH',
+  title: 'Deep Shah | Java Backend Developer',
   description: 'Portfolio of Deep Shah, a Java Backend Developer.',
 };
 
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="!scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
