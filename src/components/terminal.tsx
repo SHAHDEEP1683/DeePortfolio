@@ -31,6 +31,10 @@ const Terminal = () => {
   const endOfOutputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const scrollToBottom = () => {
+    endOfOutputRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const executeCommand = async (command: string) => {
     let result: React.ReactNode = `Command not found: ${command}. Type 'help' for a list of commands.`;
     
@@ -81,10 +85,13 @@ const Terminal = () => {
             </div>
         )
     } else if (cmd === 'tip') {
-        const tip = await getCodingTip({ request: "a cool coding tip" });
-        result = <p className="text-accent">"{tip}"</p>;
+        try {
+            const tip = await getCodingTip({ request: "a cool coding tip" });
+            result = <p className="text-accent">"{tip}"</p>;
+        } catch (error) {
+            result = <p className="text-red-500">Error fetching tip. Please try again later.</p>
+        }
     }
-
 
     setOutput(prev => [...prev, { command, result }]);
     if (cmd && cmd !== 'clear') {
@@ -93,14 +100,15 @@ const Terminal = () => {
     setHistoryIndex(-1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.trim().toLowerCase() === 'clear') {
+    const commandToExecute = input;
+    setInput('');
+    if (commandToExecute.trim().toLowerCase() === 'clear') {
         setOutput([{ command: '', result: <pre className="text-accent">{asciiArt}</pre> }]);
     } else {
-        executeCommand(input);
+        await executeCommand(commandToExecute);
     }
-    setInput('');
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -131,7 +139,7 @@ const Terminal = () => {
   };
 
   useEffect(() => {
-    endOfOutputRef.current?.scrollIntoView({ behavior: 'smooth' });
+    scrollToBottom();
   }, [output]);
   
   useEffect(() => {
