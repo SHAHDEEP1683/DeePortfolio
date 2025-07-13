@@ -16,6 +16,9 @@ export default {
       },
     },
     extend: {
+      backdropBlur: {
+        sm: '4px',
+      },
       fontFamily: {
         body: ['Inter', 'sans-serif'],
         headline: ['Space Grotesk', 'sans-serif'],
