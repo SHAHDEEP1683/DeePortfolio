@@ -1,4 +1,4 @@
-import { projects } from "@/lib/data";
+import { projects, personalData } from "@/lib/data";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -30,7 +30,7 @@ const ProjectsSection = () => {
             </CardContent>
             <CardFooter>
               <Button asChild variant="outline">
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <a href={personalData.github} target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-4 w-4" />
                   View on GitHub
                 </a>
