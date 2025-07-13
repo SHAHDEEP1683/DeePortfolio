@@ -1,28 +1,28 @@
 import { education } from "@/lib/data";
 import { GraduationCap } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 const EducationSection = () => {
   return (
     <section id="education" className="py-16 md:py-24 border-t">
       <div className="text-center mb-12">
-        <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
-          <GraduationCap className="h-10 w-10 text-accent" />
+        <h2 className="font-headline text-4xl font-bold">
           Education
         </h2>
-        <p className="text-muted-foreground mt-2">My academic background.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="space-y-8">
         {education.map((edu, index) => (
-          <Card key={index}>
-            <CardHeader>
-              <CardTitle className="font-headline text-xl">{edu.degree}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="font-semibold">{edu.university}</p>
-              <p className="text-sm text-muted-foreground">{edu.duration}</p>
-              <p className="text-sm text-muted-foreground">CGPA: {edu.cgpa}</p>
+          <Card key={index} className="bg-card/50 dark:bg-card">
+            <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                    <div>
+                        <h3 className="font-headline text-xl font-semibold text-primary">{edu.degree}</h3>
+                        <p className="text-md font-medium text-muted-foreground mt-1">{edu.university}</p>
+                        <p className="text-sm text-muted-foreground">{edu.location}</p>
+                    </div>
+                    <p className="text-sm text-muted-foreground min-w-max">{edu.duration}</p>
+                </div>
             </CardContent>
           </Card>
         ))}

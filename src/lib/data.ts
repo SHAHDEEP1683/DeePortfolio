@@ -39,38 +39,32 @@ export const projects = [
 ];
 
 export const experience = [
-  {
-    company: "Innovatech Solutions Inc.",
-    role: "Java Spring Boot Intern",
-    duration: "Dec 2024 - May 2025",
-    description: [
-      "Developed and maintained RESTful APIs for various microservices using Spring Boot.",
-      "Collaborated with cross-functional teams in an Agile/Scrum environment, participating in daily stand-ups and sprint planning.",
-      "Wrote unit and integration tests to ensure code quality and reliability.",
-      "Assisted in troubleshooting and debugging production issues, improving application stability."
-    ]
-  },
-  {
-    company: "BCM Corporation",
-    role: "Data Entry Operator",
-    duration: "Aug 2023 – Nov 2024",
-    description: [
-      "Utilized Microsoft Office suite for efficient business data entry, record-keeping, and report generation."
-    ]
-  }
+    {
+        company: "Innovatech Solutions Inc.",
+        role: "Java Spring Boot Intern",
+        duration: "Dec 2024 - May 2025",
+        description: [
+            "Developed and maintained RESTful APIs for various microservices using Spring Boot.",
+            "Collaborated with cross-functional teams in an Agile/Scrum environment, participating in daily stand-ups and sprint planning.",
+            "Wrote unit and integration tests to ensure code quality and reliability.",
+            "Assisted in troubleshooting and debugging production issues, improving application stability."
+        ]
+    },
+    {
+        company: "BCM Corporation",
+        role: "Data Entry Operator",
+        duration: "Aug 2023 – Nov 2024",
+        description: [
+            "Utilized Microsoft Office suite for efficient business data entry, record-keeping, and report generation."
+        ]
+    }
 ];
 
 export const education = [
   {
-    degree: "Master of Computer Applications (MCA)",
-    university: "Sardar Vallabhbhai Global University",
-    duration: "2023 – 2025",
-    cgpa: "7.3 CGPA"
-  },
-  {
-    degree: "Bachelor of Computer Applications (BCA)",
-    university: "Saurashtra University",
-    duration: "2020 – 2023",
-    cgpa: "7.0 CGPA"
+    degree: "Bachelor of Engineering in Information Technology",
+    university: "LDRP Institute of Technology and Research",
+    location: "Gandhinagar, India",
+    duration: "2021 – 2025",
   }
 ];
