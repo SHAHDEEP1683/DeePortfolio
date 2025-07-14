@@ -18,65 +18,69 @@ export const challenges: Challenge[] = [
   },
   {
     id: 2,
-    level: 'easy',
-    questionText: `public class Main {
+    level: 'medium',
+    questionText: `import java.util.ArrayList;
+
+public class Main {
   public static void main(String[] args) {
-    int x = 5;
-    int y = 10;
-    int sum = x ___ y;
-    System.out.println(sum); // prints 15
+    ArrayList<String> cars = new ArrayList<String>();
+    cars.add("Volvo");
+    cars.add("BMW");
+    cars.add("Ford");
+    cars.___("Mazda");
+    System.out.println(cars);
   }
 }`,
-    answer: '+',
+    answer: 'add',
   },
   {
     id: 3,
     level: 'medium',
     questionText: `public class Main {
+  static void myMethod(String fname) {
+    System.out.println(fname + " Refsnes");
+  }
+
   public static void main(String[] args) {
-    String[] cars = {"Volvo", "BMW", "Ford"};
-    for (String i : ___) {
-      System.out.println(i);
-    }
+    myMethod("Liam");
+    myMethod("Jenny");
+    myMethod(___);
   }
 }`,
-    answer: 'cars',
+    answer: '"Anja"',
   },
   {
     id: 4,
-    level: 'medium',
-    questionText: `public class Main {
-  ___ void myMethod() {
-    System.out.println("Method executed!");
+    level: 'hard',
+    questionText: `interface Animal {
+  public void animalSound();
+  public void sleep();
+}
+
+class Pig ___ Animal {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee");
   }
-  
-  public static void main(String[] args) {
-    Main myObj = new Main();
-    myObj.myMethod();
+  public void sleep() {
+    System.out.println("Zzz");
   }
 }`,
-    answer: 'static',
+    answer: 'implements',
   },
   {
     id: 5,
     level: 'hard',
-    questionText: `import java.util.ArrayList;
-import java.util.stream.Collectors;
+    questionText: `import java.util.HashMap;
 
 public class Main {
   public static void main(String[] args) {
-    ArrayList<Integer> numbers = new ArrayList<>();
-    numbers.add(1);
-    numbers.add(2);
-    numbers.add(3);
+    HashMap<String, String> capitalCities = new HashMap<String, String>();
+    capitalCities.put("England", "London");
+    capitalCities.put("Germany", "Berlin");
     
-    List<Integer> doubled = numbers.stream()
-      .map(n -> n * 2)
-      .___   (Collectors.toList());
-      
-    System.out.println(doubled);
+    System.out.println(capitalCities.___("England"));
   }
 }`,
-    answer: 'collect',
+    answer: 'get',
   },
 ];
