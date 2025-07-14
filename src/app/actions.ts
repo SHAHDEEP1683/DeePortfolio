@@ -13,8 +13,8 @@ const contactFormSchema = z.object({
 
 export async function getCodingTip(input: CodingTipInput) {
     try {
-        const { tip } = await generateCodingTip(input);
-        return tip;
+        const result = await generateCodingTip(input);
+        return result.tip;
     } catch (e) {
         console.error(e);
         // A more user-friendly error, or logging for production
