@@ -8,7 +8,7 @@
  * - CodingTipOutput - The return type for the generateCodingTip function.
  */
 
-import { ai } from '@/ai/genkit';
+import { ai } from '@/ai/config';
 import {z} from 'genkit';
 
 const CodingTipInputSchema = z.object({
