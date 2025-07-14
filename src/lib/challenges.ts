@@ -19,68 +19,68 @@ export const challenges: Challenge[] = [
   {
     id: 2,
     level: 'medium',
-    questionText: `import java.util.ArrayList;
-
-public class Main {
+    questionText: `// Check if a string is a palindrome
+public class Palindrome {
   public static void main(String[] args) {
-    ArrayList<String> cars = new ArrayList<String>();
-    cars.add("Volvo");
-    cars.add("BMW");
-    cars.add("Ford");
-    cars.___("Mazda");
-    System.out.println(cars);
+    String str = "madam", reversed = "";
+    for (int i = str.length() - 1; i >= 0; i--) {
+      reversed = reversed + str.charAt(i);
+    }
+    if (str.___ (reversed)) {
+      System.out.println("Palindrome");
+    }
   }
 }`,
-    answer: 'add',
+    answer: 'equals',
   },
   {
     id: 3,
     level: 'medium',
-    questionText: `public class Main {
-  static void myMethod(String fname) {
-    System.out.println(fname + " Refsnes");
-  }
-
+    questionText: `// Find the largest element in an array
+public class LargestElement {
   public static void main(String[] args) {
-    myMethod("Liam");
-    myMethod("Jenny");
-    myMethod(___);
+    int[] arr = {25, 11, 7, 75, 56};
+    int max = arr[0];
+    for (int i = 1; i < arr.length; i++) {
+      if (arr[i] > ___) {
+        max = arr[i];
+      }
+    }
+    System.out.println(max);
   }
 }`,
-    answer: '"Anja"',
+    answer: 'max',
   },
   {
     id: 4,
     level: 'hard',
-    questionText: `interface Animal {
-  public void animalSound();
-  public void sleep();
-}
-
-class Pig ___ Animal {
-  public void animalSound() {
-    System.out.println("The pig says: wee wee");
-  }
-  public void sleep() {
-    System.out.println("Zzz");
+    questionText: `// Swap two numbers without a third variable
+public class SwapNumbers {
+  public static void main(String[] args) {
+    int a = 10, b = 20;
+    a = a + b;
+    b = a - b;
+    a = a - ___;
+    System.out.println("a=" + a + ", b=" + b);
   }
 }`,
-    answer: 'implements',
+    answer: 'b',
   },
   {
     id: 5,
     level: 'hard',
-    questionText: `import java.util.HashMap;
-
-public class Main {
-  public static void main(String[] args) {
-    HashMap<String, String> capitalCities = new HashMap<String, String>();
-    capitalCities.put("England", "London");
-    capitalCities.put("Germany", "Berlin");
-    
-    System.out.println(capitalCities.___("England"));
+    questionText: `// Check if a number is prime
+class PrimeCheck {
+  static boolean isPrime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i < n; i++) {
+      if (n % i == 0) {
+        return ___;
+      }
+    }
+    return true;
   }
 }`,
-    answer: 'get',
+    answer: 'false',
   },
 ];
