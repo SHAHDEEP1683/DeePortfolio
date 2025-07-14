@@ -5,8 +5,8 @@ export const ai = genkit({
   plugins: [
     googleAI({
       apiKey: process.env.GOOGLE_API_KEY,
+      allowDevlocal: true,
     }),
   ],
-  allowDevlocal: true,
   enableTracingAndMetrics: true,
 });
