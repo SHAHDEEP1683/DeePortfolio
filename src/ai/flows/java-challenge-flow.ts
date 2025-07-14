@@ -7,8 +7,10 @@
  * - JavaChallengeOutput - The return type for the generateJavaChallenge function.
  */
 
-import { ai } from '@/ai/genkit';
+import { initializeGenkit } from '@/ai/init';
 import { z } from 'zod';
+
+const ai = initializeGenkit();
 
 const JavaChallengeOutputSchema = z.object({
   title: z.string().describe('The title of the Java challenge.'),

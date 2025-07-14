@@ -1,4 +1,3 @@
-// src/ai/flows/coding-tip-generator.ts
 'use server';
 
 /**
@@ -9,8 +8,10 @@
  * - CodingTipOutput - The return type for the generateCodingTip function.
  */
 
-import {ai} from '@/ai/genkit';
+import { initializeGenkit } from '@/ai/init';
 import {z} from 'genkit';
+
+const ai = initializeGenkit();
 
 const CodingTipInputSchema = z.object({
   request: z.string().optional().describe('The user request for a coding tip.'),
