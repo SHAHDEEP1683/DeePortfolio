@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from 'react';
 import Header from '@/components/header';
 import IntroSection from '@/components/intro-section';
 import SkillsSection from '@/components/skills-section';
@@ -8,8 +11,13 @@ import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import TerminalSection from '@/components/terminal-section';
 import JavaChallengeSection from '@/components/java-challenge-section';
+import GithubGraph from '@/components/github-graph';
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="bg-background text-foreground">
       <Header />
@@ -20,6 +28,7 @@ export default function Home() {
         <ExperienceSection />
         <EducationSection />
         <JavaChallengeSection />
+        <GithubGraph />
         <TerminalSection />
         <ContactSection />
       </main>
