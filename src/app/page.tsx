@@ -11,7 +11,6 @@ import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import TerminalSection from '@/components/terminal-section';
 import JavaChallengeSection from '@/components/java-challenge-section';
-import GithubGraph from '@/components/github-graph';
 
 export default function Home() {
   useEffect(() => {
@@ -31,7 +30,6 @@ export default function Home() {
         <ExperienceSection />
         <EducationSection />
         <JavaChallengeSection />
-        <GithubGraph />
         <TerminalSection />
         <ContactSection />
       </main>
