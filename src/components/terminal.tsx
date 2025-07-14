@@ -182,7 +182,6 @@ const Terminal = () => {
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
                     className="bg-transparent border-none focus:ring-0 focus:outline-none w-full font-code p-0"
-                    autoFocus
                 />
             </form>
 
