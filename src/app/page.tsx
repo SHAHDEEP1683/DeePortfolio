@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from 'react';
 import Header from '@/components/header';
 import IntroSection from '@/components/intro-section';
 import SkillsSection from '@/components/skills-section';
@@ -13,13 +12,6 @@ import TerminalSection from '@/components/terminal-section';
 import JavaChallengeSection from '@/components/java-challenge-section';
 
 export default function Home() {
-  useEffect(() => {
-    // A timeout is used to ensure this runs after other potential focus-stealing events.
-    setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    }, 0);
-  }, []);
-
   return (
     <div className="bg-background text-foreground">
       <Header />
