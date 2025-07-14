@@ -112,7 +112,6 @@ const Terminal = () => {
     } else {
         await executeCommand(commandToExecute);
     }
-    setTimeout(() => inputRef.current?.focus(), 0);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
