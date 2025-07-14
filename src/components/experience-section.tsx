@@ -1,6 +1,7 @@
 import { experience } from "@/lib/data";
-import { Briefcase } from "lucide-react";
+import { Briefcase, FileText } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "./ui/button";
 
 const ExperienceSection = () => {
   return (
@@ -13,7 +14,7 @@ const ExperienceSection = () => {
       </div>
       
       <div className="space-y-8">
-          {experience.map((job, index) => (
+          {experience.map((job: any, index: number) => (
             <Card key={index} className="bg-card/50 dark:bg-card">
                 <CardHeader>
                     <div className="flex justify-between items-start">
@@ -26,10 +27,20 @@ const ExperienceSection = () => {
                 </CardHeader>
                 <CardContent>
                     <ul className="list-disc list-inside space-y-2 text-sm">
-                        {job.description.map((desc, i) => (
+                        {job.description.map((desc: string, i: number) => (
                             <li key={i}>{desc}</li>
                         ))}
                     </ul>
+                    {job.completionLetterUrl && (
+                        <div className="mt-4">
+                            <Button asChild variant="secondary" size="sm">
+                                <a href={job.completionLetterUrl} target="_blank" rel="noopener noreferrer">
+                                    <FileText className="mr-2 h-4 w-4" />
+                                    View Completion Letter
+                                </a>
+                            </Button>
+                        </div>
+                    )}
                 </CardContent>
             </Card>
           ))}
