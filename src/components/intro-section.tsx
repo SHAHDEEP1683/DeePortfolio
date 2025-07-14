@@ -1,13 +1,26 @@
+"use client";
+
 import { personalData } from "@/lib/data";
 import Typewriter from "./typewriter";
 import { Button } from "./ui/button";
 import { Github, Download } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const IntroSection = () => {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, []);
+
   return (
     <section id="intro" className="py-24 sm:py-32 md:py-40 text-center">
       <div className="container max-w-4xl">
-        <h1 className="font-headline text-5xl md:text-7xl font-bold mb-4">
+        <h1 
+          ref={headingRef}
+          tabIndex={-1}
+          className="font-headline text-5xl md:text-7xl font-bold mb-4 outline-none"
+        >
           {personalData.name}
         </h1>
         <div className="text-xl md:text-2xl text-muted-foreground mb-8 h-8">
