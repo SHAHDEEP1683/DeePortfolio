@@ -31,12 +31,14 @@ const Terminal = () => {
   ]);
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const endOfOutputRef = useRef<HTMLDivElement>(null);
+  const terminalBodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const isInitialMount = useRef(true);
 
   const scrollToBottom = () => {
-    endOfOutputRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
   };
 
   const executeCommand = async (command: string) => {
@@ -166,7 +168,7 @@ const Terminal = () => {
                 {'>_'} deep-shah-portfolio
             </div>
         </div>
-        <div className="p-4 font-code h-96 overflow-y-auto" >
+        <div ref={terminalBodyRef} className="p-4 font-code h-96 overflow-y-auto" >
             {output.map((line, index) => (
             <div key={index} className="mb-2">
                 {line.command && <p className="flex items-center"><span className="text-accent mr-2">user@deepverse:~$</span> {line.command}</p>}
@@ -185,8 +187,6 @@ const Terminal = () => {
                     className="bg-transparent border-none focus:ring-0 focus:outline-none w-full font-code p-0"
                 />
             </form>
-
-            <div ref={endOfOutputRef} />
         </div>
     </div>
   );
