@@ -33,6 +33,7 @@ const Terminal = () => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const endOfOutputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isInitialMount = useRef(true);
 
   const scrollToBottom = () => {
     endOfOutputRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -142,7 +143,11 @@ const Terminal = () => {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      scrollToBottom();
+    }
   }, [output]);
   
 
