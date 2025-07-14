@@ -1,3 +1,5 @@
-import { initializeGenkit } from '@/ai/init';
+'use server';
 
-export const ai = initializeGenkit();
+import {ai} from '@/ai/config';
+
+export {ai};

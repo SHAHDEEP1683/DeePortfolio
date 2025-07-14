@@ -11,8 +11,15 @@ const contactFormSchema = z.object({
 });
 
 export async function getCodingTip(input: CodingTipInput) {
-    const { tip } = await generateCodingTip(input);
-    return tip;
+    try {
+        const { tip } = await generateCodingTip(input);
+        return tip;
+    } catch (e) {
+        console.error(e);
+        // A more user-friendly error, or logging for production
+        // For now, re-throwing the error is fine for debugging
+        throw new Error("Failed to generate coding tip.");
+    }
 }
 
 export async function sendContactEmail(formData: z.infer<typeof contactFormSchema>) {

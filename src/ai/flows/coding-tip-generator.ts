@@ -8,10 +8,8 @@
  * - CodingTipOutput - The return type for the generateCodingTip function.
  */
 
-import { initializeGenkit } from '@/ai/init';
+import { ai } from '@/ai/genkit';
 import {z} from 'genkit';
-
-const ai = initializeGenkit();
 
 const CodingTipInputSchema = z.object({
   request: z.string().optional().describe('The user request for a coding tip.'),
@@ -45,7 +43,7 @@ const codingTipGeneratorFlow = ai.defineFlow(
     inputSchema: CodingTipInputSchema,
     outputSchema: CodingTipOutputSchema,
   },
-  async input => {
+  async (input) => {
     const {output} = await prompt(input);
     return output!;
   }
