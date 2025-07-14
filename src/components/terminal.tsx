@@ -25,7 +25,10 @@ const asciiArt = `
 
 const Terminal = () => {
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState<{ command: string, result: React.ReactNode }[]>([]);
+  const [output, setOutput] = useState<{ command: string, result: React.ReactNode }[]>(() => [
+    { command: '', result: <pre className="text-accent whitespace-pre-wrap">{asciiArt}</pre> },
+    { command: '', result: <p>Welcome to Deep Terminal! Type <span className="text-accent">'help'</span> to see available commands.</p>}
+  ]);
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const endOfOutputRef = useRef<HTMLDivElement>(null);
@@ -143,12 +146,6 @@ const Terminal = () => {
     scrollToBottom();
   }, [output]);
   
-  useEffect(() => {
-    setOutput([
-        { command: '', result: <pre className="text-accent whitespace-pre-wrap">{asciiArt}</pre> },
-        { command: '', result: <p>Welcome to Deep Terminal! Type <span className="text-accent">'help'</span> to see available commands.</p>}
-    ])
-  }, [])
 
   return (
     <div 
