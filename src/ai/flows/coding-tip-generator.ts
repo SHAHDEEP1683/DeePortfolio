@@ -4,22 +4,10 @@
  * @fileOverview A coding tip generator AI agent.
  * 
  * - generateCodingTip - A function that generates a coding tip.
- * - CodingTipInput - The input type for the generateCodingTip function.
- * - CodingTipOutput - The return type for the generateCodingTip function.
  */
 
 import { ai } from '@/ai/config';
-import {z} from 'genkit';
-
-const CodingTipInputSchema = z.object({
-  request: z.string().optional().describe('The user request for a coding tip.'),
-});
-export type CodingTipInput = z.infer<typeof CodingTipInputSchema>;
-
-const CodingTipOutputSchema = z.object({
-  tip: z.string().describe('A coding tip or quote.'),
-});
-export type CodingTipOutput = z.infer<typeof CodingTipOutputSchema>;
+import { CodingTipInput, CodingTipInputSchema, CodingTipOutput, CodingTipOutputSchema } from '@/ai/types';
 
 export async function generateCodingTip(input: CodingTipInput): Promise<CodingTipOutput> {
   return codingTipGeneratorFlow(input);

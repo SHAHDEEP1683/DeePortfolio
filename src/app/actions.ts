@@ -1,6 +1,7 @@
 "use server";
 
-import { generateCodingTip, type CodingTipInput } from "@/ai/flows/coding-tip-generator";
+import { generateCodingTip } from "@/ai/flows/coding-tip-generator";
+import type { CodingTipInput } from "@/ai/types";
 import nodemailer from "nodemailer";
 import * as z from "zod";
 
