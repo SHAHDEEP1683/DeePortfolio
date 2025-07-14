@@ -15,7 +15,10 @@ import GithubGraph from '@/components/github-graph';
 
 export default function Home() {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // A timeout is used to ensure this runs after other potential focus-stealing events.
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, 0);
   }, []);
 
   return (
