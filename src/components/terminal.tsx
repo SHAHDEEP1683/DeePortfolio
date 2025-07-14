@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { personalData, skills, projects } from '@/lib/data';
-import { getCodingTip } from '@/app/actions';
 import { Mail, Github, Smartphone } from 'lucide-react';
 
 const commands: { [key: string]: string } = {
@@ -10,7 +9,6 @@ const commands: { [key: string]: string } = {
   'about': 'Show personal bio and skills',
   'projects': 'Show project list',
   'contact': 'Show contact information',
-  'tip': 'Show a random coding tip or quote',
   'clear': 'Clear the terminal screen',
 };
 
@@ -90,13 +88,6 @@ const Terminal = () => {
                 <span className="flex items-center gap-2"><Smartphone size={16} /> {personalData.phone}</span>
             </div>
         )
-    } else if (cmd === 'tip') {
-        try {
-            const tip = await getCodingTip({ request: "a cool coding tip" });
-            result = <p className="text-accent">"{tip}"</p>;
-        } catch (error) {
-            result = <p className="text-red-500">Error fetching tip. Please try again later.</p>
-        }
     }
 
     setOutput(prev => [...prev, { command, result }]);

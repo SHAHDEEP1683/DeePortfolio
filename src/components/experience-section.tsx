@@ -31,16 +31,6 @@ const ExperienceSection = () => {
                             <li key={i}>{desc}</li>
                         ))}
                     </ul>
-                    {job.completionLetterUrl && (
-                        <div className="mt-4">
-                            <Button asChild variant="secondary" size="sm">
-                                <a href={job.completionLetterUrl} target="_blank" rel="noopener noreferrer">
-                                    <FileText className="mr-2 h-4 w-4" />
-                                    View Completion Letter
-                                </a>
-                            </Button>
-                        </div>
-                    )}
                 </CardContent>
             </Card>
           ))}

@@ -1,7 +1,5 @@
 "use server";
 
-import { generateCodingTip } from "@/ai/flows/coding-tip-generator";
-import type { CodingTipInput } from "@/ai/types";
 import nodemailer from "nodemailer";
 import * as z from "zod";
 
@@ -10,18 +8,6 @@ const contactFormSchema = z.object({
   email: z.string().email(),
   message: z.string(),
 });
-
-export async function getCodingTip(input: CodingTipInput) {
-    try {
-        const result = await generateCodingTip(input);
-        return result.tip;
-    } catch (e) {
-        console.error(e);
-        // A more user-friendly error, or logging for production
-        // For now, re-throwing the error is fine for debugging
-        throw new Error("Failed to generate coding tip.");
-    }
-}
 
 export async function sendContactEmail(formData: z.infer<typeof contactFormSchema>) {
     const { GMAIL_EMAIL, GMAIL_APP_PASSWORD } = process.env;

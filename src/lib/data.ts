@@ -51,7 +51,6 @@ export const experience = [
             "Wrote unit and integration tests to ensure code quality and reliability.",
             "Assisted in troubleshooting and debugging production issues, improving application stability."
         ],
-        completionLetterUrl: "/internship_letter.pdf",
     },
     {
         company: "BCM Corporation",
