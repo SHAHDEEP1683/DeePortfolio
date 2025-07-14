@@ -1,8 +1,6 @@
 "use server";
 
 import { generateCodingTip, type CodingTipInput } from "@/ai/flows/coding-tip-generator";
-import { generateJavaChallenge } from "@/ai/flows/java-challenge-flow";
-import { personalData } from "@/lib/data";
 import nodemailer from "nodemailer";
 import * as z from "zod";
 
@@ -15,10 +13,6 @@ const contactFormSchema = z.object({
 export async function getCodingTip(input: CodingTipInput) {
     const { tip } = await generateCodingTip(input);
     return tip;
-}
-
-export async function getJavaChallenge() {
-    return await generateJavaChallenge();
 }
 
 export async function sendContactEmail(formData: z.infer<typeof contactFormSchema>) {
