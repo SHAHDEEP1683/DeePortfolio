@@ -5,6 +5,8 @@ import { javaChallenges } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 import { Lightbulb, RefreshCw, Code2, CheckCircle, XCircle } from 'lucide-react';
 
 const JavaChallengeSection = () => {
@@ -16,7 +18,6 @@ const JavaChallengeSection = () => {
   const currentChallenge = javaChallenges[currentChallengeIndex];
 
   useEffect(() => {
-    // Reset state when challenge changes
     setUserAnswer('');
     setFeedback(null);
     setShowHint(false);
@@ -27,12 +28,53 @@ const JavaChallengeSection = () => {
   };
 
   const handleCheckAnswer = () => {
-    if (userAnswer.trim().toLowerCase() === currentChallenge.answer.toLowerCase()) {
+    if (userAnswer.trim().toLowerCase() === String(currentChallenge.answer).toLowerCase()) {
       setFeedback('correct');
     } else {
       setFeedback('incorrect');
     }
-    setShowHint(true);
+  };
+
+  const renderChallengeInput = () => {
+    switch (currentChallenge.type) {
+      case 'mcq':
+        return (
+          <RadioGroup
+            value={userAnswer}
+            onValueChange={(value) => {
+              setUserAnswer(value);
+              setFeedback(null);
+              setShowHint(false);
+            }}
+            disabled={feedback !== null}
+            className="space-y-2 mt-4"
+          >
+            {currentChallenge.options?.map((option, index) => (
+              <div key={index} className="flex items-center space-x-2">
+                <RadioGroupItem value={option} id={`option-${index}`} />
+                <Label htmlFor={`option-${index}`} className="font-normal font-code">{option}</Label>
+              </div>
+            ))}
+          </RadioGroup>
+        );
+      case 'fill-in-the-blank':
+      case 'problem':
+        return (
+          <Input
+            placeholder="Your answer..."
+            className="font-code"
+            value={userAnswer}
+            onChange={(e) => {
+              setUserAnswer(e.target.value);
+              setFeedback(null);
+              setShowHint(false);
+            }}
+            disabled={feedback !== null}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -42,7 +84,7 @@ const JavaChallengeSection = () => {
           <Code2 className="h-10 w-10" />
           Java Fun Challenge
         </h2>
-        <p className="text-muted-foreground mt-2">Test your Java knowledge by filling in the blanks!</p>
+        <p className="text-muted-foreground mt-2">Test your Java knowledge!</p>
       </div>
 
       <div className="max-w-3xl mx-auto">
@@ -54,22 +96,15 @@ const JavaChallengeSection = () => {
             <p className="font-code text-base whitespace-pre-wrap mb-6">{currentChallenge.question}</p>
             
             <div className="flex gap-2 items-center">
-                <Input
-                  placeholder="Your answer..."
-                  className="font-code"
-                  value={userAnswer}
-                  onChange={(e) => {
-                    setUserAnswer(e.target.value);
-                    setFeedback(null);
-                    setShowHint(false);
-                  }}
-                  disabled={feedback !== null}
-                />
+              {renderChallengeInput()}
+            </div>
+            
+            <div className="mt-6">
                 <Button onClick={handleCheckAnswer} disabled={!userAnswer || feedback !== null}>
                     Check Answer
                 </Button>
             </div>
-            
+
             {feedback === 'correct' && (
                 <div className="mt-4 flex items-center text-green-500">
                     <CheckCircle className="mr-2 h-5 w-5" />

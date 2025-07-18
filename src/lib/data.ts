@@ -72,28 +72,80 @@ export const education = [
 ];
 
 export const javaChallenges = [
+  // --- MCQ ---
   {
+    type: "mcq",
+    question: "Which of the following is NOT a primitive data type in Java?",
+    options: ["int", "String", "boolean", "char"],
+    answer: "String"
+  },
+  {
+    type: "mcq",
+    question: "What is the purpose of the `super` keyword in Java?",
+    options: ["To call the constructor of the superclass", "To access members of the superclass", "To refer to the current object instance", "Both A and B"],
+    answer: "Both A and B"
+  },
+  {
+    type: "mcq",
+    question: "Which collection class allows unique elements and is unordered?",
+    options: ["ArrayList", "HashMap", "HashSet", "LinkedList"],
+    answer: "HashSet"
+  },
+  // --- Fill-in-the-blank ---
+  {
+    type: "fill-in-the-blank",
     question: "The `____` keyword is used in Java to prevent a class from being inherited or a method from being overridden.",
     answer: "final"
   },
   {
+    type: "fill-in-the-blank",
     question: "In Java, the `____` operator compares object references, not the actual string content.",
     answer: "=="
   },
   {
-    question: "To handle potential errors in a block of code, you use a `try-____` block.",
-    answer: "catch"
-  },
-  {
-    question: "The main entry point of any standalone Java application is the `public static void ____(String[] args)` method.",
-    answer: "main"
-  },
-  {
+    type: "fill-in-the-blank",
     question: "The `@____` annotation is used in Spring Boot for automatic dependency injection.",
     answer: "Autowired"
   },
+  // --- Problem Solving (Fill-in-the-blank style) ---
   {
-    question: "A class that cannot be instantiated and is often used as a base for other classes is called an `____` class.",
-    answer: "abstract"
+    type: "problem",
+    question: `
+public boolean isPalindrome(String str) {
+  String reversed = new StringBuilder(str).____.toString();
+  return str.equals(reversed);
+}`,
+    answer: "reverse()"
+  },
+  {
+    type: "problem",
+    question: `
+// Find the largest element in an array
+public int findLargest(int[] arr) {
+  int max = arr[0];
+  for (int i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      ____ = arr[i];
+    }
+  }
+  return max;
+}`,
+    answer: "max"
+  },
+  {
+    type: "problem",
+    question: `
+// Count vowels in a string
+public int countVowels(String str) {
+  int count = 0;
+  String vowels = "aeiou";
+  for (char c : str.toLowerCase().toCharArray()) {
+    if (vowels.____(c) != -1) {
+      count++;
+    }
+  }
+  return count;
+}`,
+    answer: "indexOf"
   }
 ];
