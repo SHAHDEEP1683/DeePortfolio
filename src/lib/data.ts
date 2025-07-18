@@ -70,3 +70,30 @@ export const education = [
     duration: "2021 – 2025",
   }
 ];
+
+export const javaChallenges = [
+  {
+    question: "What is the difference between `==` and `.equals()` when comparing Strings in Java?",
+    answer: "The `==` operator checks if two references point to the same object in memory. The `.equals()` method, when used with Strings, checks if the two strings have the same sequence of characters (i.e., the same value)."
+  },
+  {
+    question: "Can you explain the 'final' keyword in Java and its uses?",
+    answer: "The `final` keyword can be used with variables, methods, and classes.\n- A final variable's value cannot be changed.\n- A final method cannot be overridden by subclasses.\n- A final class cannot be extended (inherited from)."
+  },
+  {
+    question: "What is method overloading and method overriding in Java?",
+    answer: "Overloading: Occurs when two or more methods in the same class have the same name but different parameters (number or type).\nOverriding: Occurs when a subclass has a method with the same name, parameters, and return type as a method in its superclass. It provides a specific implementation for the method."
+  },
+  {
+    question: "What will be the output of the following code?\n\nString s1 = \"hello\";\nString s2 = new String(\"hello\");\nSystem.out.println(s1 == s2);",
+    answer: "The output will be `false`. `s1` refers to a string in the string pool. `s2` is a new object created in the heap memory. Since they are different objects in memory, `==` returns false."
+  },
+  {
+    question: "What is a `static` method in Java?",
+    answer: "A static method belongs to the class itself rather than an instance of the class. It can be called without creating an object of the class (e.g., `ClassName.staticMethod()`). It cannot access instance variables or instance methods directly."
+  },
+  {
+    question: "What is the purpose of the `@Autowired` annotation in Spring Boot?",
+    answer: "The `@Autowired` annotation is used for automatic dependency injection. It allows Spring to resolve and inject collaborating beans into your bean. It can be used on constructors, fields, and setter methods."
+  }
+];

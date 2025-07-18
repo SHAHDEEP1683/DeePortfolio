@@ -9,6 +9,7 @@ import EducationSection from '@/components/education-section';
 import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import TerminalSection from '@/components/terminal-section';
+import JavaChallengeSection from '@/components/java-challenge-section';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <ProjectsSection />
         <ExperienceSection />
         <EducationSection />
+        <JavaChallengeSection />
         <TerminalSection />
         <ContactSection />
       </main>
