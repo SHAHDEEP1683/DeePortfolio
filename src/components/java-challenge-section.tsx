@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { java-challenges } from '@/lib/data';
+import { javaChallenges } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Lightbulb, RefreshCw, Code2 } from 'lucide-react';
@@ -47,11 +47,11 @@ const JavaChallengeSection = () => {
           <CardFooter className="flex justify-end gap-4">
             {!showAnswer && (
               <Button variant="outline" onClick={() => setShowAnswer(true)}>
-                <Lightbulb className="mr-2" /> Show Answer
+                <Lightbulb className="mr-2 h-4 w-4" /> Show Answer
               </Button>
             )}
             <Button onClick={handleNextChallenge}>
-              <RefreshCw className="mr-2" /> Next Challenge
+              <RefreshCw className="mr-2 h-4 w-4" /> Next Challenge
             </Button>
           </CardFooter>
         </Card>
