@@ -9,6 +9,7 @@ const commands: { [key: string]: string } = {
   'about': 'Show personal bio and skills',
   'projects': 'Show project list',
   'contact': 'Show contact information',
+  'nativeplace': 'Show my native place.',
   'clear': 'Clear the terminal screen',
 };
 
@@ -88,6 +89,8 @@ const Terminal = () => {
                 <span className="flex items-center gap-2"><Smartphone size={16} /> {personalData.phone}</span>
             </div>
         )
+    } else if (cmd === 'nativeplace') {
+        result = <p>Amreli, Gujarat.</p>;
     }
 
     setOutput(prev => [...prev, { command, result }]);
