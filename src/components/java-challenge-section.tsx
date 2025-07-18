@@ -7,7 +7,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Lightbulb, CheckCircle, XCircle, Code, ArrowRight, Loader2, Wand2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from './ui/card';
-import { generateJavaChallenge } from '@/ai/flows/java-challenge-generator';
+import { generateJavaChallenge } from '@/app/actions';
 import type { JavaChallengeOutput } from '@/ai/types';
 
 const JavaChallengeSection = () => {

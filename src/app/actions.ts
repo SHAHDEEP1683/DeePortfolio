@@ -2,6 +2,9 @@
 
 import nodemailer from "nodemailer";
 import * as z from "zod";
+import { generateJavaChallengeFlow } from "@/ai/flows/java-challenge-generator";
+import type { JavaChallengeInput, JavaChallengeOutput } from "@/ai/types";
+
 
 const contactFormSchema = z.object({
   name: z.string(),
@@ -45,4 +48,9 @@ export async function sendContactEmail(formData: z.infer<typeof contactFormSchem
         console.error("Failed to send email:", error);
         return { success: false, error: "Failed to send email. Check server logs and Gmail configuration." };
     }
+}
+
+
+export async function generateJavaChallenge(input: JavaChallengeInput): Promise<JavaChallengeOutput> {
+  return generateJavaChallengeFlow(input);
 }

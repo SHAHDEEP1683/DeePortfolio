@@ -1,19 +1,12 @@
-'use server';
-
 /**
  * @fileOverview A Java challenge generator AI agent.
  *
- * - generateJavaChallenge - A function that generates a Java code challenge.
- * - JavaChallengeInput - The input type for the generateJavaChallenge function.
- * - JavaChallengeOutput - The return type for the generateJavaChallenge function.
+ * - generateJavaChallengeFlow - A function that generates a Java code challenge.
  */
 
 import { ai } from '@/ai/genkit';
-import { JavaChallengeInput, JavaChallengeInputSchema, JavaChallengeOutput, JavaChallengeOutputSchema } from '@/ai/types';
+import { JavaChallengeInputSchema, JavaChallengeOutputSchema } from '@/ai/types';
 
-export async function generateJavaChallenge(input: JavaChallengeInput): Promise<JavaChallengeOutput> {
-  return javaChallengeGeneratorFlow(input);
-}
 
 const prompt = ai.definePrompt({
   name: 'javaChallengePrompt',
@@ -39,9 +32,9 @@ const prompt = ai.definePrompt({
   `,
 });
 
-const javaChallengeGeneratorFlow = ai.defineFlow(
+export const generateJavaChallengeFlow = ai.defineFlow(
   {
-    name: 'javaChallengeGeneratorFlow',
+    name: 'generateJavaChallengeFlow',
     inputSchema: JavaChallengeInputSchema,
     outputSchema: JavaChallengeOutputSchema,
   },
