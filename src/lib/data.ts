@@ -64,11 +64,17 @@ export const experience = [
 
 export const education = [
   {
-    degree: "Bachelor of Engineering in Information Technology",
-    university: "LDRP Institute of Technology and Research",
-    location: "Gandhinagar, India",
-    duration: "2021 – 2025",
-  }
+    degree: "Master of Computer Application",
+    university: "SARDAR VALLABHBHAI GLOBAL UNIVERSITY",
+    location: "CGPA: 7.3",
+    duration: "2023 – 2025",
+  },
+  {
+    degree: "Bachelor of Computer Application",
+    university: "SAURASHTRA UNIVERSITY",
+    location: "CGPA: 7",
+    duration: "2020 – 2023",
+  },
 ];
 
 export const javaChallenges = [
