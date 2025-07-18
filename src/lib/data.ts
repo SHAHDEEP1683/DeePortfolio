@@ -28,7 +28,7 @@ export const projects = [
   {
     title: "Election Management System (New York State Based Election Process)",
     description: "A comprehensive system designed to manage the New York State election process, featuring secure logging and robust API endpoints.",
-    tech: ["Spring Boot", "Rest APIs", "Spring Security", "MDC Logging"],
+    tech: ["Spring Boot", "Rest APIs", "Spring Security", "MDC Logging", "MySQL"],
     link: "https://github.com/SHAHDEEP1683/Election-Management-System"
   },
   {
