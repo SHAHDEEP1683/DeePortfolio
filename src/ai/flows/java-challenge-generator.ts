@@ -3,7 +3,6 @@
  *
  * - generateJavaChallengeFlow - A function that generates a Java code challenge.
  */
-
 import { ai } from '@/ai/genkit';
 import { JavaChallengeInputSchema, JavaChallengeOutputSchema } from '@/ai/types';
 
