@@ -1,13 +1,15 @@
+'use server';
+
 /**
  * @fileOverview A Java challenge generator AI agent.
  *
  * - generateJavaChallengeFlow - A function that generates a Java code challenge.
  */
 import { ai } from '@/ai/genkit';
-import { JavaChallengeInputSchema, JavaChallengeOutputSchema } from '@/ai/types';
+import { JavaChallengeInput, JavaChallengeInputSchema, JavaChallengeOutput, JavaChallengeOutputSchema } from '@/ai/types';
 
 
-const prompt = ai.definePrompt({
+const javaChallengePrompt = ai.definePrompt({
   name: 'javaChallengePrompt',
   input: { schema: JavaChallengeInputSchema },
   output: { schema: JavaChallengeOutputSchema },
@@ -38,7 +40,7 @@ export const generateJavaChallengeFlow = ai.defineFlow(
     outputSchema: JavaChallengeOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt(input);
+    const { output } = await javaChallengePrompt(input);
     // The AI might return an answer with quotes, so we strip them.
     const cleanedAnswer = output!.answer.replace(/["'`]/g, '');
     return { ...output!, answer: cleanedAnswer };
