@@ -1,5 +1,4 @@
 
-
 export const personalData = {
   name: "DEEP SHAH",
   role: "Java Backend Developer",
@@ -27,9 +26,9 @@ export const skills = {
 
 export const projects = [
   {
-    title: "Election Management System",
-    description: "A comprehensive system for managing elections. Features include CRUD operations for voters and officers, secure logging with MDC, and detailed reporting using JasperReports.",
-    tech: ["Java", "Spring Boot", "React", "MySQL", "MongoDB"],
+    title: "Election Management System (New York State Based Election Process)",
+    description: "A comprehensive system designed to manage the New York State election process, featuring secure logging and robust API endpoints.",
+    tech: ["Spring Boot", "Rest APIs", "Spring Security", "MDC Logging"],
     link: "https://github.com/SHAHDEEP1683/Election-Management-System"
   },
   {
