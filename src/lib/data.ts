@@ -58,7 +58,7 @@ export const experience = [
         duration: "Dec 2024 - May 2025",
         description: [
             "Developed and maintained RESTful APIs for various microservices using Spring Boot.",
-            "Collaborated with cross-functional teams in an Agile/Scrum environment, participating in daily stand-ups and sprint planning.",
+            "Collaborated with cross-functional teams in an Agile/Scrum environment.",
             "Wrote unit and integration tests to ensure code quality and reliability.",
             "Assisted in troubleshooting and debugging production issues, improving application stability."
         ],
