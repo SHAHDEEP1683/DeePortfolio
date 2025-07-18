@@ -38,20 +38,22 @@ const JavaChallengeSection = () => {
   const renderQuestionWithInlineInput = () => {
     const parts = currentChallenge.question.split('____');
     return (
-      <div className="font-code text-base whitespace-pre-wrap mb-6 flex flex-wrap items-center">
-        <span>{parts[0]}</span>
-        <Input
-          placeholder="Your answer"
-          className="font-code w-auto inline-flex mx-2 px-1 h-7 text-sm"
-          value={userAnswer}
-          onChange={(e) => {
-            setUserAnswer(e.target.value);
-            setFeedback(null);
-            setShowHint(false);
-          }}
-          disabled={feedback !== null}
-        />
-        <span>{parts[1]}</span>
+      <div className="relative font-code text-base bg-[#282c34] p-4 rounded-md text-white overflow-x-auto">
+        <pre className="whitespace-pre-wrap">
+          <span>{parts[0]}</span>
+          <Input
+            placeholder="Your answer"
+            className="font-code w-auto inline-block mx-2 px-1 h-7 text-sm bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:ring-accent"
+            value={userAnswer}
+            onChange={(e) => {
+              setUserAnswer(e.target.value);
+              setFeedback(null);
+              setShowHint(false);
+            }}
+            disabled={feedback !== null}
+          />
+          <span>{parts[1]}</span>
+        </pre>
       </div>
     );
   };
@@ -61,7 +63,7 @@ const JavaChallengeSection = () => {
       case 'mcq':
         return (
           <>
-            <p className="font-code text-base whitespace-pre-wrap mb-6">{currentChallenge.question}</p>
+            <p className="text-base whitespace-pre-wrap mb-6">{currentChallenge.question}</p>
             <RadioGroup
               value={userAnswer}
               onValueChange={(value) => {
@@ -75,7 +77,7 @@ const JavaChallengeSection = () => {
               {currentChallenge.options?.map((option, index) => (
                 <div key={index} className="flex items-center space-x-2">
                   <RadioGroupItem value={option} id={`option-${index}`} />
-                  <Label htmlFor={`option-${index}`} className="font-normal font-code">{option}</Label>
+                  <Label htmlFor={`option-${index}`} className="font-normal">{option}</Label>
                 </div>
               ))}
             </RadioGroup>
@@ -85,7 +87,7 @@ const JavaChallengeSection = () => {
       case 'problem':
         return renderQuestionWithInlineInput();
       default:
-        return <p className="font-code text-base whitespace-pre-wrap mb-6">{currentChallenge.question}</p>;
+        return <p className="text-base whitespace-pre-wrap mb-6">{currentChallenge.question}</p>;
     }
   };
 
