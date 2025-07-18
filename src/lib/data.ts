@@ -40,7 +40,7 @@ export const projects = [
   {
     title: "Secure API with Spring Security",
     description: "An implementation of a secure REST API using Spring Security, featuring JWT-based authentication and role-based access control.",
-    tech: ["Spring Boot", "Spring Security", "REST API", "JWT", "MySQL"],
+    tech: ["Spring Boot", "Spring Security", "REST API", "JWT", "MySQL", "OAuth2"],
     link: "https://github.com/SHAHDEEP1683"
   },
   {
