@@ -4,10 +4,10 @@ import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Lightbulb, CheckCircle, XCircle, Code, ArrowRight, Loader2, Wand2 } from 'lucide-react';
+import { Lightbulb, CheckCircle, XCircle, ArrowRight, Loader2, Wand2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from './ui/card';
-import { generateJavaChallenge } from '@/app/actions';
+import { generateChallengeAction } from '@/app/java-challenge/actions';
 import type { JavaChallengeOutput } from '@/ai/types';
 
 const JavaChallengeSection = () => {
@@ -24,8 +24,7 @@ const JavaChallengeSection = () => {
     setShowAnswer(false);
     setUserAnswer('');
     try {
-      // For now, we'll just generate medium challenges. This could be extended with a dropdown.
-      const challenge = await generateJavaChallenge({ level: 'medium' });
+      const challenge = await generateChallengeAction({ level: 'medium' });
       setCurrentChallenge(challenge);
     } catch (error) {
       console.error("Failed to generate challenge:", error);

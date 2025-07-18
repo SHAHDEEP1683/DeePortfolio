@@ -1,5 +1,3 @@
-'use server';
-
 /**
  * @fileOverview A Java challenge generator AI agent.
  *
@@ -7,7 +5,6 @@
  */
 import { ai } from '@/ai/genkit';
 import { JavaChallengeInput, JavaChallengeInputSchema, JavaChallengeOutput, JavaChallengeOutputSchema } from '@/ai/types';
-
 
 const javaChallengePrompt = ai.definePrompt({
   name: 'javaChallengePrompt',
