@@ -32,10 +32,10 @@ export const projects = [
     link: "https://github.com/SHAHDEEP1683/Election-Management-System"
   },
   {
-    title: "Tours & Travel Management System",
-    description: "A backend system for a travel agency to manage tour packages, customer bookings, itineraries, and user accounts.",
-    tech: ["Spring Boot", "MySQL"],
-    link: "https://github.com/SHAHDEEP1683/Tours-and-Travels-Management-System"
+    title: "Movie Catalog Microservice Project",
+    description: "A microservice-based video streaming application featuring an API Gateway for routing, Eureka for service discovery, a centralized Config Server, and Zipkin for distributed tracing.",
+    tech: ["Spring Boot", "Microservices", "Spring Cloud Gateway", "Eureka", "Config Server", "Zipkin"],
+    link: "https://github.com/SHAHDEEP1683"
   }
 ];
 
