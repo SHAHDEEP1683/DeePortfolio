@@ -36,6 +36,18 @@ export const projects = [
     description: "A microservice-based video streaming application featuring an API Gateway for routing, Eureka for service discovery, a centralized Config Server, and Zipkin for distributed tracing.",
     tech: ["Spring Boot", "Microservices", "Spring Cloud Gateway", "Eureka", "Config Server", "Zipkin"],
     link: "https://github.com/SHAHDEEP1683"
+  },
+  {
+    title: "Secure API with Spring Security",
+    description: "An implementation of a secure REST API using Spring Security, featuring JWT-based authentication and role-based access control.",
+    tech: ["Spring Boot", "Spring Security", "REST API", "JWT", "MySQL"],
+    link: "https://github.com/SHAHDEEP1683"
+  },
+  {
+    title: "Centralized Logging with MDC",
+    description: "Demonstrates traceable logging in a microservices environment using Mapped Diagnostic Context (MDC) to add unique request IDs to every log entry.",
+    tech: ["Spring Boot", "MDC Logging", "Logback", "Microservices"],
+    link: "https://github.com/SHAHDEEP1683"
   }
 ];
 
