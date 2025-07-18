@@ -35,47 +35,60 @@ const JavaChallengeSection = () => {
     }
   };
 
-  const renderChallengeInput = () => {
+  const renderQuestionWithInlineInput = () => {
+    const parts = currentChallenge.question.split('____');
+    return (
+      <div className="font-code text-base whitespace-pre-wrap mb-6 flex flex-wrap items-center">
+        <span>{parts[0]}</span>
+        <Input
+          placeholder="Your answer"
+          className="font-code w-auto inline-flex mx-2 px-1 h-7 text-sm"
+          value={userAnswer}
+          onChange={(e) => {
+            setUserAnswer(e.target.value);
+            setFeedback(null);
+            setShowHint(false);
+          }}
+          disabled={feedback !== null}
+        />
+        <span>{parts[1]}</span>
+      </div>
+    );
+  };
+
+  const renderChallengeContent = () => {
     switch (currentChallenge.type) {
       case 'mcq':
         return (
-          <RadioGroup
-            value={userAnswer}
-            onValueChange={(value) => {
-              setUserAnswer(value);
-              setFeedback(null);
-              setShowHint(false);
-            }}
-            disabled={feedback !== null}
-            className="space-y-2 mt-4"
-          >
-            {currentChallenge.options?.map((option, index) => (
-              <div key={index} className="flex items-center space-x-2">
-                <RadioGroupItem value={option} id={`option-${index}`} />
-                <Label htmlFor={`option-${index}`} className="font-normal font-code">{option}</Label>
-              </div>
-            ))}
-          </RadioGroup>
+          <>
+            <p className="font-code text-base whitespace-pre-wrap mb-6">{currentChallenge.question}</p>
+            <RadioGroup
+              value={userAnswer}
+              onValueChange={(value) => {
+                setUserAnswer(value);
+                setFeedback(null);
+                setShowHint(false);
+              }}
+              disabled={feedback !== null}
+              className="space-y-2 mt-4"
+            >
+              {currentChallenge.options?.map((option, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <RadioGroupItem value={option} id={`option-${index}`} />
+                  <Label htmlFor={`option-${index}`} className="font-normal font-code">{option}</Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </>
         );
       case 'fill-in-the-blank':
       case 'problem':
-        return (
-          <Input
-            placeholder="Your answer..."
-            className="font-code"
-            value={userAnswer}
-            onChange={(e) => {
-              setUserAnswer(e.target.value);
-              setFeedback(null);
-              setShowHint(false);
-            }}
-            disabled={feedback !== null}
-          />
-        );
+        return renderQuestionWithInlineInput();
       default:
-        return null;
+        return <p className="font-code text-base whitespace-pre-wrap mb-6">{currentChallenge.question}</p>;
     }
   };
+
 
   return (
     <section id="challenge" className="py-16 md:py-24 border-t">
@@ -93,11 +106,7 @@ const JavaChallengeSection = () => {
             <CardTitle className="font-code text-lg text-primary">Question {currentChallengeIndex + 1}/{javaChallenges.length}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="font-code text-base whitespace-pre-wrap mb-6">{currentChallenge.question}</p>
-            
-            <div className="flex gap-2 items-center">
-              {renderChallengeInput()}
-            </div>
+            {renderChallengeContent()}
             
             <div className="mt-6">
                 <Button onClick={handleCheckAnswer} disabled={!userAnswer || feedback !== null}>
