@@ -7,8 +7,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Lightbulb, CheckCircle, XCircle, ArrowRight, Loader2, Wand2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from './ui/card';
-import { generateChallengeAction } from '@/app/java-challenge/actions';
-import type { JavaChallengeOutput } from '@/ai/types';
+import type { JavaChallengeOutput, JavaChallengeInput } from '@/ai/types';
 
 const JavaChallengeSection = () => {
   const [questionCount, setQuestionCount] = useState(1);
@@ -24,7 +23,20 @@ const JavaChallengeSection = () => {
     setShowAnswer(false);
     setUserAnswer('');
     try {
-      const challenge = await generateChallengeAction({ level: 'medium' });
+      const input: JavaChallengeInput = { level: 'medium' };
+      const response = await fetch('/api/genkit/flow/generateJavaChallengeFlow', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API call failed with status: ${response.status}`);
+      }
+
+      const challenge: JavaChallengeOutput = await response.json();
       setCurrentChallenge(challenge);
     } catch (error) {
       console.error("Failed to generate challenge:", error);

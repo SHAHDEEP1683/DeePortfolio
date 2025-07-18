@@ -4,7 +4,7 @@
  * - generateJavaChallengeFlow - A function that generates a Java code challenge.
  */
 import { ai } from '@/ai/genkit';
-import { JavaChallengeInput, JavaChallengeInputSchema, JavaChallengeOutput, JavaChallengeOutputSchema } from '@/ai/types';
+import { JavaChallengeInputSchema, JavaChallengeOutputSchema } from '@/ai/types';
 
 const javaChallengePrompt = ai.definePrompt({
   name: 'javaChallengePrompt',
