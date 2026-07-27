@@ -1,88 +1,90 @@
 
 export const personalData = {
   name: "DEEP SHAH",
-  role: "Java Backend Developer",
+  role: "Software Engineer",
   titles: [
-    "Java Backend Developer",
-    "Microservice Learner",
-    "Spring Boot Enthusiast",
-    "REST API Architect"
+    "Software Engineer",
+    "Java Developer",
+    "Spring Boot Specialist",
+    "AWS Backend Engineer"
   ],
-  location: "Ahmedabad, India",
-  email: "sd365601@gmail.com",
+  location: "Ahmedabad, Gujarat, India",
+  email: "shahdeep.1683@gmail.com",
   github: "https://github.com/SHAHDEEP1683",
-  linkedin: "https://www.linkedin.com/in/deep-shah-576756199/",
+  linkedin: "https://linkedin.com/in/deepshah-java-developer",
   phone: "+91 98986 69892",
-  bio: "I'm a passionate Java Backend Developer specializing in building robust and scalable applications. I thrive on solving complex problems and continuously learning new technologies.",
+  bio: "I'm a passionate Software Engineer specializing in Java, Spring Boot, and AWS. I design and build secure, scalable, and high-performance backend systems.",
 };
 
 export const skills = {
-  coreTechnologies: ["Java", "Spring Boot", "SQL / RDBMS", "REST API", "Microservices"],
-  frameworksAndLibraries: ["Hibernate / JPA", "Spring Security", "MapStruct"],
-  developerTools: ["Git", "Docker", "Postman", "IntelliJ", "Maven", "SonarQube"],
+  coreTechnologies: ["Java", "Spring Boot", "Spring Security", "SQL", "Microservices"],
+  frameworksAndLibraries: ["Hibernate - JPA", "Maven", "Spring Boot Test"],
+  developerTools: ["AWS", "Git Actions", "Git CI/CD", "Terraform", "Argo CD", "Kubernetes", "Docker"],
   testing: ["JUnit", "Mockito"],
-  otherSkills: ["Liquibase", "OpenAPI Spec", "MDC Logging", "JasperReport"],
+  otherSkills: [
+    "PostgreSQL", "MySQL", "MongoDB",
+    "Apache Kafka", "Rabbit MQ", "Redis",
+    "IntelliJ IDE", "VS Code", "Postman", "Claude Code", "Git", "GitHub",
+    "Liquibase/Flyway", "OpenAPI Spec", "Swagger", "SonarQube", "JasperReport", "DBeaver"
+  ],
 };
 
 export const projects = [
   {
-    title: "Election Management System (New York State Based Election Process)",
-    description: "A comprehensive system designed to manage the New York State election process, featuring secure logging and robust API endpoints.",
-    tech: ["Spring Boot", "Rest APIs", "Spring Security", "MDC Logging", "MySQL"],
+    title: "Fixie – On-Demand Home Services Platform",
+    description: "Developed and maintained backend services for Fixie, an on-demand home services platform. Built scalable, secure, and high-performance REST APIs to support booking lifecycle, payment processing, and provider management.",
+    tech: ["Java", "Spring Boot", "Spring Security", "PostgreSQL", "Redis", "RabbitMQ", "AWS", "Terraform"],
+    link: "https://github.com/SHAHDEEP1683"
+  },
+  {
+    title: "Digi-Biometric – Examination Biometric Verification System",
+    description: "Developed backend services for DigiBiometric, a biometric verification platform used at examination centres to authenticate candidates and streamline attendance and verification processes.",
+    tech: ["Java", "Spring Boot", "REST APIs", "Authentication", "S3 Pre-signed URLs", "AWS"],
+    link: "https://github.com/SHAHDEEP1683"
+  },
+  {
+    title: "Election Management System (New York State Based)",
+    description: "Designed and developed an Election Management System based on the New York State election process, featuring voter registration, profile management, and election-related workflows.",
+    tech: ["Java", "Spring Boot", "Spring Data JPA", "Hibernate", "REST APIs"],
     link: "https://github.com/SHAHDEEP1683/Election-Management-System"
-  },
-  {
-    title: "Movie Catalog Microservice Project",
-    description: "A microservice-based video streaming application featuring an API Gateway for routing, Eureka for service discovery, a centralized Config Server, and Zipkin for distributed tracing.",
-    tech: ["Spring Boot", "Microservices", "Spring Cloud Gateway", "Eureka", "Config Server", "Zipkin"],
-    link: "https://github.com/SHAHDEEP1683"
-  },
-  {
-    title: "Secure API with Spring Security",
-    description: "An implementation of a secure REST API using Spring Security, featuring JWT-based authentication and role-based access control.",
-    tech: ["Spring Boot", "Spring Security", "REST API", "JWT", "MySQL", "OAuth2"],
-    link: "https://github.com/SHAHDEEP1683"
-  },
-  {
-    title: "Centralized Logging with MDC",
-    description: "Demonstrates traceable logging in a microservices environment using Mapped Diagnostic Context (MDC) to add unique request IDs to every log entry.",
-    tech: ["Spring Boot", "MDC Logging", "Logback", "Microservices"],
-    link: "https://github.com/SHAHDEEP1683"
   }
 ];
 
 export const experience = [
-    {
-        company: "Innovatech Solutions Inc.",
-        role: "Java Spring Boot Intern",
-        duration: "Dec 2024 - May 2025",
-        description: [
-            "Developed and maintained RESTful APIs for various microservices using Spring Boot.",
-            "Collaborated with cross-functional teams in an Agile/Scrum environment.",
-            "Wrote unit and integration tests to ensure code quality and reliability.",
-            "Assisted in troubleshooting and debugging production issues, improving application stability."
-        ],
-    },
-    {
-        company: "BCM Corporation",
-        role: "Data Entry Operator",
-        duration: "Aug 2023 – Nov 2024",
-        description: [
-            "Utilized Microsoft Office suite for efficient business data entry, record-keeping, and report generation."
-        ]
-    }
+  {
+    company: "Techxplore IT Solutions Pvt. Ltd.",
+    role: "Java Developer",
+    duration: "Aug 2025 – Present",
+    description: [
+      "Designed and developed RESTful APIs and core backend functionalities for customer and provider registration, discovery, booking, pricing, and real-time tracking.",
+      "Implemented provider payment, withdrawal request, and payout management by integrating banking APIs.",
+      "Designed and implemented event-driven order management and payment workflows using RabbitMQ.",
+      "Built secure, scalable, and maintainable backend services using Spring Security, PostgreSQL, and Redis.",
+      "Deployed and managed end-to-end applications on AWS via Terraform (EC2, RDS, MQ, SES, ALB)."
+    ],
+  },
+  {
+    company: "BrightPeers Technology Solution Pvt. Ltd.",
+    role: "Java Intern",
+    duration: "Dec 2024 – May 2025",
+    description: [
+      "Gained hands-on experience with the complete Spring and Spring Boot ecosystem (IoC, MVC, Data JPA, Security, Hibernate).",
+      "Developed and maintained voter-side functionalities including voter registration and profile management.",
+      "Designed and integrated REST APIs using Java and Spring Boot for application modules."
+    ]
+  }
 ];
 
 export const education = [
   {
     degree: "Master of Computer Application",
-    university: "SARDAR VALLABHBHAI GLOBAL UNIVERSITY",
-    location: "CGPA: 7.3",
+    university: "Sardar Vallabhbhai Global University, Ahmedabad",
+    location: "CGPA: 6.9",
     duration: "2023 – 2025",
   },
   {
     degree: "Bachelor of Computer Application",
-    university: "SAURASHTRA UNIVERSITY",
+    university: "Saurashtra University",
     location: "CGPA: 7",
     duration: "2020 – 2023",
   },

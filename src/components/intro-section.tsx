@@ -5,6 +5,9 @@ import Typewriter from "./typewriter";
 import { Button } from "./ui/button";
 import { Github, Download } from "lucide-react";
 import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
+
+const Silk = dynamic(() => import("./silk"), { ssr: false });
 
 const IntroSection = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -14,8 +17,13 @@ const IntroSection = () => {
   }, []);
 
   return (
-    <section id="intro" className="py-24 sm:py-32 md:py-40 text-center">
-      <div className="container max-w-4xl">
+    <section id="intro" className="relative silk-bg py-24 sm:py-32 md:py-40 text-center overflow-hidden">
+      {/* Silk canvas: full-bleed background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Lazy load the silk canvas component to render behind content */}
+        <Silk speed={5.4} scale={1} color="#7B7481" noiseIntensity={1.5} rotation={0} />
+      </div>
+      <div className="container max-w-4xl relative z-10">
         <h1 
           ref={headingRef}
           tabIndex={-1}
