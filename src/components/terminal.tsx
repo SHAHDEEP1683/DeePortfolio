@@ -84,7 +84,14 @@ const Terminal = () => {
     } else if (cmd === 'contact') {
         result = (
             <div className="flex flex-col gap-2">
-                <a href={`mailto:${personalData.email}`} className="flex items-center gap-2 hover:text-accent"><Mail size={16} /> {personalData.email}</a>
+                <a 
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-2 hover:text-accent"
+                >
+                  <Mail size={16} /> {personalData.email}
+                </a>
                 <a href={personalData.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent"><Github size={16} /> GitHub Profile</a>
                 <span className="flex items-center gap-2"><Smartphone size={16} /> {personalData.phone}</span>
             </div>

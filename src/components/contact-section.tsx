@@ -19,7 +19,12 @@ const ContactSection = () => {
         </p>
 
         <div className="flex flex-wrap gap-x-8 gap-y-4 mb-8 text-sm text-muted-foreground">
-            <a href={`mailto:${personalData.email}`} className="flex items-center gap-2 hover:text-primary">
+            <a 
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 hover:text-primary"
+            >
                 <Mail className="h-4 w-4 text-accent" />
                 <span>{personalData.email}</span>
             </a>

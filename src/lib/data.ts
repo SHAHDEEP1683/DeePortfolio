@@ -5,8 +5,8 @@ export const personalData = {
   titles: [
     "Software Engineer",
     "Java Developer",
-    "Spring Boot Specialist",
-    "AWS Backend Engineer"
+    "Spring Boot Enthusiast",
+    "AWS"
   ],
   location: "Ahmedabad, Gujarat, India",
   email: "shahdeep.1683@gmail.com",

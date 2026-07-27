@@ -9,12 +9,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { sendContactEmail } from "@/app/actions";
 import { Send, Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
-  email: z.string().email("Please enter a valid email address."),
+  email: z.string().email("Please enter a valid email address.").optional().or(z.literal("")),
   message: z.string().min(10, "Message must be at least 10 characters.").max(500, "Message must be less than 500 characters."),
 });
 
@@ -33,21 +32,24 @@ const ContactForm = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         setIsSubmitting(true);
-        const result = await sendContactEmail(values);
-        setIsSubmitting(false);
-        
-        if (result.success) {
+        try {
+            const emailPart = values.email ? ` (${values.email})` : "";
+            const formattedMessage = `Hello Deep, my name is ${values.name}${emailPart}.\n\n${values.message}`;
+            const whatsappUrl = `https://wa.me/919898669892?text=${encodeURIComponent(formattedMessage)}`;
+            window.open(whatsappUrl, "_blank");
             toast({
-                title: "Message Sent!",
-                description: "Thanks for reaching out. I'll get back to you soon.",
+                title: "Opening WhatsApp...",
+                description: "Redirecting you to send your message directly to Deep.",
             });
             form.reset();
-        } else {
-             toast({
+        } catch (error) {
+            toast({
                 variant: "destructive",
                 title: "Uh oh! Something went wrong.",
-                description: "There was a problem sending your message. Please try again later.",
+                description: "Could not open WhatsApp. Please try again.",
             });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 

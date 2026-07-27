@@ -27,18 +27,18 @@ const IntroSection = () => {
         <h1 
           ref={headingRef}
           tabIndex={-1}
-          className="font-headline text-5xl md:text-7xl font-bold mb-4 outline-none"
+          className="font-headline text-5xl md:text-7xl font-bold mb-4 outline-none text-white"
         >
           {personalData.name}
         </h1>
-        <div className="text-xl md:text-2xl text-muted-foreground mb-8 h-8">
+        <div className="text-xl md:text-2xl text-white mb-8 h-8">
           <Typewriter 
             textArray={personalData.titles} 
             speed={100} 
             delay={1500}
           />
         </div>
-        <p className="max-w-2xl mx-auto mb-10 text-lg text-muted-foreground">
+        <p className="max-w-2xl mx-auto mb-10 text-lg text-white/90">
           {personalData.bio}
         </p>
         <div className="flex justify-center gap-4">

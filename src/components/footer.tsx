@@ -33,8 +33,10 @@ const Footer = () => {
                     <Linkedin className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
                 </a>
-                <a
-                    href={`mailto:${personalData.email}`}
+                 <a
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                     <Mail className="h-5 w-5" />
