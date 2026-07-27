@@ -8,7 +8,7 @@ export const personalData = {
     "Spring Boot Enthusiast",
     "AWS"
   ],
-  location: "Ahmedabad, Gujarat, India",
+  location: "Amreli, Gujarat, India",
   email: "shahdeep.1683@gmail.com",
   github: "https://github.com/SHAHDEEP1683",
   linkedin: "https://linkedin.com/in/deepshah-java-developer",
