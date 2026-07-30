@@ -1,7 +1,7 @@
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 import { Briefcase, CodeXml, Menu } from "lucide-react";
-import { Sheet, SheetTrigger, SheetContent, SheetClose } from "./ui/sheet";
+import { Sheet, SheetTrigger, SheetContent, SheetClose, SheetTitle, SheetDescription } from "./ui/sheet";
 
 const navLinks = [
   { href: "#skills", label: "Skills" },
@@ -47,6 +47,10 @@ const Header = () => {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[280px] sm:w-[350px]">
+                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                  <SheetDescription className="sr-only">
+                    Access the navigation links for the portfolio website.
+                  </SheetDescription>
                   <nav className="flex flex-col gap-4 mt-8">
                     {navLinks.map(link => (
                       <SheetClose asChild key={link.href}>
