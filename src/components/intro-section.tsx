@@ -43,7 +43,7 @@ const IntroSection = () => {
         </p>
         <div className="flex justify-center gap-4">
             <Button asChild size="lg">
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="/Deep%20Shah%20-%20Java_SpringBoot.pdf" target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-4 w-4" />
                     Resume
                 </a>
