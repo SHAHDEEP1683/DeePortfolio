@@ -12,7 +12,7 @@ const ContactSection = () => {
         </h2>
       </div>
 
-      <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-lg">
+      <div className="max-w-4xl mx-auto bg-card p-4 sm:p-8 rounded-lg shadow-lg">
         <h3 className="font-headline text-2xl font-semibold mb-2">Contact Me</h3>
         <p className="text-muted-foreground mb-6">
             Have a question or want to work together? Fill out the form below or reach out directly.

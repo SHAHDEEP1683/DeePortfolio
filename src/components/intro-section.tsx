@@ -27,7 +27,7 @@ const IntroSection = () => {
         <h1 
           ref={headingRef}
           tabIndex={-1}
-          className="font-headline text-5xl md:text-7xl font-bold mb-4 outline-none text-white"
+          className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold mb-4 outline-none text-white"
         >
           {personalData.name}
         </h1>

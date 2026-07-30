@@ -16,13 +16,13 @@ const EducationSection = () => {
         {education.map((edu, index) => (
           <Card key={index} className="bg-card/50 dark:bg-card">
             <CardContent className="p-6">
-                <div className="flex justify-between items-start">
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
                     <div>
                         <h3 className="font-headline text-xl font-semibold text-primary">{edu.degree}</h3>
                         <p className="text-md font-medium text-muted-foreground mt-1">{edu.university}</p>
                         <p className="text-sm text-muted-foreground">{edu.location}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground min-w-max">{edu.duration}</p>
+                    <p className="text-sm text-muted-foreground sm:min-w-max">{edu.duration}</p>
                 </div>
             </CardContent>
           </Card>
