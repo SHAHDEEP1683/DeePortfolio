@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { skillGroups } from "@/lib/data";
 import {
   Archive, Beaker, Boxes, Cloud, Code, Cpu, CreditCard, Database, FileText, GitMerge, Globe, Leaf, Mail,
@@ -73,7 +76,30 @@ function SkillMark({ skill }: { skill: string }) {
   return <Icon strokeWidth={2.2} aria-hidden="true" />;
 }
 
+/** 1 column on phones, 2 on tablets, 3 on desktop (same breakpoints as before). */
+function useColumnCount() {
+  const [cols, setCols] = useState(3);
+  useEffect(() => {
+    const md = window.matchMedia("(min-width: 768px)");
+    const lg = window.matchMedia("(min-width: 1024px)");
+    const update = () => setCols(lg.matches ? 3 : md.matches ? 2 : 1);
+    update();
+    md.addEventListener("change", update);
+    lg.addEventListener("change", update);
+    return () => {
+      md.removeEventListener("change", update);
+      lg.removeEventListener("change", update);
+    };
+  }, []);
+  return cols;
+}
+
 const SkillsSection = () => {
+  const cols = useColumnCount();
+  const columns = Array.from({ length: cols }, (_, c) =>
+    skillGroups.map((group, i) => ({ group, i })).filter(({ i }) => i % cols === c),
+  );
+
   return (
     <section id="skills" className="py-16 md:py-24 border-t">
       <div className="text-center mb-12">
@@ -86,12 +112,15 @@ const SkillsSection = () => {
         </p>
       </div>
 
-      {/* cards keep the data order row by row; each card is only as tall as its skills */}
-      <div className="skills-masonry">
-        {skillGroups.map((group) => {
+      {/* cards keep the left-to-right order (card i goes to column i % cols) and stack
+          straight under each other, so there are no gaps */}
+      <div className="skills-cols" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
+        {columns.map((column, c) => (
+          <div key={c} className="skills-col">
+            {column.map(({ group, i }) => {
           const Icon = GROUP_ICONS[group.icon] ?? Code;
           return (
-            <div key={group.title} className="skill-card bg-card p-5 rounded-lg shadow-sm">
+            <div key={group.title} className={`skill-card bg-card p-5 rounded-lg shadow-sm ${i % 2 ? "skill-card--b" : "skill-card--a"}${i % 3 === 2 ? " skill-card--mint" : ""}`}>
               <h3 className="font-headline text-lg font-semibold mb-3 flex items-center gap-2.5">
                 <Icon className="h-5 w-5" />
                 {group.title}
@@ -108,7 +137,9 @@ const SkillsSection = () => {
               </ul>
             </div>
           );
-        })}
+            })}
+          </div>
+        ))}
       </div>
     </section>
   );

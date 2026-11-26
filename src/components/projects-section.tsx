@@ -1,6 +1,5 @@
 import { projects, personalData } from "@/lib/data";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, FolderGit2 } from "lucide-react";
 
@@ -21,12 +20,7 @@ const ProjectsSection = () => {
               <CardTitle className="font-headline text-2xl">{project.title}</CardTitle>
             </CardHeader>
             <CardContent className="flex-grow">
-              <CardDescription className="mb-4">{project.description}</CardDescription>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech, i) => (
-                  <Badge key={i} variant="secondary" className="font-medium">{tech}</Badge>
-                ))}
-              </div>
+              <CardDescription>{project.description}</CardDescription>
             </CardContent>
             <CardFooter>
               <Button asChild variant="outline">
