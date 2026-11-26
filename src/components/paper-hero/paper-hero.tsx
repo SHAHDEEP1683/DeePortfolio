@@ -91,7 +91,9 @@ export default function PaperHero() {
               <img src="/paper/p6.webp" alt="" draggable={false} />
             </span>
           </div>
-          <p className="ph-tag ph-under">I build backends that stay calm when the traffic doesn’t.</p>
+          <p className="ph-tag ph-under">
+            I build backends that <mark className="ph-mark">stay calm</mark> when the traffic doesn’t.
+          </p>
         </figure>
       </div>
     </section>

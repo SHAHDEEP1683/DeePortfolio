@@ -30,7 +30,11 @@
 @keyframes ph-draw { to { stroke-dashoffset: 0; } }
 .paper-hero .ph-tag { margin-top: clamp(16px, 3.2vh, 30px); font-size: clamp(17px, 1.4vw, 21px); line-height: 1.4; color: #3d3d3d; max-width: 30ch; }
 .paper-hero .ph-cta { margin-top: clamp(26px, 5vh, 44px); display: flex; gap: 16px; flex-wrap: wrap; }
-.paper-hero .ph-under { margin: clamp(10px, 2vh, 18px) auto 0; max-width: 30ch; text-align: center; opacity: 0; animation: ph-fade .6s 1.2s forwards; }
+.paper-hero .ph-under { margin: clamp(12px, 2.4vh, 22px) auto 0; max-width: 26ch; text-align: center; font-size: clamp(19px, 1.7vw, 28px); font-weight: 600; line-height: 1.3; letter-spacing: -.01em; color: var(--ph-ink); opacity: 0; animation: ph-fade .6s 1.2s forwards; }
+.paper-hero .ph-mark { color: inherit; padding: 0 .12em; margin: 0 -.06em; border-radius: .2em .5em .25em .45em;
+  background: linear-gradient(100deg, rgba(250,204,21,.0) 0, rgba(250,204,21,.85) 3%, rgba(250,204,21,.7) 96%, rgba(250,204,21,0) 100%) no-repeat 0 62% / 0% 72%;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; animation: ph-marker .7s 1.7s cubic-bezier(.3,.8,.3,1) forwards; }
+@keyframes ph-marker { to { background-size: 100% 72%; } }
 .paper-hero .ph-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: clamp(14px, 1.9vh, 20px) clamp(22px, 2vw, 32px); font-weight: 600; font-size: clamp(15px, 1.1vw, 19px); color: var(--ph-ink); text-decoration: none; background: #fff;
   box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 12px 22px -10px rgba(0,0,0,.35); transform: rotate(-1.5deg); transition: transform .2s; }
 .paper-hero .ph-btn:nth-child(2) { transform: rotate(1.5deg); }
@@ -66,4 +70,5 @@
   .paper-hero .ph-chip, .paper-hero .ph-fig { animation: none; opacity: 1; }
   .paper-hero .ph-swap { animation: none; clip-path: none; }
   .paper-hero .ph-script path { animation: none; stroke-dashoffset: 0; }
+  .paper-hero .ph-mark { animation: none; background-size: 100% 72%; }  .paper-hero .ph-under { animation: none; opacity: 1; }
 }
