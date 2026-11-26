@@ -46,7 +46,6 @@ export default function PaperHero() {
   return (
     <section id="hello" className="paper-hero" aria-label="Deep Shah, software engineer">
       <div className="ph-copy">
-        <div className="ph-eyebrow">Software engineer · Java · Spring Boot</div>
         <h1 className="ph-name" aria-label="Deep Shah">
           {["DEEP", "SHAH"].map((word) => (
             <span className="ph-word" aria-hidden="true" key={word}>
@@ -74,7 +73,6 @@ export default function PaperHero() {
             <path d="M4 10 C 60 2, 110 14, 160 8 S 250 4, 296 9" />
           </svg>
         </span>
-        <p className="ph-tag">I build backends that stay calm when the traffic doesn’t.</p>
         <div className="ph-cta">
           <a className="ph-btn primary" href="#projects">See my work →</a>
           <a className="ph-btn" href="#contact">Say hello</a>
@@ -93,6 +91,7 @@ export default function PaperHero() {
               <img src="/paper/p6.webp" alt="" draggable={false} />
             </span>
           </div>
+          <p className="ph-tag ph-under">I build backends that stay calm when the traffic doesn’t.</p>
         </figure>
       </div>
     </section>
