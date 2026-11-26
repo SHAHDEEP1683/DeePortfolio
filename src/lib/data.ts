@@ -99,8 +99,8 @@ export const experience = [
     role: "Data Entry Operator",
     duration: "Aug 2023 – Nov 2024",
     description: [
-      "Entered and maintained business records accurately in the company's systems.",
-      "Verified and organised data to keep records complete, consistent and up to date."
+      "Maintained accurate business records and updated company databases.",
+      "Verified and organised data to ensure consistency, completeness, and accuracy."
     ]
   }
 ];
