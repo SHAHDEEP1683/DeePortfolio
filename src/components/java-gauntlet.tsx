@@ -213,7 +213,7 @@ export default function JavaGauntlet() {
           <Code2 className="h-10 w-10" />
           Java Fun Challenge
         </h2>
-        <p className="mt-3 text-muted-foreground">Refresh your Java knowledge!</p>
+        <p className="mt-3 text-muted-foreground">Rebrush your Java knowledge!</p>
       </div>
 
       <div className="jg">
