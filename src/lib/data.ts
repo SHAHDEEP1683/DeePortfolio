@@ -92,6 +92,15 @@ export const experience = [
       "Developed and maintained voter-side functionalities including voter registration and profile management.",
       "Designed and integrated REST APIs using Java and Spring Boot for application modules."
     ]
+  },
+  {
+    company: "BCM Corporation",
+    role: "Data Entry Operator",
+    duration: "", // add the dates here, e.g. "Jun 2022 – Nov 2024"
+    description: [
+      "Entered and maintained business records accurately in the company's systems.",
+      "Verified and organised data to keep records complete, consistent and up to date."
+    ]
   }
 ];
 
