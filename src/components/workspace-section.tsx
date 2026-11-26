@@ -20,7 +20,7 @@ const SHEET = [
   { src: "/paper/p6.webp", label: "Understand the Problem", alt: "Deep waving" },
   { src: "/paper/p2.webp", label: "Build the API", alt: "Deep thinking" },
   { src: "/paper/p4.webp", label: "Integrate & Test", alt: "Deep giving a thumbs up" },
-  { src: "/paper/p1.webp", label: "Deploy to AWS", alt: "Deep with sunglasses" },
+  { src: "/paper/p1.webp", label: "Deploy", alt: "Deep with sunglasses" },
 ];
 
 const WorkspaceSection = () => {
