@@ -13,14 +13,24 @@ const ExperienceSection = () => {
         </h2>
       </div>
       
-      <div className="space-y-8">
+      <ol className="exp-timeline space-y-8">
           {experience.map((job: any, index: number) => (
-            <Card key={index} className="bg-card/50 dark:bg-card">
+            <li key={index} className={`exp-item${String(job.duration).includes("Present") ? " is-current" : ""}`}>
+            <span className="exp-dot" aria-hidden="true" />
+            <Card className="bg-card/50 dark:bg-card">
                 <CardHeader>
                     <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
                         <div>
                             <CardTitle className="font-headline text-xl font-semibold text-primary">{job.role}</CardTitle>
-                            <p className="text-md font-medium text-muted-foreground mt-1">{job.company}</p>
+                            <p className="text-md font-medium text-muted-foreground mt-1">
+                              {job.url ? (
+                                <a href={job.url} target="_blank" rel="noopener noreferrer" className="company-link">
+                                  {job.company}
+                                </a>
+                              ) : (
+                                job.company
+                              )}
+                            </p>
                         </div>
                         <p className="text-sm text-muted-foreground sm:min-w-max">{job.duration}</p>
                     </div>
@@ -33,8 +43,9 @@ const ExperienceSection = () => {
                     </ul>
                 </CardContent>
             </Card>
+            </li>
           ))}
-      </div>
+      </ol>
     </section>
   );
 };

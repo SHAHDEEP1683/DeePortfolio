@@ -1,25 +1,47 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { personalData, skills, projects } from '@/lib/data';
-import { Mail, Github, Smartphone } from 'lucide-react';
+import { personalData, skillGroups, projects, experience, education } from '@/lib/data';
+import { Mail, Github, Smartphone, Linkedin, MessageCircle } from 'lucide-react';
 
 const commands: { [key: string]: string } = {
   'help': 'Show this help message',
-  'about': 'Show personal bio and skills',
+  'about': 'Who I am and what I build',
+  'whoami': 'One-line intro',
+  'skills': 'My tech stack, by area',
+  'experience': 'My work journey',
   'projects': 'Show project list',
-  'contact': 'Show contact information',
+  'education': 'My degrees',
+  'contact': 'How to reach me',
   'nativeplace': 'Show my native place.',
   'clear': 'Clear the terminal screen',
 };
 
+/** closest command for a typo (edit distance), so "skils" suggests "skills" */
+const suggest = (input: string) => {
+  const d = (a: string, b: string) => {
+    const m = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+    for (let j = 1; j <= b.length; j++) m[0][j] = j;
+    for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++)
+      m[i][j] = Math.min(m[i - 1][j] + 1, m[i][j - 1] + 1, m[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return m[a.length][b.length];
+  };
+  let best = '', score = Infinity;
+  for (const c of Object.keys(commands)) { const s = d(input, c); if (s < score) { score = s; best = c; } }
+  return score <= 2 ? best : '';
+};
+
+const current = experience[0];
+const companyName = current.company.replace(' Pvt. Ltd.', '');
+const wa = personalData.phone.replace(/\D/g, '');
+
 const asciiArt = `
-██████╗ ███████╗███████╗██████╗ 
-██╔══██╗██╔════╝██╔════╝██╔══██╗
-██║  ██║█████╗  █████╗  ██████╔╝
-██║  ██║██╔══╝  ██╔══╝  ██╔═══╝ 
-██████╔╝███████╗███████╗██║     
-╚═════╝ ╚══════╝╚══════╝╚═╝     
+██████╗ ███████╗███████╗██████╗        ██╗ █████╗ ██╗███╗   ██╗
+██╔══██╗██╔════╝██╔════╝██╔══██╗       ██║██╔══██╗██║████╗  ██║
+██║  ██║█████╗  █████╗  ██████╔╝       ██║███████║██║██╔██╗ ██║
+██║  ██║██╔══╝  ██╔══╝  ██╔═══╝   ██   ██║██╔══██║██║██║╚██╗██║
+██████╔╝███████╗███████╗██║       ╚█████╔╝██║  ██║██║██║ ╚████║
+╚═════╝ ╚══════╝╚══════╝╚═╝        ╚════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
 `;
 
 const Block = ({ x, y, cols = 1 }: { x: number; y: number; cols?: number }) => {
@@ -175,6 +197,11 @@ const Terminal = () => {
     { command: '', result: <p>Welcome to Deep Terminal! Type <span className="text-accent">'help'</span> to see available commands.</p>}
   ]);
   const [history, setHistory] = useState<string[]>([]);
+  const [used, setUsed] = useState(false); // has any command been run yet?
+  // grey inline suggestion: "help" on a fresh terminal, otherwise the command that matches what is typed
+  const typed = input.toLowerCase();
+  const match = typed ? Object.keys(commands).find((c) => c.startsWith(typed) && c !== typed) : undefined;
+  const ghost = typed ? (match ?? '') : used ? '' : 'help';
   const [historyIndex, setHistoryIndex] = useState(-1);
   const terminalBodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -187,9 +214,15 @@ const Terminal = () => {
   };
 
   const executeCommand = async (command: string) => {
-    let result: React.ReactNode = `Command not found: ${command}. Type 'help' for a list of commands.`;
-    
     const cmd = command.trim().toLowerCase();
+    const guess = cmd ? suggest(cmd) : '';
+    let result: React.ReactNode = cmd ? (
+      <p>
+        Command not found: {command.trim()}.{' '}
+        {guess ? <>Did you mean <span className="text-accent">&apos;{guess}&apos;</span>? </> : null}
+        Type <span className="text-accent">&apos;help&apos;</span> for a list of commands.
+      </p>
+    ) : '';
 
     if (cmd === 'help') {
       result = (
@@ -207,12 +240,45 @@ const Terminal = () => {
     } else if (cmd === 'about') {
       result = (
         <div className="text-sm sm:text-base">
-          <p className="font-headline text-lg text-primary">{personalData.name}</p>
-          <p>{personalData.bio}</p>
-          <br />
-          <p className="font-headline text-md text-primary">Skills:</p>
-          <p><strong className="text-accent">Core Technologies:</strong> {skills.coreTechnologies.join(', ')}</p>
-          <p><strong className="text-accent">Frameworks & Libraries:</strong> {skills.frameworksAndLibraries.join(', ')}</p>
+          <p className="font-headline text-lg text-primary">Deep Shah</p>
+          <p>
+            I&apos;m Deep Shah, a {current.role} at {companyName}, specializing in Java, Spring Boot, REST API development,
+            event-driven architectures, and AWS deployments using Terraform. I focus on building scalable, reliable backend
+            systems and seamless payment and booking workflows.
+          </p>
+          <p className="mt-2">Try <span className="text-accent">skills</span>, <span className="text-accent">experience</span> or <span className="text-accent">projects</span>.</p>
+        </div>
+      );
+    } else if (cmd === 'whoami') {
+      result = <p className="text-sm sm:text-base">deep · {current.role.toLowerCase()} @ {companyName.toLowerCase()} · java / spring boot / aws</p>;
+    } else if (cmd === 'skills') {
+      result = (
+        <div className="text-sm sm:text-base space-y-1">
+          {skillGroups.map((g) => (
+            <p key={g.title}><strong className="text-accent">{g.title}:</strong> {g.skills.join(', ')}</p>
+          ))}
+        </div>
+      );
+    } else if (cmd === 'experience') {
+      result = (
+        <div className="text-sm sm:text-base space-y-2">
+          {experience.map((job) => (
+            <div key={job.company}>
+              <p className="text-primary font-semibold">{job.role} <span className="text-accent">@</span> {job.company}</p>
+              <p className="opacity-70">{job.duration}</p>
+            </div>
+          ))}
+        </div>
+      );
+    } else if (cmd === 'education') {
+      result = (
+        <div className="text-sm sm:text-base space-y-2">
+          {education.map((e) => (
+            <div key={e.degree}>
+              <p className="text-primary font-semibold">{e.degree}</p>
+              <p>{e.university} · <span className="opacity-70">{e.duration} · {e.location}</span></p>
+            </div>
+          ))}
         </div>
       );
     } else if (cmd === 'projects') {
@@ -230,16 +296,13 @@ const Terminal = () => {
     } else if (cmd === 'contact') {
         result = (
             <div className="flex flex-col gap-2 text-sm sm:text-base">
-                <a 
-                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center gap-2 hover:text-accent"
-                >
+                <a href={`mailto:${personalData.email}`} className="flex items-center gap-2 hover:text-accent">
                   <Mail size={16} /> {personalData.email}
                 </a>
+                <a href={personalData.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent"><Linkedin size={16} /> LinkedIn</a>
                 <a href={personalData.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent"><Github size={16} /> GitHub Profile</a>
-                <span className="flex items-center gap-2"><Smartphone size={16} /> {personalData.phone}</span>
+                <a href={`https://wa.me/${wa}?text=${encodeURIComponent("Hello Deep, I'm contacting you from your portfolio.")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent"><MessageCircle size={16} /> WhatsApp</a>
+                <a href={`tel:+${wa}`} className="flex items-center gap-2 hover:text-accent"><Smartphone size={16} /> {personalData.phone}</a>
             </div>
         )
     } else if (cmd === 'nativeplace') {
@@ -257,6 +320,7 @@ const Terminal = () => {
     e.preventDefault();
     const commandToExecute = input;
     setInput('');
+    if (commandToExecute.trim()) setUsed(true);
     if (commandToExecute.trim().toLowerCase() === 'clear') {
         setOutput([{ command: '', result: <pre className="text-accent hidden sm:block">{asciiArt}</pre> }]);
     } else {
@@ -284,10 +348,10 @@ const Terminal = () => {
         }
     } else if (e.key === 'Tab') {
         e.preventDefault();
-        const matchingCommand = Object.keys(commands).find(cmd => cmd.startsWith(input));
-        if (matchingCommand) {
-            setInput(matchingCommand);
-        }
+        if (ghost) setInput(ghost);
+    } else if (e.key === 'ArrowRight' && ghost) {
+        const el = e.currentTarget;
+        if (el.selectionStart === input.length) { e.preventDefault(); setInput(ghost); }
     }
   };
 
@@ -302,8 +366,8 @@ const Terminal = () => {
 
   return (
     <div 
-        className="rounded-lg bg-[#282c34] text-white shadow-lg text-sm sm:text-base"
-        onClick={() => inputRef.current?.focus()}
+        className="term rounded-lg bg-[#282c34] text-white shadow-lg text-sm sm:text-base"
+        onClick={() => inputRef.current?.focus({ preventScroll: true })}
     >
         <div className="flex items-center p-3 bg-[#21252b] rounded-t-lg">
             <div className="flex space-x-2">
@@ -336,14 +400,26 @@ const Terminal = () => {
                   <span className="hidden sm:inline">user@deepverse:~$</span>
                   <span className="sm:hidden">deep:~$</span>
                 </span>
-                <input
-                    ref={inputRef}
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    className="bg-transparent border-none focus:ring-0 focus:outline-none w-full font-code p-0 text-sm sm:text-base"
-                />
+                <span className="term-input">
+                  {/* grey ghost completion, drawn under the transparent input in the same monospace font */}
+                  <span className="term-ghost" aria-hidden="true">
+                    <span className="invisible">{input}</span>
+                    <span className="term-ghost__rest">{ghost.slice(input.length)}</span>
+                    {ghost && <kbd className="term-ghost__key">Tab</kbd>}
+                  </span>
+                  <input
+                      ref={inputRef}
+                      type="text"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      aria-label="Terminal command"
+                      autoComplete="off"
+                      autoCapitalize="off"
+                      spellCheck={false}
+                      className="bg-transparent border-none focus:ring-0 focus:outline-none w-full font-code p-0 text-sm sm:text-base"
+                  />
+                </span>
             </form>
         </div>
     </div>

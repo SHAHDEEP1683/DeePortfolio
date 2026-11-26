@@ -16,17 +16,31 @@ export const personalData = {
   bio: "I'm a passionate Software Engineer specializing in Java, Spring Boot, and AWS. I design and build secure, scalable, and high-performance backend systems.",
 };
 
+/**
+ * Tech Stack, grouped. Every earlier skill is kept; additions come from the Projects and
+ * Experience entries below (Spring MVC, Spring Data JPA, REST APIs, AWS services, ...).
+ * `icon` is a key the Skills section maps to an icon.
+ */
+export const skillGroups = [
+  { title: "Languages & Core", icon: "code", skills: ["Java", "SQL", "Microservices", "Event-Driven Architecture", "Authentication & Authorization"] },
+  { title: "Spring Ecosystem", icon: "leaf", skills: ["Spring Boot", "Spring Security", "Spring MVC", "Spring Data JPA", "Hibernate - JPA", "Maven"] },
+  { title: "APIs & Integrations", icon: "plug", skills: ["REST APIs", "OpenAPI Spec", "Swagger", "Postman", "Payment & Banking APIs"] },
+  { title: "Databases", icon: "database", skills: ["PostgreSQL", "MySQL", "MongoDB", "Liquibase/Flyway"] },
+  { title: "Messaging & Caching", icon: "workflow", skills: ["Apache Kafka", "RabbitMQ", "Redis"] },
+  { title: "Cloud & DevOps", icon: "cloud", skills: ["AWS", "AWS EC2", "AWS RDS", "AWS S3", "AWS SES", "Amazon MQ", "AWS ALB", "Terraform", "Docker", "Kubernetes", "Argo CD", "GitHub Actions", "Git CI/CD"] },
+  { title: "Testing & Quality", icon: "beaker", skills: ["JUnit", "Mockito", "Spring Boot Test", "SonarQube"] },
+  { title: "Tools", icon: "wrench", skills: ["Git", "GitHub", "IntelliJ IDEA", "VS Code", "DBeaver", "Claude Code", "JasperReport"] },
+];
+
+const group = (title: string) => skillGroups.find((g) => g.title === title)?.skills ?? [];
+
+/** Older flat view of the same skills (the terminal's `skills` command reads this). */
 export const skills = {
-  coreTechnologies: ["Java", "Spring Boot", "Spring Security", "SQL", "Microservices"],
-  frameworksAndLibraries: ["Hibernate - JPA", "Maven", "Spring Boot Test"],
-  developerTools: ["AWS", "Git Actions", "Git CI/CD", "Terraform", "Argo CD", "Kubernetes", "Docker"],
-  testing: ["JUnit", "Mockito"],
-  otherSkills: [
-    "PostgreSQL", "MySQL", "MongoDB",
-    "Apache Kafka", "Rabbit MQ", "Redis",
-    "IntelliJ IDE", "VS Code", "Postman", "Claude Code", "Git", "GitHub",
-    "Liquibase/Flyway", "OpenAPI Spec", "Swagger", "SonarQube", "JasperReport", "DBeaver"
-  ],
+  coreTechnologies: group("Languages & Core"),
+  frameworksAndLibraries: group("Spring Ecosystem"),
+  developerTools: group("Cloud & DevOps"),
+  testing: group("Testing & Quality"),
+  otherSkills: [...group("APIs & Integrations"), ...group("Databases"), ...group("Messaging & Caching"), ...group("Tools")],
 };
 
 export const projects = [
@@ -43,8 +57,14 @@ export const projects = [
     link: "https://github.com/SHAHDEEP1683"
   },
   {
+    title: "OSM – On-Screen Marking System",
+    description: "Built backend services for an On-Screen Marking platform where examiners evaluate scanned answer sheets digitally. Added an AI assistant that helps examiners review and mark answers faster, and AI proctoring that monitors online exams for face presence and tab switching.",
+    tech: ["Java", "Spring Boot", "REST APIs", "AI Assistant", "AI Proctoring", "AWS"],
+    link: "https://github.com/SHAHDEEP1683"
+  },
+  {
     title: "Election Management System (New York State Based)",
-    description: "Designed and developed an Election Management System based on the New York State election process, featuring voter registration, profile management, and election-related workflows.",
+    description: "Designed and developed an Election Management System based on the New York State election process, featuring voter registration, profile management, and election-related workflows during my internship.",
     tech: ["Java", "Spring Boot", "Spring Data JPA", "Hibernate", "REST APIs"],
     link: "https://github.com/SHAHDEEP1683/Election-Management-System"
   }
@@ -53,7 +73,8 @@ export const projects = [
 export const experience = [
   {
     company: "Techxplore IT Solutions Pvt. Ltd.",
-    role: "Java Developer",
+    url: "https://techxplore.io/",
+    role: "Software Engineer",
     duration: "Aug 2025 – Present",
     description: [
       "Designed and developed RESTful APIs and core backend functionalities for customer and provider registration, discovery, booking, pricing, and real-time tracking.",
@@ -72,6 +93,15 @@ export const experience = [
       "Developed and maintained voter-side functionalities including voter registration and profile management.",
       "Designed and integrated REST APIs using Java and Spring Boot for application modules."
     ]
+  },
+  {
+    company: "BCM Corporation · Part-time",
+    role: "Data Entry Operator",
+    duration: "Aug 2023 – Nov 2024",
+    description: [
+      "Maintained accurate business records and updated company databases.",
+      "Verified and organised data to ensure consistency, completeness, and accuracy."
+    ]
   }
 ];
 
@@ -84,7 +114,7 @@ export const education = [
   },
   {
     degree: "Bachelor of Computer Application",
-    university: "Saurashtra University",
+    university: "Kamani Science College And Prataprai Arts College, Saurashtra University",
     location: "CGPA: 7",
     duration: "2020 – 2023",
   },

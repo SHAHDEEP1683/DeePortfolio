@@ -16,6 +16,13 @@ const chips = [
   { label: "System Design", cls: "ws-chip--e", z: 90 },
 ];
 
+const SHEET = [
+  { src: "/paper/p6.webp", label: "Understand the Problem", alt: "Deep waving" },
+  { src: "/paper/p2.webp", label: "Build the API", alt: "Deep thinking" },
+  { src: "/paper/p4.webp", label: "Integrate & Test", alt: "Deep giving a thumbs up" },
+  { src: "/paper/p1.webp", label: "Deploy", alt: "Deep with sunglasses" },
+];
+
 const WorkspaceSection = () => {
   const stageRef = useRef<HTMLDivElement>(null);
 
@@ -84,12 +91,14 @@ const WorkspaceSection = () => {
 
   return (
     <section id="workspace" className="pt-16 md:pt-20 pb-8 border-t overflow-hidden">
+      <div className="ws-row">
+      <div className="ws-left">
       <div className="ws-head text-center mb-2">
         <h2 className="font-headline text-xl font-semibold flex items-center justify-center gap-2">
           <Armchair className="h-5 w-5" />
           My Workspace
         </h2>
-        <p className="mt-1 text-xs text-muted-foreground">Where the Java happens. Move your cursor over it.</p>
+        <p className="mt-1 text-xs text-muted-foreground">Where Java comes to life. Hover over it to explore.</p>
       </div>
 
       <div ref={stageRef} className="ws-stage ws-stage--left" aria-label="3D illustration of Deep's cozy developer workspace">
@@ -114,6 +123,30 @@ const WorkspaceSection = () => {
             </span>
           ))}
         </div>
+      </div>
+      </div>
+
+      {/* contact sheet: four torn-paper frames (from hero Sample C) */}
+      <div className="ws-sheet-wrap">
+      <div className="ws-sheet-head">
+        <h3>A day in my dev life</h3>
+        <span>from hello to production</span>
+      </div>
+      <ul className="ws-sheet" aria-label="Deep at work, four frames">
+        {SHEET.map((f, i) => (
+          <li key={f.label} className="ws-frame">
+            <span className="ws-frame__photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={f.src} alt={f.alt} loading="lazy" draggable={false} />
+            </span>
+            <span className="ws-cap">
+              <span>{String(i + 1).padStart(2, "0")}</span>
+              <b>{f.label}</b>
+            </span>
+          </li>
+        ))}
+      </ul>
+      </div>
       </div>
     </section>
   );
