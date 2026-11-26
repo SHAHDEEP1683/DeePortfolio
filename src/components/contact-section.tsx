@@ -21,7 +21,7 @@ const ContactSection = () => {
 
   const direct = [
     { icon: Mail, label: "Email", value: personalData.email, href: `mailto:${personalData.email}`, copy: true },
-    { icon: MessageCircle, label: "WhatsApp", value: "Chat with me", href: `https://wa.me/${wa}` },
+    { icon: MessageCircle, label: "WhatsApp", value: "Chat with me", href: `https://wa.me/${wa}?text=${encodeURIComponent("Hello Deep, I'm contacting you from your portfolio.")}` },
     { icon: Phone, label: "Phone", value: personalData.phone, href: `tel:+${wa}` },
     { icon: Linkedin, label: "LinkedIn", value: "deepshah-java-developer", href: personalData.linkedin },
   ];

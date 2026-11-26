@@ -52,9 +52,11 @@ const ContactForm = () => {
   // the original WhatsApp route, kept as an alternative
   const sendViaWhatsApp = () => {
     const v = form.getValues();
-    const who = v.name ? `my name is ${v.name}` : "";
-    const mail = v.email ? ` (${v.email})` : "";
-    const text = `Hello Deep${who ? `, ${who}` : ""}${mail}.\n\n${v.message || ""}`.trim();
+    const lines = ["Hello Deep, I'm contacting you from your portfolio."];
+    const details = [v.name && `Name: ${v.name.trim()}`, v.email && `Email: ${v.email.trim()}`].filter(Boolean);
+    if (details.length) lines.push("", ...(details as string[]));
+    if (v.message?.trim()) lines.push("", v.message.trim());
+    const text = lines.join("\n");
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
   };
 
