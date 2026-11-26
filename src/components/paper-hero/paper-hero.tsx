@@ -82,7 +82,6 @@ export default function PaperHero() {
       </div>
 
       <div className="ph-wall">
-        <div className="ph-meta">Software engineer · 2026</div>
         <figure className="ph-fig" ref={figRef}>
           <div className="ph-swap">
             <span className="ph-tile">
@@ -94,10 +93,6 @@ export default function PaperHero() {
               <img src="/paper/p6.webp" alt="" draggable={false} />
             </span>
           </div>
-          <figcaption>
-            <span>Fig. 1 — after the tests passed</span>
-            <span>hover</span>
-          </figcaption>
         </figure>
       </div>
     </section>
