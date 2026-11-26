@@ -465,3 +465,16 @@ main > section#contact > .text-center.mb-12 { margin-bottom: clamp(.6rem, 2vh, 1
 :root:not(.dark) .term .text-primary { color: #ffffff; }
 :root:not(.dark) .term .text-accent { color: #f3b562; }
 :root:not(.dark) .term a:hover { color: #f3b562; }
+
+/* ===================== Interactive Terminal fits one screen ===================== */
+main > section#terminal { min-height: calc(100svh - 4rem); display: flex; flex-direction: column; justify-content: center;
+  padding-top: clamp(.75rem, 2.5vh, 2rem); padding-bottom: clamp(.75rem, 2.5vh, 2rem); scroll-margin-top: 4rem; }
+main > section#terminal > .text-center.mb-12 { margin-bottom: clamp(.6rem, 2vh, 1.5rem); }
+#terminal h2.font-headline { font-size: clamp(26px, 4.6vh, 36px); }
+#terminal h2.font-headline svg { width: clamp(24px, 4.4vh, 36px); height: clamp(24px, 4.4vh, 36px); }
+#terminal .text-center > p { margin-top: clamp(.25rem, 1vh, .5rem); font-size: clamp(13px, 1.9vh, 16px); }
+/* terminal screen: title bar ~44px; the scroll area takes what is left of the screen, max 24rem */
+#terminal .term > .font-code { height: clamp(160px, calc(100svh - 4rem - 210px), 24rem); }
+#terminal .term > .flex:first-child { padding-top: clamp(6px, 1.2vh, 12px); padding-bottom: clamp(6px, 1.2vh, 12px); }
+#terminal .term pre { font-size: clamp(9px, 1.6vh, 14px); line-height: 1.15; }
+@media (max-width: 900px) { main > section#terminal { min-height: 0; } }
