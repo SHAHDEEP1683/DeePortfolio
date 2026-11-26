@@ -98,7 +98,7 @@ const WorkspaceSection = () => {
           <Armchair className="h-5 w-5" />
           My Workspace
         </h2>
-        <p className="mt-1 text-xs text-muted-foreground">Where the Java happens. Move your cursor over it.</p>
+        <p className="mt-1 text-xs text-muted-foreground">Where Java comes to life. Hover over it to explore.</p>
       </div>
 
       <div ref={stageRef} className="ws-stage ws-stage--left" aria-label="3D illustration of Deep's cozy developer workspace">
