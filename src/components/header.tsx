@@ -1,4 +1,4 @@
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeSwitch } from "./theme-switch";
 import { Button } from "./ui/button";
 import { Briefcase, CodeXml, Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent, SheetClose, SheetTitle, SheetDescription } from "./ui/sheet";
@@ -41,9 +41,7 @@ const Header = () => {
           <a href="#contact" className="paper-nav__hire hidden sm:inline-flex">
             <Briefcase className="h-4 w-4" /> Hire Me
           </a>
-          <div className="paper-nav__toggle">
-            <ThemeToggle />
-          </div>
+          <ThemeSwitch />
 
           <div className="md:hidden">
             <Sheet>
