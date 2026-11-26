@@ -20,7 +20,15 @@ const ExperienceSection = () => {
                     <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
                         <div>
                             <CardTitle className="font-headline text-xl font-semibold text-primary">{job.role}</CardTitle>
-                            <p className="text-md font-medium text-muted-foreground mt-1">{job.company}</p>
+                            <p className="text-md font-medium text-muted-foreground mt-1">
+                              {job.url ? (
+                                <a href={job.url} target="_blank" rel="noopener noreferrer" className="company-link">
+                                  {job.company}
+                                </a>
+                              ) : (
+                                job.company
+                              )}
+                            </p>
                         </div>
                         <p className="text-sm text-muted-foreground sm:min-w-max">{job.duration}</p>
                     </div>

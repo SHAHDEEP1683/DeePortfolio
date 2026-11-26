@@ -73,6 +73,7 @@ export const projects = [
 export const experience = [
   {
     company: "Techxplore IT Solutions Pvt. Ltd.",
+    url: "https://techxplore.io/",
     role: "Software Engineer",
     duration: "Aug 2025 – Present",
     description: [

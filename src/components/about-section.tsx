@@ -7,12 +7,14 @@ const AboutSection = () => {
   const current = experience[0];
   const intern = experience[1];
   const degree = education[0];
+  const companyUrl = "url" in current ? current.url : undefined;
+  const companyName = current.company.replace(" Pvt. Ltd.", "");
 
   const facts = [
-    { icon: Briefcase, label: "Now", value: `${current.role} at ${current.company.replace(" Pvt. Ltd.", "")}` },
-    { icon: Target, label: "Focus", value: "Java · Spring Boot · AWS" },
-    { icon: GraduationCap, label: "Education", value: `${degree.degree} (${degree.duration.split("–").pop()?.trim()})` },
-    { icon: MapPin, label: "Based in", value: personalData.location },
+    { icon: Briefcase, label: "Now", value: `${current.role} at ${companyName}`, href: companyUrl },
+    { icon: Target, label: "Focus", value: "Java · Spring Boot · AWS", href: undefined },
+    { icon: GraduationCap, label: "Education", value: `${degree.degree} (${degree.duration.split("–").pop()?.trim()})`, href: undefined },
+    { icon: MapPin, label: "Based in", value: personalData.location, href: undefined },
   ];
 
   return (
@@ -27,7 +29,14 @@ const AboutSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
         <div className="bg-card p-6 sm:p-8 rounded-lg shadow-sm lg:col-span-3">
           <p className="text-lg leading-relaxed">
-            I’m a <strong>{current.role}</strong> at <strong>{current.company.replace(" Pvt. Ltd.", "")}</strong>,
+            I’m a <strong>{current.role}</strong> at{" "}
+            <strong>
+              {companyUrl ? (
+                <a href={companyUrl} target="_blank" rel="noopener noreferrer" className="company-link">{companyName}</a>
+              ) : (
+                companyName
+              )}
+            </strong>,
             specializing in Java, Spring Boot, REST API development, event-driven architectures, and AWS deployments
             using Terraform. I focus on building scalable, reliable backend systems and seamless payment and booking
             workflows.
@@ -47,14 +56,20 @@ const AboutSection = () => {
         </div>
 
         <ul className="about-facts grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:col-span-2">
-          {facts.map(({ icon: Icon, label, value }) => (
+          {facts.map(({ icon: Icon, label, value, href }) => (
             <li key={label} className="bg-card p-4 rounded-lg shadow-sm flex items-center gap-4">
               <span className="about-fact__icon">
                 <Icon className="h-5 w-5" />
               </span>
               <span>
                 <span className="block text-xs uppercase tracking-widest text-muted-foreground">{label}</span>
-                <span className="block font-semibold">{value}</span>
+                <span className="block font-semibold">
+                  {href ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="company-link">{value}</a>
+                  ) : (
+                    value
+                  )}
+                </span>
               </span>
             </li>
           ))}
