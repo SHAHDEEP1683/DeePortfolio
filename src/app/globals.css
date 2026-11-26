@@ -363,3 +363,27 @@ main > section[id] > .text-center.mb-12 { margin-bottom: clamp(1.5rem, 4vh, 2.25
 .jg-stats span { font-size: 12px; color: #5d5d5d; text-transform: uppercase; letter-spacing: .1em; }
 @media (max-width: 560px) { .jg-stats { grid-template-columns: repeat(2, 1fr); } .jg-stamp { font-size: 17px; } }
 @media (prefers-reduced-motion: reduce) { .jg-stamp { animation: none; } .jg-timer i { transition: none; } }
+
+/* ===================== My Workspace + contact sheet ===================== */
+.ws-row { display: flex; align-items: center; gap: clamp(1.5rem, 3vw, 3rem); }
+.ws-left { flex: none; width: 300px; }
+.ws-sheet { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.75rem, 1.6vw, 1.5rem); }
+.ws-frame { position: relative; padding: 12px 12px 0; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.ws-frame::before, .ws-frame::after { content: ''; position: absolute; top: 0; width: 14px; height: 14px; border: solid hsl(var(--foreground) / .35); }
+.ws-frame::before { left: 0; border-width: 1px 0 0 1px; } .ws-frame::after { right: 0; border-width: 1px 1px 0 0; }
+.ws-frame__photo { display: block; background: #fdfcf9; border-radius: 3px; overflow: hidden; }
+.ws-frame__photo img { display: block; width: 100%; aspect-ratio: 1 / 1.03; object-fit: cover; object-position: 50% 0; mix-blend-mode: multiply; transition: filter .35s; }
+.ws-sheet:hover .ws-frame:not(:hover) img { filter: grayscale(1) contrast(.9); }
+.ws-frame:hover { transform: translateY(-8px); }
+.ws-cap { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; padding-bottom: 4px; border-bottom: 1px solid hsl(var(--border)); }
+.ws-cap span { font: 500 11px 'Source Code Pro', monospace; letter-spacing: .14em; color: hsl(var(--muted-foreground)); }
+.ws-cap b { font: 600 14px 'Inter Tight', system-ui, sans-serif; color: hsl(var(--foreground)); }
+.dark .ws-frame__photo { box-shadow: 0 10px 22px -12px rgba(0,0,0,.7); }
+@media (max-width: 900px) {
+  .ws-row { flex-direction: column; align-items: stretch; }
+  .ws-left { width: auto; }
+  .ws-sheet { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { .ws-frame, .ws-frame__photo img { transition: none; } }
+.ws-left .ws-head { width: auto; margin-left: 0; white-space: normal; }
+.ws-left .ws-stage--left { margin: 0 auto; }
