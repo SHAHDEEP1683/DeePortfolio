@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { personalData } from "@/lib/data";
-import { Check, Copy, Linkedin, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
+import { Check, Copy, Linkedin, Mail, MessageCircle, Phone, Send } from "lucide-react";
 import ContactForm from "./contact-form";
 
 const ContactSection = () => {
@@ -24,11 +24,10 @@ const ContactSection = () => {
     { icon: MessageCircle, label: "WhatsApp", value: "Chat with me", href: `https://wa.me/${wa}` },
     { icon: Phone, label: "Phone", value: personalData.phone, href: `tel:+${wa}` },
     { icon: Linkedin, label: "LinkedIn", value: "deepshah-java-developer", href: personalData.linkedin },
-    { icon: MapPin, label: "Based in", value: personalData.location, href: "https://en.wikipedia.org/wiki/Amreli" },
   ];
 
   return (
-    <section id="contact" className="py-16 md:py-24 border-t">
+    <section id="contact" className="contact-section py-16 md:py-24 border-t">
       <div className="text-center mb-12">
         <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
           <Send className="h-10 w-10" />

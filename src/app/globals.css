@@ -417,3 +417,26 @@ main > section[id] > .text-center.mb-12 { margin-bottom: clamp(1.5rem, 4vh, 2.25
 .ws-sheet-head h3 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(18px, 1.8vw, 24px); letter-spacing: -.01em; }
 .ws-sheet-head span { font: 500 11px 'Source Code Pro', monospace; letter-spacing: .16em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
 :root:not(.dark) .ws-sheet-head h3 { background: linear-gradient(180deg, transparent 58%, rgba(250,204,21,.75) 58%, rgba(250,204,21,.6) 92%, transparent 92%); padding: 0 .2em; }
+
+/* ===================== Get In Touch fits one screen ===================== */
+main > section#contact.contact-section { min-height: calc(100svh - 4rem); display: flex; flex-direction: column; justify-content: center;
+  padding-top: clamp(.75rem, 2.5vh, 2rem); padding-bottom: clamp(.75rem, 2.5vh, 2rem); scroll-margin-top: 4rem; }
+main > section#contact > .text-center.mb-12 { margin-bottom: clamp(.6rem, 2vh, 1.5rem); }
+#contact h2.font-headline { font-size: clamp(26px, 4.6vh, 36px); }
+#contact h2.font-headline svg { width: clamp(24px, 4.4vh, 36px); height: clamp(24px, 4.4vh, 36px); }
+#contact .text-center > p { margin-top: clamp(.25rem, 1vh, .75rem); font-size: clamp(13px, 1.9vh, 16px); }
+#contact .contact-grid { gap: clamp(1rem, 2.5vh, 2rem); align-items: stretch; }
+#contact .contact-direct h3 { font-size: clamp(14px, 2.2vh, 18px); margin-bottom: clamp(.4rem, 1.2vh, .75rem); }
+#contact .contact-direct ul { display: grid; gap: clamp(.4rem, 1.2vh, .75rem); }
+#contact .contact-direct ul > li + li { margin-top: 0; }
+#contact .contact-row { padding: clamp(6px, 1.2vh, 12px) 12px; }
+#contact .contact-row .about-fact__icon { width: clamp(30px, 5vh, 42px); height: clamp(30px, 5vh, 42px); }
+#contact .contact-formcard { padding: clamp(14px, 2.6vh, 28px) clamp(16px, 2vw, 30px); }
+#contact .contact-formcard > h3 { font-size: clamp(17px, 2.8vh, 24px); }
+#contact .contact-formcard > p { margin: 2px 0 clamp(.5rem, 1.6vh, 1.25rem); }
+#contact form.space-y-5 > * + * { margin-top: clamp(.55rem, 1.6vh, 1.25rem); }
+#contact form .grid { gap: clamp(.55rem, 1.6vh, 1.25rem); }
+#contact textarea { min-height: clamp(64px, 13vh, 140px) !important; height: clamp(64px, 13vh, 140px); }
+#contact input { height: clamp(34px, 5vh, 40px); }
+#contact label { font-size: clamp(12px, 1.8vh, 14px); }
+@media (max-width: 900px) { main > section#contact.contact-section { min-height: 0; } }
