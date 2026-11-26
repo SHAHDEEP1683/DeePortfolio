@@ -127,6 +127,11 @@ const WorkspaceSection = () => {
       </div>
 
       {/* contact sheet: four torn-paper frames (from hero Sample C) */}
+      <div className="ws-sheet-wrap">
+      <div className="ws-sheet-head">
+        <h3>A day in my dev life</h3>
+        <span>from hello to production</span>
+      </div>
       <ul className="ws-sheet" aria-label="Deep at work, four frames">
         {SHEET.map((f, i) => (
           <li key={f.label} className="ws-frame">
@@ -141,6 +146,7 @@ const WorkspaceSection = () => {
           </li>
         ))}
       </ul>
+      </div>
       </div>
     </section>
   );
