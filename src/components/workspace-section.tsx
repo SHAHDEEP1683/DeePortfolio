@@ -17,10 +17,10 @@ const chips = [
 ];
 
 const SHEET = [
-  { src: "/paper/p6.webp", label: "Hello", alt: "Deep waving" },
-  { src: "/paper/p2.webp", label: "Design the API", alt: "Deep thinking" },
-  { src: "/paper/p4.webp", label: "Ship it", alt: "Deep giving a thumbs up" },
-  { src: "/paper/p1.webp", label: "Run it in prod", alt: "Deep with sunglasses" },
+  { src: "/paper/p6.webp", label: "Understand the Problem", alt: "Deep waving" },
+  { src: "/paper/p2.webp", label: "Build the API", alt: "Deep thinking" },
+  { src: "/paper/p4.webp", label: "Integrate & Test", alt: "Deep giving a thumbs up" },
+  { src: "/paper/p1.webp", label: "Deploy to AWS", alt: "Deep with sunglasses" },
 ];
 
 const WorkspaceSection = () => {
