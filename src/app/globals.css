@@ -273,3 +273,19 @@
   -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='7' preserveAspectRatio='none'><path d='M0 7H120V5L114 2L106 5L97 1L88 4L80 2L71 6L62 1L53 4L45 2L36 5L27 1L18 4L9 2L0 5Z'/></svg>") repeat-x 0 0 / 120px 7px;
           mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='7' preserveAspectRatio='none'><path d='M0 7H120V5L114 2L106 5L97 1L88 4L80 2L71 6L62 1L53 4L45 2L36 5L27 1L18 4L9 2L0 5Z'/></svg>") repeat-x 0 0 / 120px 7px; }
 @media (prefers-reduced-motion: reduce) { :root:not(.dark) main [class*="bg-card"] { transition: none; } }
+
+/* ===================== Tech Stack: masonry cards + logo chips (both themes) ===================== */
+.skills-masonry { columns: 3 300px; column-gap: 1.75rem; }
+.skills-masonry > .skill-card { break-inside: avoid; display: block; width: 100%; margin: 0 0 1.75rem; }
+.skill-chip { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px 4px 5px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.2;
+  transition: transform .2s ease; }
+.skill-chip:hover { transform: translateY(-2px); }
+.skill-chip__mark { display: grid; place-items: center; width: 22px; height: 22px; flex: none; border-radius: 6px; background: #fff; color: #232323;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.07); }
+.skill-chip__mark img, .skill-chip__mark svg { width: 14px; height: 14px; display: block; }
+/* light (paper) theme: same hand-placed tilt as the other cards */
+:root:not(.dark) main .skills-masonry > [class*="bg-card"]:nth-child(odd) { transform: rotate(-.6deg); }
+:root:not(.dark) main .skills-masonry > [class*="bg-card"]:nth-child(even) { transform: rotate(.6deg); }
+:root:not(.dark) main .skills-masonry > [class*="bg-card"]:nth-child(3n)::before { background: rgba(160,220,200,.75); transform: translateX(-50%) rotate(2deg); }
+:root:not(.dark) main .skills-masonry > [class*="bg-card"]:hover { transform: rotate(0) translateY(-4px); }
+:root:not(.dark) main .skill-chip { border-radius: 4px; }
