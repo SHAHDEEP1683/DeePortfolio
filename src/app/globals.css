@@ -307,3 +307,4 @@ main > section[id] > .text-center.mb-12 { margin-bottom: clamp(1.5rem, 4vh, 2.25
 .company-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; text-decoration-color: hsl(var(--muted-foreground) / .5); transition: text-decoration-color .2s, color .2s; }
 .company-link:hover { color: hsl(var(--foreground)); text-decoration-color: currentColor; }
 :root:not(.dark) .company-link { text-decoration-color: rgba(250,204,21,.95); text-decoration-thickness: 3px; }
+#about .company-link, :root:not(.dark) #about .company-link { text-decoration: none; }
