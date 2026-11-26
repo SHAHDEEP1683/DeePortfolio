@@ -32,8 +32,9 @@ const AboutSection = () => {
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
             At {current.company.replace(" Pvt. Ltd.", "")}, where I’ve been a {current.role} since{" "}
-            {current.duration.split("–")[0].trim()}, I build the REST APIs behind bookings and payments, manage provider
-            payouts, and run event-driven workflows on RabbitMQ, all deployed to AWS with Terraform. I started out as a
+            {current.duration.split("–")[0].trim()}, I build the REST APIs that power bookings and payments, handle
+            provider payouts through banking integrations, and design event-driven order workflows on RabbitMQ, shipping it
+            all to AWS with Terraform. I started out as a
             Java intern at {intern.company.replace(" Pvt. Ltd.", "")}, getting hands-on across the Spring ecosystem.
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
