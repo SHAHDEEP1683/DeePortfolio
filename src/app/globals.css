@@ -440,3 +440,23 @@ main > section#contact > .text-center.mb-12 { margin-bottom: clamp(.6rem, 2vh, 1
 #contact input { height: clamp(34px, 5vh, 40px); }
 #contact label { font-size: clamp(12px, 1.8vh, 14px); }
 @media (max-width: 900px) { main > section#contact.contact-section { min-height: 0; } }
+
+/* ===================== Work Journey timeline ===================== */
+.exp-timeline { position: relative; list-style: none; padding-left: 2.25rem; margin: 0; }
+.exp-timeline::before { content: ''; position: absolute; left: .7rem; top: .75rem; bottom: .75rem; width: 2px; border-radius: 2px;
+  background: linear-gradient(hsl(var(--foreground) / .35), hsl(var(--foreground) / .12)); }
+.exp-item { position: relative; }
+.exp-dot { position: absolute; left: calc(-2.25rem + .7rem + 1px); top: 1.85rem; width: 16px; height: 16px; transform: translateX(-50%); z-index: 2;
+  border-radius: 50%; background: hsl(var(--background)); border: 3px solid hsl(var(--foreground) / .55); }
+.exp-item.is-current .exp-dot { background: #2f7d4f; border-color: #2f7d4f; box-shadow: 0 0 0 0 rgba(47,125,79,.55); animation: exp-pulse 2.2s ease-out infinite; }
+@keyframes exp-pulse { 0% { box-shadow: 0 0 0 0 rgba(47,125,79,.5); } 80%, 100% { box-shadow: 0 0 0 12px rgba(47,125,79,0); } }
+/* little connector from the dot to the card */
+.exp-dot::after { content: ''; position: absolute; left: 100%; top: 50%; width: calc(2.25rem - .7rem - 12px); height: 2px; transform: translateY(-50%); background: hsl(var(--foreground) / .25); }
+/* light (paper) theme: dashed ink line, paper dots */
+:root:not(.dark) .exp-timeline::before { background: repeating-linear-gradient(to bottom, rgba(35,35,35,.45) 0 8px, transparent 8px 14px); }
+:root:not(.dark) .exp-dot { background: #fff3c4; border-color: #232323; }
+:root:not(.dark) .exp-item.is-current .exp-dot { background: #2f7d4f; border-color: #232323; }
+:root:not(.dark) .exp-dot::after { background: rgba(35,35,35,.35); }
+:root:not(.dark) main .exp-timeline [class*="bg-card"] { transform: none; }
+@media (max-width: 640px) { .exp-timeline { padding-left: 1.6rem; } .exp-timeline::before { left: .45rem; } .exp-dot { left: calc(-1.6rem + .45rem + 1px); } .exp-dot::after { width: calc(1.6rem - .45rem - 10px); } }
+@media (prefers-reduced-motion: reduce) { .exp-item.is-current .exp-dot { animation: none; } }
