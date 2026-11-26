@@ -73,7 +73,7 @@ export const projects = [
 export const experience = [
   {
     company: "Techxplore IT Solutions Pvt. Ltd.",
-    role: "Java Developer",
+    role: "Software Engineer",
     duration: "Aug 2025 – Present",
     description: [
       "Designed and developed RESTful APIs and core backend functionalities for customer and provider registration, discovery, booking, pricing, and real-time tracking.",
