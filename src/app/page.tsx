@@ -10,13 +10,22 @@ import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import TerminalSection from '@/components/terminal-section';
 import JavaChallengeSection from '@/components/java-challenge-section';
+import LaptopHero from '@/components/laptop-hero/laptop-hero';
+import WorkspaceSection from '@/components/workspace-section';
+import PaperHero from '@/components/paper-hero/paper-hero';
 
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
       <Header />
-      <main className="container mx-auto max-w-7xl px-4">
+      {/* new playful paper hero first; everything below stays as it was */}
+      <PaperHero />
+      <div className="container mx-auto max-w-7xl px-4">
         <IntroSection />
+      </div>
+      {/* full-width: the laptop-dive hero, below the intro */}
+      <LaptopHero />
+      <main className="container mx-auto max-w-7xl px-4">
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
@@ -24,6 +33,7 @@ export default function Home() {
         <JavaChallengeSection />
         <TerminalSection />
         <ContactSection />
+        <WorkspaceSection />
       </main>
       <Footer />
     </div>
