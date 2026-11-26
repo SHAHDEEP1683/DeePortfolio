@@ -478,3 +478,5 @@ main > section#terminal > .text-center.mb-12 { margin-bottom: clamp(.6rem, 2vh, 
 #terminal .term > .flex:first-child { padding-top: clamp(6px, 1.2vh, 12px); padding-bottom: clamp(6px, 1.2vh, 12px); }
 #terminal .term pre { font-size: clamp(9px, 1.6vh, 14px); line-height: 1.15; }
 @media (max-width: 900px) { main > section#terminal { min-height: 0; } }
+/* keep the terminal (and contact grid) at full default width inside the one-screen flex sections */
+#terminal > .max-w-4xl, #contact > .contact-grid { width: 100%; }
