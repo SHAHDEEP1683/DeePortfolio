@@ -1,5 +1,5 @@
 import { personalData, experience, education } from "@/lib/data";
-import { Briefcase, GraduationCap, MapPin, Target, UserRound, Github, Linkedin } from "lucide-react";
+import { ArrowUpRight, Briefcase, GraduationCap, MapPin, Target, UserRound, Github, Linkedin } from "lucide-react";
 
 /** About: a short story plus quick facts, all taken from data.ts. Uses the shared card/heading
  *  classes so it follows both the dark design and the light (paper) theme. */
@@ -56,23 +56,32 @@ const AboutSection = () => {
         </div>
 
         <ul className="about-facts grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:col-span-2">
-          {facts.map(({ icon: Icon, label, value, href }) => (
-            <li key={label} className="bg-card p-4 rounded-lg shadow-sm flex items-center gap-4">
-              <span className="about-fact__icon">
-                <Icon className="h-5 w-5" />
-              </span>
-              <span>
-                <span className="block text-xs uppercase tracking-widest text-muted-foreground">{label}</span>
-                <span className="block font-semibold">
-                  {href ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer" className="company-link">{value}</a>
-                  ) : (
-                    value
-                  )}
+          {facts.map(({ icon: Icon, label, value, href }) => {
+            const inner = (
+              <>
+                <span className="about-fact__icon">
+                  <Icon className="h-5 w-5" />
                 </span>
-              </span>
-            </li>
-          ))}
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xs uppercase tracking-widest text-muted-foreground">{label}</span>
+                  <span className="about-fact__value block font-semibold">{value}</span>
+                  {href && <span className="about-fact__host">{new URL(href).hostname.replace(/^www\.|^en\./, "")} ↗</span>}
+                </span>
+                {href && <ArrowUpRight className="about-fact__arrow h-5 w-5" aria-hidden="true" />}
+              </>
+            );
+            return (
+              <li key={label} className={`bg-card rounded-lg shadow-sm ${href ? "about-fact--link" : "p-4 flex items-center gap-4"}`}>
+                {href ? (
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="about-fact__a" title={`Open ${new URL(href).hostname}`}>
+                    {inner}
+                  </a>
+                ) : (
+                  inner
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
