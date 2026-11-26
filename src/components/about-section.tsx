@@ -31,9 +31,10 @@ const AboutSection = () => {
             backend systems with <strong>Java and Spring Boot</strong>.
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            Since {current.duration.split("–")[0].trim()} I’ve been a {current.role} at {current.company}, designing REST
-            APIs, payment and payout flows, and event-driven workflows with RabbitMQ, deployed on AWS with Terraform.
-            Before that I interned at {intern.company.replace(" Pvt. Ltd.", "")}, working across the Spring ecosystem.
+            At {current.company.replace(" Pvt. Ltd.", "")}, where I’ve been a {current.role} since{" "}
+            {current.duration.split("–")[0].trim()}, I build the REST APIs behind bookings and payments, manage provider
+            payouts, and run event-driven workflows on RabbitMQ, all deployed to AWS with Terraform. I started out as a
+            Java intern at {intern.company.replace(" Pvt. Ltd.", "")}, getting hands-on across the Spring ecosystem.
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
             I care about backends that are secure, scalable and calm under load.
