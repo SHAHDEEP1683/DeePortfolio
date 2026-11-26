@@ -2,7 +2,6 @@ import { ThemeSwitch } from "./theme-switch";
 import { Button } from "./ui/button";
 import { Briefcase, CodeXml, Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent, SheetClose, SheetTitle, SheetDescription } from "./ui/sheet";
-import RenovationTag from "./renovation-tag";
 
 // Contact is reached through "Hire Me"; About takes the last slot.
 const navLinks = [
@@ -27,7 +26,6 @@ const Header = () => {
             </span>
             DeePortfolio
           </a>
-          <RenovationTag />
         </div>
 
         <nav className="hidden md:flex items-center gap-5 text-sm font-semibold">
