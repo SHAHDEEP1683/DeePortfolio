@@ -29,7 +29,7 @@ const AboutSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
         <div className="bg-card p-6 sm:p-8 rounded-lg shadow-sm lg:col-span-3">
           <p className="text-lg leading-relaxed">
-            I’m a <strong>{current.role}</strong> at{" "}
+            I’m <strong>Deep Shah</strong>, a <strong>{current.role}</strong> at{" "}
             <strong>
               {companyUrl ? (
                 <a href={companyUrl} target="_blank" rel="noopener noreferrer" className="company-link">{companyName}</a>
