@@ -3,9 +3,28 @@ import './globals.css';
 import {ThemeProvider} from '@/components/theme-provider';
 import { Toaster } from "@/components/ui/toaster"
 
+// Link previews (LinkedIn, WhatsApp, X…) need absolute image URLs: set NEXT_PUBLIC_SITE_URL to the live address.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:9002';
+const shareTitle = 'Deep Shah | Software Engineer · Java & Spring Boot';
+const shareDescription =
+  'Software Engineer at Techxplore IT Solutions building scalable, reliable Java & Spring Boot backends: REST APIs, event-driven workflows and AWS deployments with Terraform.';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Deep Shah | Java Backend Developer',
   description: 'Portfolio of Deep Shah, a Java Backend Developer.',
+  openGraph: {
+    type: 'website',
+    url: '/',
+    siteName: 'DeePortfolio',
+    title: shareTitle,
+    description: shareDescription,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: shareTitle,
+    description: shareDescription,
+  },
 };
 
 export default function RootLayout({
