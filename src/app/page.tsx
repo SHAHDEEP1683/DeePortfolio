@@ -11,6 +11,7 @@ import TerminalSection from '@/components/terminal-section';
 import JavaChallengeSection from '@/components/java-challenge-section';
 import WorkspaceSection from '@/components/workspace-section';
 import PaperHero from '@/components/paper-hero/paper-hero';
+import AboutSection from '@/components/about-section';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       {/* new playful paper hero first; everything below stays as it was */}
       <PaperHero />
       <main className="container mx-auto max-w-7xl px-4">
+        <AboutSection />
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />

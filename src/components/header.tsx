@@ -5,6 +5,7 @@ import { Sheet, SheetTrigger, SheetContent, SheetClose, SheetTitle, SheetDescrip
 import RenovationTag from "./renovation-tag";
 
 const navLinks = [
+  { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
