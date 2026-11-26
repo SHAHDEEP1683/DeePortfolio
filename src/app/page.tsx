@@ -8,7 +8,7 @@ import EducationSection from '@/components/education-section';
 import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import TerminalSection from '@/components/terminal-section';
-import JavaChallengeSection from '@/components/java-challenge-section';
+import ChallengeSwitch from '@/components/challenge-switch';
 import WorkspaceSection from '@/components/workspace-section';
 import PaperHero from '@/components/paper-hero/paper-hero';
 import AboutSection from '@/components/about-section';
@@ -25,7 +25,7 @@ export default function Home() {
         <ProjectsSection />
         <ExperienceSection />
         <EducationSection />
-        <JavaChallengeSection />
+        <ChallengeSwitch />
         <TerminalSection />
         <ContactSection />
         <WorkspaceSection />
