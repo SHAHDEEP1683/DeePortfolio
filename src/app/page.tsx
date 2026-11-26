@@ -1,7 +1,6 @@
 "use client";
 
 import Header from '@/components/header';
-import IntroSection from '@/components/intro-section';
 import SkillsSection from '@/components/skills-section';
 import ProjectsSection from '@/components/projects-section';
 import ExperienceSection from '@/components/experience-section';
@@ -19,9 +18,6 @@ export default function Home() {
       <Header />
       {/* new playful paper hero first; everything below stays as it was */}
       <PaperHero />
-      <div className="container mx-auto max-w-7xl px-4">
-        <IntroSection />
-      </div>
       <main className="container mx-auto max-w-7xl px-4">
         <SkillsSection />
         <ProjectsSection />
