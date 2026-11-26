@@ -85,10 +85,8 @@ export default function PaperHero() {
                     <span className={`ph-chip${col === "--ph-yellow" ? " dark" : ""}`} aria-hidden="true">
                       {ch}
                     </span>
-                    <span className="ph-tip" aria-hidden="true">
-                      <b>{lesson.topic}</b>
-                      <small>{lesson.source} ↗</small>
-                    </span>
+                    {/* label text lives in data attributes (drawn by CSS) so the H1 reads just "Deep Shah" */}
+                    <span className="ph-tip" aria-hidden="true" data-topic={lesson.topic} data-source={`${lesson.source} ↗`} />
                   </a>
                 );
               })}

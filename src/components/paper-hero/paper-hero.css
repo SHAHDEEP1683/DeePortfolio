@@ -83,3 +83,14 @@
   .paper-hero .ph-script path { animation: none; stroke-dashoffset: 0; }
   .paper-hero .ph-mark { animation: none; background-size: 100% 72%; }  .paper-hero .ph-under { animation: none; opacity: 1; }
 }
+
+/* hero letter labels: text drawn from data attributes, so it isn't part of the H1 */
+.paper-hero .ph-tip::after { content: attr(data-topic); display: block; font: 700 14px/1.1 'Inter Tight', system-ui, sans-serif; color: var(--ph-ink); }
+.paper-hero .ph-tip { grid-template-rows: auto auto; }
+.paper-hero .ph-tip { --src: attr(data-source); }
+.paper-hero .ph-tip > i { display: none; }
+.paper-hero .ph-tip { padding-top: 14px; background:
+    linear-gradient(rgba(242,214,150,.9), rgba(242,214,150,.9)) no-repeat 50% 0 / 38px 7px, #fff; }
+.paper-hero .ph-tip::before { content: attr(data-topic); position: static; display: block; width: auto; height: auto; transform: none; background: none;
+  font: 700 14px/1.1 'Inter Tight', system-ui, sans-serif; color: var(--ph-ink); }
+.paper-hero .ph-tip::after { content: attr(data-source); display: block; font: 500 10px/1 'Source Code Pro', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--ph-orange); }
