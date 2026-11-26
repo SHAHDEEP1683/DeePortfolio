@@ -2,6 +2,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 import { Briefcase, CodeXml, Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent, SheetClose, SheetTitle, SheetDescription } from "./ui/sheet";
+import RenovationTag from "./renovation-tag";
 
 const navLinks = [
   { href: "#skills", label: "Skills" },
@@ -17,10 +18,13 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-7xl items-center justify-between px-4">
-        <a href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
-          <CodeXml className="h-6 w-6" />
-          DeePortfolio
-        </a>
+        <div className="flex items-center gap-3">
+          <a href="#" className="flex items-center gap-2 font-headline text-xl font-bold">
+            <CodeXml className="h-6 w-6" />
+            DeePortfolio
+          </a>
+          <RenovationTag />
+        </div>
         
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
             {navLinks.map(link => (
