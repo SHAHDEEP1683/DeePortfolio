@@ -4,15 +4,15 @@ import { Briefcase, CodeXml, Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent, SheetClose, SheetTitle, SheetDescription } from "./ui/sheet";
 import RenovationTag from "./renovation-tag";
 
+// Contact is reached through "Hire Me"; About takes the last slot.
 const navLinks = [
-  { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
   { href: "#education", label: "Education" },
   { href: "#challenge", label: "Challenge" },
   { href: "#terminal", label: "Terminal" },
-  { href: "#contact", label: "Contact" },
+  { href: "#about", label: "About" },
 ];
 
 /** Header in the paper style of the hero: paper strip, ink type, highlighter hovers, taped button. */
