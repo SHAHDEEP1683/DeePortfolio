@@ -18,11 +18,11 @@ const MOODS = [
   { src: "/paper/p6.webp", note: "hi, I'm Deep!" }, // 6 purple, waving
 ];
 const ORDER = [6, 4, 0, 3, 2, 5, 1];
-const SMALL = [
-  { cls: "s1", i: 5, depth: 0.9 },
+const SMALL: { cls: string; i: number; depth: number; href?: string; go?: string }[] = [
+  { cls: "s1", i: 3, depth: 0.9, href: "#projects", go: "projects" }, // all tests green -> Projects
   { cls: "s2", i: 2, depth: 0.7 },
   { cls: "s3", i: 4, depth: 0.6 },
-  { cls: "s4", i: 1, depth: 1 },
+  { cls: "s4", i: 1, depth: 1, href: "#skills", go: "tech stack" }, // sunglasses -> Tech Stack
 ];
 const CHIP_COLS = ["--ph-green", "--ph-red", "--ph-yellow", "--ph-orange", "--ph-blue", "--ph-purple", "--ph-pink", "--ph-teal"];
 const CHIP_ROT = [-5, 3, -2, 6, -4, 2, -6, 4];
@@ -152,15 +152,29 @@ export default function PaperHero() {
           <path stroke="#6a3fb5" d="M20 3 V37 M3 20 H37 M8 8 L32 32 M32 8 L8 32" />
         </svg>
 
-        {SMALL.map((s) => (
-          <figure key={s.cls} className={`ph-hole ph-s ${s.cls}`} data-depth={s.depth}>
-            <div className="ph-photo">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={MOODS[s.i].src} alt="" draggable={false} />
-            </div>
-            <figcaption className="ph-note">{MOODS[s.i].note}</figcaption>
-          </figure>
-        ))}
+        {SMALL.map((s) => {
+          const inner = (
+            <>
+              <span className="ph-photo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={MOODS[s.i].src} alt="" draggable={false} />
+              </span>
+              <span className="ph-note">
+                {MOODS[s.i].note}
+                {s.go && <small className="ph-go">→ {s.go}</small>}
+              </span>
+            </>
+          );
+          return s.href ? (
+            <a key={s.cls} href={s.href} className={`ph-hole ph-s ph-link ${s.cls}`} data-depth={s.depth} aria-label={`Go to ${s.go}`}>
+              {inner}
+            </a>
+          ) : (
+            <figure key={s.cls} className={`ph-hole ph-s ${s.cls}`} data-depth={s.depth}>
+              {inner}
+            </figure>
+          );
+        })}
 
         <figure
           className={`ph-hole ph-main ${phase === "closing" ? "closing" : phase === "opening" ? "opening" : ""}`}
