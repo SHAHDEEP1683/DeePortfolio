@@ -2,7 +2,7 @@
 .paper-hero {
   --ph-paper: #fdfcf9; --ph-ink: #232323; --ph-muted: #5d5d5d;
   --ph-green: #2f7d4f; --ph-red: #c8402f; --ph-yellow: #f2b929; --ph-orange: #e8692a; --ph-blue: #2f4fa8; --ph-purple: #6a3fb5; --ph-pink: #e889a6; --ph-teal: #1f9e9e;
-  position: relative; display: grid; grid-template-columns: 50fr 50fr; align-items: center; overflow: hidden;
+  position: relative; display: grid; grid-template-columns: auto auto; justify-content: space-evenly; align-items: center; overflow: hidden;
   min-height: calc(100vh - 4rem); min-height: calc(100svh - 4rem); scroll-margin-top: 4rem;
   background: var(--ph-paper); color: var(--ph-ink); font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased;
 }
@@ -12,10 +12,10 @@
 }
 
 /* ---------- left: cut-paper name (unchanged) ---------- */
-.paper-hero .ph-copy { position: relative; z-index: 3; align-self: center; padding: 4vh 2vw 4vh 6vw; }
+.paper-hero .ph-copy { position: relative; z-index: 3; align-self: center; padding: 4vh 0; }
 .paper-hero .ph-eyebrow { font: 500 12px/1 'Source Code Pro', monospace; letter-spacing: .22em; text-transform: uppercase; color: var(--ph-muted); display: flex; align-items: center; gap: 10px; }
 .paper-hero .ph-eyebrow::before { content: ''; width: 26px; height: 1.5px; background: var(--ph-ink); }
-.paper-hero .ph-name { margin-top: clamp(12px, 2.4vh, 22px); display: flex; flex-direction: column; gap: .12em; font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(40px, min(6.3vw, 11vh), 108px); line-height: 1; }
+.paper-hero .ph-name { margin-top: clamp(12px, 2.4vh, 22px); display: flex; flex-direction: column; gap: .12em; font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(48px, min(10vw, 17vh), 200px); line-height: 1; }
 .paper-hero .ph-word { display: flex; gap: .06em; }
 .paper-hero .ph-chip { display: inline-grid; place-items: center; min-width: .86em; padding: .06em .12em .02em; color: #fff; background: var(--c); border-radius: 3px;
   transform: rotate(var(--r)) translateY(var(--y, 0)); box-shadow: 0 2px 0 rgba(0,0,0,.12), 0 10px 18px -6px rgba(0,0,0,.25);
@@ -24,14 +24,14 @@
 .paper-hero .ph-chip.dark { color: var(--ph-ink); }
 .paper-hero .ph-chip:hover { transform: rotate(calc(var(--r) * -1.4)) translateY(-6px) scale(1.06); }
 @keyframes ph-chip-in { from { opacity: 0; transform: rotate(calc(var(--r) * 4)) translateY(30px) scale(.6); } to { opacity: 1; } }
-.paper-hero .ph-script { display: inline-block; margin-top: clamp(10px, 2vh, 18px); font-family: 'Caveat Brush', cursive; font-size: clamp(26px, min(3vw, 5.2vh), 48px); line-height: 1; transform: rotate(-4deg); position: relative; }
-.paper-hero .ph-script svg { position: absolute; left: -2%; bottom: -14px; width: 104%; height: 16px; overflow: visible; }
+.paper-hero .ph-script { display: inline-block; margin-top: clamp(10px, 2vh, 18px); font-family: 'Caveat Brush', cursive; font-size: clamp(28px, min(4vw, 7vh), 72px); line-height: 1; transform: rotate(-4deg); position: relative; }
+.paper-hero .ph-script svg { position: absolute; left: -2%; bottom: -.32em; width: 104%; height: .34em; overflow: visible; }
 .paper-hero .ph-script path { stroke: var(--ph-orange); stroke-width: 4; fill: none; stroke-linecap: round; stroke-dasharray: 400; stroke-dashoffset: 400; animation: ph-draw 1s 1.1s ease forwards; }
 @keyframes ph-draw { to { stroke-dashoffset: 0; } }
 .paper-hero .ph-tag { margin-top: clamp(16px, 3.2vh, 30px); font-size: clamp(17px, 1.4vw, 21px); line-height: 1.4; color: #3d3d3d; max-width: 30ch; }
 .paper-hero .ph-cta { margin-top: clamp(26px, 5vh, 44px); display: flex; gap: 16px; flex-wrap: wrap; }
 .paper-hero .ph-under { margin: clamp(10px, 2vh, 18px) auto 0; max-width: 30ch; text-align: center; opacity: 0; animation: ph-fade .6s 1.2s forwards; }
-.paper-hero .ph-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; font-weight: 600; font-size: 15px; color: var(--ph-ink); text-decoration: none; background: #fff;
+.paper-hero .ph-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: clamp(14px, 1.9vh, 20px) clamp(22px, 2vw, 32px); font-weight: 600; font-size: clamp(15px, 1.1vw, 19px); color: var(--ph-ink); text-decoration: none; background: #fff;
   box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 12px 22px -10px rgba(0,0,0,.35); transform: rotate(-1.5deg); transition: transform .2s; }
 .paper-hero .ph-btn:nth-child(2) { transform: rotate(1.5deg); }
 .paper-hero .ph-btn::before { content: ''; position: absolute; left: 50%; top: -9px; width: 54px; height: 18px; transform: translateX(-50%) rotate(-4deg); background: rgba(242,214,150,.75); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
@@ -39,9 +39,9 @@
 .paper-hero .ph-btn.primary { background: var(--ph-ink); color: #fff; }
 
 /* ---------- right: editorial portrait (Sample A) ---------- */
-.paper-hero .ph-wall { position: relative; z-index: 2; align-self: stretch; display: grid; place-items: center end; background: var(--ph-paper); isolation: isolate; min-height: 420px; padding: 4vh 6vw 4vh 2vw; }
+.paper-hero .ph-wall { position: relative; z-index: 2; align-self: stretch; display: grid; place-items: center; background: var(--ph-paper); isolation: isolate; min-height: 420px; padding: 4vh 0; }
 .paper-hero .ph-meta { position: absolute; right: 6vw; top: 4vh; font: 500 12px/1 'Source Code Pro', monospace; letter-spacing: .2em; text-transform: uppercase; color: var(--ph-muted); }
-.paper-hero .ph-fig { margin: 0; width: min(58vh, 520px, 38vw); --px: 0; --py: 0; mix-blend-mode: multiply;
+.paper-hero .ph-fig { margin: 0; width: min(62vh, 600px, 38vw); --px: 0; --py: 0; mix-blend-mode: multiply;
   transform: translate3d(calc(var(--px) * 1px), calc(var(--py) * 1px), 0);
   opacity: 0; animation: ph-fade .8s .35s ease forwards; }
 .paper-hero .ph-swap { position: relative;
@@ -56,7 +56,7 @@
 @keyframes ph-fade { to { opacity: 1; } }
 
 @media (max-width: 860px), (max-aspect-ratio: 1/1) {
-  .paper-hero { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  .paper-hero { grid-template-columns: 1fr; grid-template-rows: auto 1fr; justify-content: stretch; }
   .paper-hero .ph-copy { padding: 6vh 6vw 0; }
   .paper-hero .ph-wall { padding: 5vh 6vw 6vh; place-items: center; }
   .paper-hero .ph-meta { display: none; }
