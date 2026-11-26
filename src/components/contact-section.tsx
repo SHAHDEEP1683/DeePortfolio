@@ -61,8 +61,7 @@ const ContactSection = () => {
         </div>
 
         <div className="contact-formcard bg-card p-5 sm:p-8 rounded-lg shadow-lg">
-          <h3 className="font-headline text-2xl font-semibold">Send a message</h3>
-          <p className="text-muted-foreground mt-1 mb-6 text-sm">I&rsquo;ll reply by email.</p>
+          <h3 className="font-headline text-2xl font-semibold mb-5">Send a message</h3>
           <ContactForm />
         </div>
       </div>
