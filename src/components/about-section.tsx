@@ -14,7 +14,7 @@ const AboutSection = () => {
     { icon: Briefcase, label: "Now", value: `${current.role} at ${companyName}`, href: companyUrl },
     { icon: Target, label: "Focus", value: "Java · Spring Boot · AWS", href: undefined },
     { icon: GraduationCap, label: "Education", value: `${degree.degree} (${degree.duration.split("–").pop()?.trim()})`, href: undefined },
-    { icon: MapPin, label: "Based in", value: personalData.location, href: undefined },
+    { icon: MapPin, label: "Based in", value: personalData.location, href: "https://en.wikipedia.org/wiki/Amreli" },
   ];
 
   return (
