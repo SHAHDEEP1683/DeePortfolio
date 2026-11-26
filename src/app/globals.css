@@ -460,3 +460,8 @@ main > section#contact > .text-center.mb-12 { margin-bottom: clamp(.6rem, 2vh, 1
 :root:not(.dark) main .exp-timeline [class*="bg-card"] { transform: none; }
 @media (max-width: 640px) { .exp-timeline { padding-left: 1.6rem; } .exp-timeline::before { left: .45rem; } .exp-dot { left: calc(-1.6rem + .45rem + 1px); } .exp-dot::after { width: calc(1.6rem - .45rem - 10px); } }
 @media (prefers-reduced-motion: reduce) { .exp-item.is-current .exp-dot { animation: none; } }
+
+/* Interactive Terminal: keep text readable on the dark screen in the light (paper) theme */
+:root:not(.dark) .term .text-primary { color: #ffffff; }
+:root:not(.dark) .term .text-accent { color: #f3b562; }
+:root:not(.dark) .term a:hover { color: #f3b562; }
