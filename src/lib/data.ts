@@ -94,9 +94,9 @@ export const experience = [
     ]
   },
   {
-    company: "BCM Corporation",
+    company: "BCM Corporation · Part-time",
     role: "Data Entry Operator",
-    duration: "", // add the dates here, e.g. "Jun 2022 – Nov 2024"
+    duration: "Aug 2023 – Nov 2024",
     description: [
       "Entered and maintained business records accurately in the company's systems.",
       "Verified and organised data to keep records complete, consistent and up to date."

@@ -27,18 +27,14 @@ const AboutSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
         <div className="bg-card p-6 sm:p-8 rounded-lg shadow-sm lg:col-span-3">
           <p className="text-lg leading-relaxed">
-            I’m <strong>Deep Shah</strong>, a software engineer from {personalData.location.split(",")[0]} who builds
-            backend systems with <strong>Java and Spring Boot</strong>.
+            I’m a <strong>{current.role}</strong> at <strong>{current.company.replace(" Pvt. Ltd.", "")}</strong>,
+            specializing in Java, Spring Boot, REST API development, event-driven architectures, and AWS deployments
+            using Terraform. I focus on building scalable, reliable backend systems and seamless payment and booking
+            workflows.
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            At {current.company.replace(" Pvt. Ltd.", "")}, where I’ve been a {current.role} since{" "}
-            {current.duration.split("–")[0].trim()}, I build the REST APIs that power bookings and payments, handle
-            provider payouts through banking integrations, and design event-driven order workflows on RabbitMQ, shipping it
-            all to AWS with Terraform. I started out as a
-            Java intern at {intern.company.replace(" Pvt. Ltd.", "")}, getting hands-on across the Spring ecosystem.
-          </p>
-          <p className="mt-4 leading-relaxed text-muted-foreground">
-            I care about backends that are secure, scalable and calm under load.
+            I started out as a Java intern at {intern.company.replace(" Pvt. Ltd.", "")}, getting hands-on across the
+            Spring ecosystem.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a href={personalData.github} target="_blank" rel="noopener noreferrer" className="about-link">
