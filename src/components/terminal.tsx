@@ -197,6 +197,11 @@ const Terminal = () => {
     { command: '', result: <p>Welcome to Deep Terminal! Type <span className="text-accent">'help'</span> to see available commands.</p>}
   ]);
   const [history, setHistory] = useState<string[]>([]);
+  const [used, setUsed] = useState(false); // has any command been run yet?
+  // grey inline suggestion: "help" on a fresh terminal, otherwise the command that matches what is typed
+  const typed = input.toLowerCase();
+  const match = typed ? Object.keys(commands).find((c) => c.startsWith(typed) && c !== typed) : undefined;
+  const ghost = typed ? (match ?? '') : used ? '' : 'help';
   const [historyIndex, setHistoryIndex] = useState(-1);
   const terminalBodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -315,6 +320,7 @@ const Terminal = () => {
     e.preventDefault();
     const commandToExecute = input;
     setInput('');
+    if (commandToExecute.trim()) setUsed(true);
     if (commandToExecute.trim().toLowerCase() === 'clear') {
         setOutput([{ command: '', result: <pre className="text-accent hidden sm:block">{asciiArt}</pre> }]);
     } else {
@@ -342,10 +348,10 @@ const Terminal = () => {
         }
     } else if (e.key === 'Tab') {
         e.preventDefault();
-        const matchingCommand = Object.keys(commands).find(cmd => cmd.startsWith(input));
-        if (matchingCommand) {
-            setInput(matchingCommand);
-        }
+        if (ghost) setInput(ghost);
+    } else if (e.key === 'ArrowRight' && ghost) {
+        const el = e.currentTarget;
+        if (el.selectionStart === input.length) { e.preventDefault(); setInput(ghost); }
     }
   };
 
@@ -394,14 +400,26 @@ const Terminal = () => {
                   <span className="hidden sm:inline">user@deepverse:~$</span>
                   <span className="sm:hidden">deep:~$</span>
                 </span>
-                <input
-                    ref={inputRef}
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    className="bg-transparent border-none focus:ring-0 focus:outline-none w-full font-code p-0 text-sm sm:text-base"
-                />
+                <span className="term-input">
+                  {/* grey ghost completion, drawn under the transparent input in the same monospace font */}
+                  <span className="term-ghost" aria-hidden="true">
+                    <span className="invisible">{input}</span>
+                    <span className="term-ghost__rest">{ghost.slice(input.length)}</span>
+                    {ghost && <kbd className="term-ghost__key">Tab</kbd>}
+                  </span>
+                  <input
+                      ref={inputRef}
+                      type="text"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      aria-label="Terminal command"
+                      autoComplete="off"
+                      autoCapitalize="off"
+                      spellCheck={false}
+                      className="bg-transparent border-none focus:ring-0 focus:outline-none w-full font-code p-0 text-sm sm:text-base"
+                  />
+                </span>
             </form>
         </div>
     </div>

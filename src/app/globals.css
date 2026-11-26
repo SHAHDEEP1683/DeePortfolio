@@ -480,3 +480,12 @@ main > section#terminal > .text-center.mb-12 { margin-bottom: clamp(.6rem, 2vh, 
 @media (max-width: 900px) { main > section#terminal { min-height: 0; } }
 /* keep the terminal (and contact grid) at full default width inside the one-screen flex sections */
 #terminal > .max-w-4xl, #contact > .contact-grid { width: 100%; }
+
+/* terminal inline suggestion (ghost text) */
+.term-input { position: relative; flex: 1; min-width: 0; display: block; }
+.term-input input { position: relative; z-index: 1; }
+.term-ghost { position: absolute; inset: 0; display: flex; align-items: center; white-space: pre; pointer-events: none; overflow: hidden; font: inherit; }
+.term-ghost > span:first-child { white-space: pre; }
+.term-ghost__rest { color: #6b7280; }
+.term-ghost__key { margin-left: 10px; padding: 1px 6px; border: 1px solid #4b5563; border-radius: 4px; font-size: 11px; line-height: 1.4; color: #9ca3af; }
+@media (hover: none) { .term-ghost__key { display: none; } }
