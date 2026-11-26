@@ -74,8 +74,6 @@ function SkillMark({ skill }: { skill: string }) {
 }
 
 const SkillsSection = () => {
-  const total = skillGroups.reduce((n, g) => n + g.skills.length, 0);
-
   return (
     <section id="skills" className="py-16 md:py-24 border-t">
       <div className="text-center mb-12">
@@ -84,7 +82,7 @@ const SkillsSection = () => {
           My Tech Stack
         </h2>
         <p className="mt-3 text-muted-foreground">
-          {total} tools across {skillGroups.length} areas: what I use to build and ship Java backends.
+          What I use to build and ship Java backends.
         </p>
       </div>
 
@@ -97,7 +95,6 @@ const SkillsSection = () => {
               <h3 className="font-headline text-lg font-semibold mb-3 flex items-center gap-2.5">
                 <Icon className="h-5 w-5" />
                 {group.title}
-                <span className="ml-auto text-xs font-medium text-muted-foreground">{group.skills.length}</span>
               </h3>
               <ul className="flex flex-wrap gap-2" aria-label={group.title}>
                 {group.skills.map((skill) => (
