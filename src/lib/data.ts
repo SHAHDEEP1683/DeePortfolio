@@ -64,7 +64,7 @@ export const projects = [
   },
   {
     title: "Election Management System (New York State Based)",
-    description: "Designed and developed an Election Management System based on the New York State election process, featuring voter registration, profile management, and election-related workflows.",
+    description: "Designed and developed an Election Management System based on the New York State election process, featuring voter registration, profile management, and election-related workflows during my internship.",
     tech: ["Java", "Spring Boot", "Spring Data JPA", "Hibernate", "REST APIs"],
     link: "https://github.com/SHAHDEEP1683/Election-Management-System"
   }
