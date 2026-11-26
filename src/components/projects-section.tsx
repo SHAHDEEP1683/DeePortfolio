@@ -1,7 +1,6 @@
-import { projects, personalData } from "@/lib/data";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Github, FolderGit2 } from "lucide-react";
+import { projects } from "@/lib/data";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { FolderGit2 } from "lucide-react";
 
 const ProjectsSection = () => {
   return (
@@ -22,14 +21,6 @@ const ProjectsSection = () => {
             <CardContent className="flex-grow">
               <CardDescription>{project.description}</CardDescription>
             </CardContent>
-            <CardFooter>
-              <Button asChild variant="outline">
-                <a href={personalData.github} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-4 w-4" />
-                  View on GitHub
-                </a>
-              </Button>
-            </CardFooter>
           </Card>
         ))}
       </div>

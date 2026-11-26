@@ -12,6 +12,18 @@ import "./paper-hero.css";
 const CHIP_COLS = ["--ph-green", "--ph-red", "--ph-yellow", "--ph-orange", "--ph-blue", "--ph-purple", "--ph-pink", "--ph-teal"];
 const CHIP_ROT = [-5, 3, -2, 6, -4, 2, -6, 4];
 
+/** One production-grade Java / Spring Boot lesson per letter of "DEEP SHAH" (official docs only). */
+const LESSONS = [
+  { topic: "Dependency Injection", source: "Spring Framework docs", href: "https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html" },
+  { topic: "Externalized Configuration", source: "Spring Boot docs", href: "https://docs.spring.io/spring-boot/reference/features/external-config.html" },
+  { topic: "Exceptions", source: "Oracle Java Tutorials", href: "https://docs.oracle.com/javase/tutorial/essential/exceptions/" },
+  { topic: "Production-ready Features", source: "Spring Boot Actuator docs", href: "https://docs.spring.io/spring-boot/reference/actuator/index.html" },
+  { topic: "Spring Security", source: "Spring Security docs", href: "https://docs.spring.io/spring-security/reference/index.html" },
+  { topic: "Health Checks", source: "Spring Boot Actuator docs", href: "https://docs.spring.io/spring-boot/reference/actuator/endpoints.html#actuator.endpoints.health" },
+  { topic: "Auto-configuration", source: "Spring Boot docs", href: "https://docs.spring.io/spring-boot/reference/using/auto-configuration.html" },
+  { topic: "HikariCP Connection Pooling", source: "Spring Boot docs", href: "https://docs.spring.io/spring-boot/reference/data/sql.html#data.sql.datasource.connection-pool" },
+];
+
 type Vars = CSSProperties & Record<`--${string}`, string | number>;
 
 export default function PaperHero() {
@@ -46,12 +58,14 @@ export default function PaperHero() {
   return (
     <section id="hello" className="paper-hero" aria-label="Deep Shah, software engineer">
       <div className="ph-copy">
-        <h1 className="ph-name" aria-label="Deep Shah">
+        <h1 className="ph-name">
+          <span className="sr-only">Deep Shah</span>
           {["DEEP", "SHAH"].map((word) => (
-            <span className="ph-word" aria-hidden="true" key={word}>
+            <span className="ph-word" key={word}>
               {word.split("").map((ch) => {
                 const n = k++;
                 const col = CHIP_COLS[n % 8];
+                const lesson = LESSONS[n];
                 const style: Vars = {
                   "--c": `var(${col})`,
                   "--r": `${CHIP_ROT[n % 8]}deg`,
@@ -59,9 +73,23 @@ export default function PaperHero() {
                   "--y": `${n % 2 ? 4 : -3}px`,
                 };
                 return (
-                  <span key={n} className={`ph-chip${col === "--ph-yellow" ? " dark" : ""}`} style={style}>
-                    {ch}
-                  </span>
+                  <a
+                    key={n}
+                    className="ph-letter"
+                    href={lesson.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${ch}: ${lesson.topic} (${lesson.source}, opens in a new tab)`}
+                    style={style}
+                  >
+                    <span className={`ph-chip${col === "--ph-yellow" ? " dark" : ""}`} aria-hidden="true">
+                      {ch}
+                    </span>
+                    <span className="ph-tip" aria-hidden="true">
+                      <b>{lesson.topic}</b>
+                      <small>{lesson.source} ↗</small>
+                    </span>
+                  </a>
                 );
               })}
             </span>
