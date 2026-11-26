@@ -55,7 +55,7 @@ const OUTLINE: Record<string, LucideIcon> = {
   "Payment & Banking APIs": CreditCard,
   "AWS EC2": Server,
   "AWS RDS": Database,
-  "AWS S3 (Pre-signed URLs)": Archive,
+  "AWS S3": Archive,
   "AWS SES": Mail,
   "Amazon MQ": MessagesSquare,
   "AWS ALB": Split,
@@ -88,7 +88,7 @@ const SkillsSection = () => {
         </p>
       </div>
 
-      {/* masonry: every card is only as tall as its skills, no empty space */}
+      {/* cards keep the data order row by row; each card is only as tall as its skills */}
       <div className="skills-masonry">
         {skillGroups.map((group) => {
           const Icon = GROUP_ICONS[group.icon] ?? Code;

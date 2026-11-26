@@ -27,7 +27,7 @@ export const skillGroups = [
   { title: "APIs & Integrations", icon: "plug", skills: ["REST APIs", "OpenAPI Spec", "Swagger", "Postman", "Payment & Banking APIs"] },
   { title: "Databases", icon: "database", skills: ["PostgreSQL", "MySQL", "MongoDB", "Liquibase/Flyway"] },
   { title: "Messaging & Caching", icon: "workflow", skills: ["Apache Kafka", "RabbitMQ", "Redis"] },
-  { title: "Cloud & DevOps", icon: "cloud", skills: ["AWS", "AWS EC2", "AWS RDS", "AWS S3 (Pre-signed URLs)", "AWS SES", "Amazon MQ", "AWS ALB", "Terraform", "Docker", "Kubernetes", "Argo CD", "GitHub Actions", "Git CI/CD"] },
+  { title: "Cloud & DevOps", icon: "cloud", skills: ["AWS", "AWS EC2", "AWS RDS", "AWS S3", "AWS SES", "Amazon MQ", "AWS ALB", "Terraform", "Docker", "Kubernetes", "Argo CD", "GitHub Actions", "Git CI/CD"] },
   { title: "Testing & Quality", icon: "beaker", skills: ["JUnit", "Mockito", "Spring Boot Test", "SonarQube"] },
   { title: "Tools", icon: "wrench", skills: ["Git", "GitHub", "IntelliJ IDEA", "VS Code", "DBeaver", "Claude Code", "JasperReport"] },
 ];

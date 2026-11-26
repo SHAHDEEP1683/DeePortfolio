@@ -275,8 +275,8 @@
 @media (prefers-reduced-motion: reduce) { :root:not(.dark) main [class*="bg-card"] { transition: none; } }
 
 /* ===================== Tech Stack: masonry cards + logo chips (both themes) ===================== */
-.skills-masonry { columns: 3 300px; column-gap: 1.75rem; }
-.skills-masonry > .skill-card { break-inside: avoid; display: block; width: 100%; margin: 0 0 1.75rem; }
+.skills-masonry { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.75rem; align-items: start; }
+.skills-masonry > .skill-card { display: block; width: 100%; margin: 0; }
 .skill-chip { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px 4px 5px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1.2;
   transition: transform .2s ease; }
 .skill-chip:hover { transform: translateY(-2px); }
