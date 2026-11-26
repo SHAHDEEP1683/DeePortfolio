@@ -114,7 +114,7 @@ export const education = [
   },
   {
     degree: "Bachelor of Computer Application",
-    university: "Saurashtra University",
+    university: "Kamani Science College And Prataprai Arts College, Saurashtra University",
     location: "CGPA: 7",
     duration: "2020 – 2023",
   },
