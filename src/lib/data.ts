@@ -57,6 +57,12 @@ export const projects = [
     link: "https://github.com/SHAHDEEP1683"
   },
   {
+    title: "OSM – On-Screen Marking System",
+    description: "Built backend services for an On-Screen Marking platform where examiners evaluate scanned answer sheets digitally. Added an AI assistant that helps examiners review and mark answers faster, and AI proctoring that monitors online exams for face presence and tab switching.",
+    tech: ["Java", "Spring Boot", "REST APIs", "AI Assistant", "AI Proctoring", "AWS"],
+    link: "https://github.com/SHAHDEEP1683"
+  },
+  {
     title: "Election Management System (New York State Based)",
     description: "Designed and developed an Election Management System based on the New York State election process, featuring voter registration, profile management, and election-related workflows.",
     tech: ["Java", "Spring Boot", "Spring Data JPA", "Hibernate", "REST APIs"],
