@@ -1,5 +1,5 @@
 import { personalData } from "@/lib/data";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -28,6 +28,15 @@ const Footer = () => {
                 >
                     <Linkedin className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
+                </a>
+                 <a
+                    href={personalData.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                    <Instagram className="h-5 w-5" />
+                    <span className="sr-only">Instagram</span>
                 </a>
                  <a
                     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalData.email}`}

@@ -12,6 +12,7 @@ export const personalData = {
   email: "shahdeep.1683@gmail.com",
   github: "https://github.com/SHAHDEEP1683",
   linkedin: "https://linkedin.com/in/deepshah-java-developer",
+  instagram: "https://www.instagram.com/iamdeepshah16",
   phone: "+91 98986 69892",
   bio: "I'm a passionate Software Engineer specializing in Java, Spring Boot, and AWS. I design and build secure, scalable, and high-performance backend systems.",
 };

@@ -28,6 +28,7 @@ const ContactForm = () => {
   const { toast } = useToast();
   const [sent, setSent] = useState<{ name: string; email: string } | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [flying, setFlying] = useState(false); // the sent form folds into a paper plane and flies off
 
   const form = useForm<Values>({
     resolver: zodResolver(formSchema),
@@ -40,8 +41,16 @@ const ContactForm = () => {
     setServerError(null);
     const res = await sendContactEmail(values);
     if (res.success) {
-      setSent({ name: values.name, email: values.email });
-      form.reset();
+      const done = () => {
+        setFlying(false);
+        setSent({ name: values.name, email: values.email });
+        form.reset();
+      };
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) done();
+      else {
+        setFlying(true);
+        window.setTimeout(done, 1500);
+      }
       toast({ title: "Message sent", description: "It's in Deep's inbox. You'll get a reply by email." });
     } else {
       setServerError(res.error);
@@ -63,6 +72,7 @@ const ContactForm = () => {
   if (sent) {
     return (
       <div className="contact-sent" role="status">
+        <span className="contact-sent__tape" aria-hidden="true" />
         <CheckCircle2 className="h-10 w-10" />
         <h4>Message sent ✓</h4>
         <p>
@@ -76,8 +86,16 @@ const ContactForm = () => {
   }
 
   return (
+    <div className="contact-flight">
+    {flying && (
+      <svg className="contact-plane" viewBox="0 0 64 40" aria-hidden="true">
+        <path d="M2 18 L62 2 L26 24 Z" fill="#fff" stroke="#232323" strokeWidth="1.6" strokeLinejoin="round" />
+        <path d="M26 24 L62 2 L34 38 Z" fill="#f4f1ea" stroke="#232323" strokeWidth="1.6" strokeLinejoin="round" />
+        <path d="M26 24 L30 31 L34 38" fill="none" stroke="#232323" strokeWidth="1.6" strokeLinejoin="round" />
+      </svg>
+    )}
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" noValidate>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-5${flying ? " is-folding" : ""}`} noValidate aria-busy={flying}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <FormField
             control={form.control}
@@ -158,6 +176,7 @@ const ContactForm = () => {
         </div>
       </form>
     </Form>
+    </div>
   );
 };
 

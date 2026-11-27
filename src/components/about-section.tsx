@@ -1,5 +1,5 @@
 import { personalData, experience, education } from "@/lib/data";
-import { ArrowUpRight, Briefcase, GraduationCap, MapPin, Target, UserRound, Github, Linkedin } from "lucide-react";
+import { ArrowUpRight, Briefcase, GraduationCap, MapPin, Target, UserRound, Github, Linkedin, Instagram } from "lucide-react";
 
 /** About: a short story plus quick facts, all taken from data.ts. Uses the shared card/heading
  *  classes so it follows both the dark design and the light (paper) theme. */
@@ -51,6 +51,9 @@ const AboutSection = () => {
             </a>
             <a href={personalData.linkedin} target="_blank" rel="noopener noreferrer" className="about-link">
               <Linkedin className="h-4 w-4" /> LinkedIn
+            </a>
+            <a href={personalData.instagram} target="_blank" rel="noopener noreferrer" className="about-link">
+              <Instagram className="h-4 w-4" /> Instagram
             </a>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type CSSProperties } from "react";
+import { dropTo } from "@/lib/drop-to";
 import "./paper-hero.css";
 
 /**
@@ -100,8 +101,17 @@ export default function PaperHero() {
           </svg>
         </span>
         <div className="ph-cta">
-          <a className="ph-btn primary" href="#projects">See my work →</a>
-          <a className="ph-btn" href="#contact">Say hello</a>
+          <a className="ph-btn primary" href="#projects" onClick={dropTo}>See my work →</a>
+          <a className="ph-btn" href="#contact" onClick={dropTo}>Say hello</a>
+          <a
+            className="ph-btn resume"
+            href="/Deep_Shah_Java_Backend_Developer_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Resume (PDF, opens in a new tab)"
+          >
+            Resume <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </div>
 
