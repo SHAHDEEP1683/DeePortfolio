@@ -12,6 +12,7 @@ import ChallengeSwitch from '@/components/challenge-switch';
 import WorkspaceSection from '@/components/workspace-section';
 import PaperHero from '@/components/paper-hero/paper-hero';
 import AboutSection from '@/components/about-section';
+import PaperFx from '@/components/paper-fx';
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         <WorkspaceSection />
       </main>
       <Footer />
+      <PaperFx />
     </div>
   );
 }

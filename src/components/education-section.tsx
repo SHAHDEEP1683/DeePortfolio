@@ -12,9 +12,11 @@ const EducationSection = () => {
         </h2>
       </div>
 
-      <div className="space-y-8">
+      <ol className="exp-timeline space-y-8">
         {education.map((edu, index) => (
-          <Card key={index} className="bg-card/50 dark:bg-card">
+          <li key={index} className="exp-item">
+          <span className="exp-dot" aria-hidden="true" />
+          <Card className="bg-card/50 dark:bg-card">
             <CardContent className="p-6">
                 <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
                     <div>
@@ -26,8 +28,9 @@ const EducationSection = () => {
                 </div>
             </CardContent>
           </Card>
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
   );
 };

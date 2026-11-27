@@ -29,9 +29,10 @@ const ProjectsSection = () => {
           return (
             <article key={index} className={`project-card bg-card rounded-lg shadow-sm tone-${look?.tone ?? "green"}`}>
               <div className="project-band" aria-hidden="true">
-                <span className="project-icon"><Icon className="h-6 w-6" /></span>
                 <span className="project-num">{String(index + 1).padStart(2, "0")}</span>
               </div>
+              {/* outside the band: the band clips its overflow, which cut the icon in half */}
+              <span className="project-icon" aria-hidden="true"><Icon className="h-6 w-6" /></span>
               <div className="project-body">
                 {look && <p className="project-domain">{look.domain}</p>}
                 <h3 className="font-headline project-title">

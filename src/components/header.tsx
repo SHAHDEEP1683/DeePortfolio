@@ -1,6 +1,9 @@
+"use client";
+
 import { ThemeSwitch } from "./theme-switch";
 import { Button } from "./ui/button";
 import { Briefcase, CodeXml, Menu } from "lucide-react";
+import { dropTo } from "@/lib/drop-to";
 import { Sheet, SheetTrigger, SheetContent, SheetClose, SheetTitle, SheetDescription } from "./ui/sheet";
 
 // Contact is reached through "Hire Me"; About takes the last slot.
@@ -37,7 +40,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#contact" className="paper-nav__hire hidden sm:inline-flex">
+          <a href="#contact" className="paper-nav__hire hidden sm:inline-flex" onClick={dropTo}>
             <Briefcase className="h-4 w-4" /> Hire Me
           </a>
           <ThemeSwitch />

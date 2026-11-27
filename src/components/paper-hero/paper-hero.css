@@ -48,10 +48,15 @@
 @keyframes ph-marker { to { background-size: 100% 72%; } }
 .paper-hero .ph-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: clamp(14px, 1.9vh, 20px) clamp(22px, 2vw, 32px); font-weight: 600; font-size: clamp(15px, 1.1vw, 19px); color: var(--ph-ink); text-decoration: none; background: #fff;
   box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 12px 22px -10px rgba(0,0,0,.35); transform: rotate(-1.5deg); transition: transform .2s; }
-.paper-hero .ph-btn:nth-child(2) { transform: rotate(1.5deg); }
+.paper-hero .ph-btn:nth-child(2) { --tilt: 1.5deg; transform: rotate(1.5deg); }
 .paper-hero .ph-btn::before { content: ''; position: absolute; left: 50%; top: -9px; width: 54px; height: 18px; transform: translateX(-50%) rotate(-4deg); background: rgba(242,214,150,.75); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
 .paper-hero .ph-btn:hover { transform: rotate(0) translateY(-3px); }
 .paper-hero .ph-btn.primary { background: var(--ph-ink); color: #fff; }
+.paper-hero .ph-btn.resume { transform: rotate(-.8deg); }
+.paper-hero .ph-btn.resume::before { transform: translateX(-50%) rotate(5deg); }
+.paper-hero .ph-btn.resume span { display: inline-block; color: var(--ph-green); transition: transform .2s; }
+.paper-hero .ph-btn.resume:hover { transform: rotate(0) translateY(-3px); }
+.paper-hero .ph-btn.resume:hover span { transform: translateY(2px); }
 
 /* ---------- right: editorial portrait (Sample A) ---------- */
 .paper-hero .ph-wall { position: relative; z-index: 2; align-self: stretch; display: grid; place-items: center; background: var(--ph-paper); isolation: isolate; min-height: 420px; padding: 4vh 0; }

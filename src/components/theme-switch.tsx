@@ -22,9 +22,10 @@ export function ThemeSwitch() {
         aria-checked={current === "light"}
         className={current === "light" ? "is-on" : ""}
         onClick={() => setTheme("light")}
+        aria-label="Light theme"
+        title="Light theme"
       >
         <Sun className="h-3.5 w-3.5" aria-hidden="true" />
-        <span>Light</span>
       </button>
       <button
         type="button"
@@ -32,9 +33,10 @@ export function ThemeSwitch() {
         aria-checked={current === "dark"}
         className={current === "dark" ? "is-on" : ""}
         onClick={() => setTheme("dark")}
+        aria-label="Dark theme"
+        title="Dark theme"
       >
         <Moon className="h-3.5 w-3.5" aria-hidden="true" />
-        <span>Dark</span>
       </button>
     </div>
   );
