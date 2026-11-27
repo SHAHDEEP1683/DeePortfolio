@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { personalData } from "@/lib/data";
-import { Check, Copy, Linkedin, Mail, MessageCircle, Phone, Send } from "lucide-react";
+import { Check, Copy, Instagram, Linkedin, Mail, MessageCircle, Phone, Send } from "lucide-react";
 import ContactForm from "./contact-form";
 
 const ContactSection = () => {
@@ -24,6 +24,7 @@ const ContactSection = () => {
     { icon: MessageCircle, label: "WhatsApp", value: "Chat with me", href: `https://wa.me/${wa}?text=${encodeURIComponent("Hello Deep, I'm contacting you from your portfolio.")}` },
     { icon: Phone, label: "Phone", value: personalData.phone, href: `tel:+${wa}` },
     { icon: Linkedin, label: "LinkedIn", value: "deepshah-java-developer", href: personalData.linkedin },
+    { icon: Instagram, label: "Instagram", value: "@iamdeepshah16", href: personalData.instagram },
   ];
 
   return (

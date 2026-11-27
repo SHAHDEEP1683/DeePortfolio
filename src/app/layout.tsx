@@ -64,7 +64,7 @@ const jsonLd = {
       worksFor: { '@type': 'Organization', name: current.company.replace(' Pvt. Ltd.', ''), ...(current.url ? { url: current.url } : {}) },
       address: { '@type': 'PostalAddress', addressLocality: 'Amreli', addressRegion: 'Gujarat', addressCountry: 'IN' },
       email: `mailto:${personalData.email}`,
-      sameAs: [personalData.github, personalData.linkedin],
+      sameAs: [personalData.github, personalData.linkedin, personalData.instagram],
       alumniOf: education.map((e) => ({ '@type': 'CollegeOrUniversity', name: e.university })),
       knowsAbout: skillGroups.flatMap((g) => g.skills).slice(0, 30),
     },

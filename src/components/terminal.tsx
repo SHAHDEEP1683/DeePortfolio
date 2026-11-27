@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { personalData, skillGroups, projects, experience, education } from '@/lib/data';
-import { Mail, Github, Smartphone, Linkedin, MessageCircle } from 'lucide-react';
+import { Mail, Github, Smartphone, Linkedin, MessageCircle, Instagram } from 'lucide-react';
 
 const commands: { [key: string]: string } = {
   'help': 'Show this help message',
@@ -301,6 +301,7 @@ const Terminal = () => {
                 </a>
                 <a href={personalData.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent"><Linkedin size={16} /> LinkedIn</a>
                 <a href={personalData.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent"><Github size={16} /> GitHub Profile</a>
+                <a href={personalData.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent"><Instagram size={16} /> Instagram</a>
                 <a href={`https://wa.me/${wa}?text=${encodeURIComponent("Hello Deep, I'm contacting you from your portfolio.")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent"><MessageCircle size={16} /> WhatsApp</a>
                 <a href={`tel:+${wa}`} className="flex items-center gap-2 hover:text-accent"><Smartphone size={16} /> {personalData.phone}</a>
             </div>
